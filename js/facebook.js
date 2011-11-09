@@ -1,0 +1,55 @@
+(function ($) {
+$(function () {
+	
+// Bind local event handlers
+$(document).bind('wdcp_facebook_login_attempt', function () {
+	FB.login(function (resp) {
+		if (resp.session) $(document).trigger('wdcp_logged_in', ['facebook']);
+	}, {perms: 'read_stream,publish_stream,email'});
+});
+// Attempt auto-connect
+if ($("#login-with-facebook").length) {
+	FB.getLoginStatus(function (resp) {
+		if (resp.session) $(document).trigger('wdcp_logged_in', ['facebook', true]);
+	});
+}
+
+// Handle logout requests gracefully
+$("#comment-provider-facebook a.comment-provider-logout").live('click', function () {
+	var href = $(this).attr('href');
+	$.post(_wdcp_ajax_url, {
+    	"action": "wdcp_facebook_logout"
+    }, function (data) {
+		FB.logout(function (resp) {
+			window.location.reload(); // Refresh
+		});
+    });
+	return false;
+});
+
+// Handle post comment requests
+$("#send-facebook-comment").live('click', function () {
+	var comment = $("#facebook-comment").val();
+	var repost = $("#post-on-facebook").is(":checked") ? 1 : 0;
+	var commentParent = $('#comment_parent').val();
+	var subscribe = ($("#subscribe").length && $("#subscribe").is(":checked")) ? 'subscribe' : '';
+
+	// Start UI change...
+	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
+	
+	$.post(_wdcp_ajax_url, {
+    	"action": "wdcp_post_facebook_comment", 
+    	"post_id": _wdcp_post_id,
+    	"post_on_facebook": repost,
+    	"comment_parent": commentParent,
+    	"subscribe": subscribe,
+    	"comment": comment
+    }, function (data) {
+    	$(document).trigger('wdcp_comment_sent', ['facebook']);
+    	window.location.reload(); // Refresh
+    });
+	return false;
+});
+
+});
+})(jQuery);
