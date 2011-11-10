@@ -3,7 +3,8 @@
 Plugin Name: Comments Plus
 Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Description: Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts.
-Version: 1.1.2
+Version: 1.1.3
+Text Domain: wdcp
 Author: Incsub
 Author URI: http://premium.wpmudev.org
 WDP ID: 247

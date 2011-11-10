@@ -42,7 +42,7 @@ class Wdcp_PublicPages {
 	}
 
 	function reset_preferred_provider ($data) {
-		if (!isset($_COOKIE["wdcp_preferred_provider"])) return false;
+		//if (!isset($_COOKIE["wdcp_preferred_provider"])) return $data;
 		setcookie("wdcp_preferred_provider", "comment-provider-wordpress", strtotime("+1 year"), "/");
 
 		return $data;
