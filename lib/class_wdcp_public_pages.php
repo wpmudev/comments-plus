@@ -36,9 +36,11 @@ class Wdcp_PublicPages {
 			'<script type="text/javascript">var _wdcp_ajax_url="%s";</script>',
 			 admin_url('admin-ajax.php')
 		);
+		do_action('wdcp-load_scripts-public');
 	}
 
 	function css_load_styles () {
+		do_action('wdcp-load_styles-public');
 	}
 
 	function reset_preferred_provider ($data) {

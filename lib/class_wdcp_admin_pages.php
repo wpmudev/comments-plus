@@ -45,6 +45,12 @@ class Wdcp_AdminPages {
 		add_settings_section('wdcp_hooks', __('Hooks', 'wdcp'), array($form, 'create_hooks_section'), 'wdcp_options');
 		add_settings_field('wdcp_start_hook', __('Start injection hook', 'wdcp'), array($form, 'create_start_hook_box'), 'wdcp_options', 'wdcp_hooks');
 		add_settings_field('wdcp_end_hook', __('Finish injection hook', 'wdcp'), array($form, 'create_end_hook_box'), 'wdcp_options', 'wdcp_hooks');
+
+		if (!is_multisite() || (is_multisite() && (!defined('WP_NETWORK_ADMIN') || !WP_NETWORK_ADMIN))) {
+			add_settings_section('wdcp_plugins', __('Comments Plus add-ons', 'wdcp'), create_function('', ''), 'wdcp_options');
+			add_settings_field('wdcp_plugins_all_plugins', __('All add-ons', 'wdcp'), array($form, 'create_plugins_box'), 'wdcp_options', 'wdcp_plugins');
+			do_action('wdcp-options-plugins_options');
+		}
 	}
 
 	/**
@@ -57,6 +63,7 @@ class Wdcp_AdminPages {
 			}
 			$goback = add_query_arg('settings-updated', 'true',  wp_get_referer());
 			wp_redirect($goback);
+			die;
 		}
 		$page = WP_NETWORK_ADMIN ? 'settings.php' : 'options-general.php';
 		$perms = WP_NETWORK_ADMIN ? 'manage_network_options' : 'manage_options';
@@ -150,7 +157,8 @@ class Wdcp_AdminPages {
 
 		// Post comment to Facebook ...
 		if ((int)$_POST['post_on_facebook']) {
-			$this->model->post_to_facebook($_POST);
+			$result = $this->model->post_to_facebook($_POST);
+			do_action('wdcp-remote_comment_posted-facebook', $comment_id, $result, $data);
 		}
 
 		header('Content-type: application/json');
@@ -190,7 +198,8 @@ class Wdcp_AdminPages {
 
 		// Post comment to Facebook ...
 		if ((int)$_POST['post_on_twitter']) {
-			$this->model->post_to_twitter($_POST);
+			$result = $this->model->post_to_twitter($_POST);
+			do_action('wdcp-remote_comment_posted-twitter', $comment_id, $result, $data);
 		}
 
 		header('Content-type: application/json');
@@ -241,6 +250,22 @@ class Wdcp_AdminPages {
 		}
 	}
 
+	function json_activate_plugin () {
+		$status = Wdcp_PluginsHandler::activate_plugin($_POST['plugin']);
+		echo json_encode(array(
+			'status' => $status ? 1 : 0,
+		));
+		exit();
+	}
+
+	function json_deactivate_plugin () {
+		$status = Wdcp_PluginsHandler::deactivate_plugin($_POST['plugin']);
+		echo json_encode(array(
+			'status' => $status ? 1 : 0,
+		));
+		exit();
+	}
+
 	function add_hooks () {
 		// Register options and menu
 		add_action('admin_init', array($this, 'register_settings'));
@@ -274,5 +299,9 @@ class Wdcp_AdminPages {
 
 		add_action('wp_ajax_wdcp_twitter_logout', array($this, 'json_twitter_logout'));
 		add_action('wp_ajax_nopriv_wdcp_twitter_logout', array($this, 'json_twitter_logout'));
+
+		// AJAX plugin handlers
+		add_action('wp_ajax_wdcp_activate_plugin', array($this, 'json_activate_plugin'));
+		add_action('wp_ajax_wdcp_deactivate_plugin', array($this, 'json_deactivate_plugin'));
 	}
 }

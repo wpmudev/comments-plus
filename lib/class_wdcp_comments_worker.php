@@ -39,12 +39,15 @@ class Wdcp_CommentsWorker {
 		}
 
 		$icon = $this->data->get_option('wp_icon');
-		if ($icon) printf('
-<style type="text/css">
-	ul#all-comment-providers li a#comment-provider-wordpress-link {
-		background-image: url(%s) !important;
-	}
-</style>', $icon);
+		if ($icon) {
+			$selector = apply_filters('wdcp-wordpress_custom_icon_selector', 'ul#all-comment-providers li a#comment-provider-wordpress-link');
+			printf(
+				'<style type="text/css">
+					%s {
+						background-image: url(%s) !important;
+					}
+				</style>', $selector, $icon);
+		}
 	}
 
 	function header_dependencies () {
@@ -163,7 +166,8 @@ class Wdcp_CommentsWorker {
 				appId: '" . WDCP_APP_ID . "',
 				status: true,
 				cookie: true,
-				xfbml: true
+				xfbml: true,
+				oauth: true
 			});
 			</script>" .
 			sprintf(

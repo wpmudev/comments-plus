@@ -100,5 +100,5 @@ ul#all-comment-providers li a#comment-provider-google-link {
 	background: url(../img/gg-login.png) top left no-repeat;
 }
 
-#post-on-facebook, #post-on-twitter, #subscribe {float:left;margin:0.3em 0.5em 0 0;padding:0.5em 0 0;}
+#post-on-facebook, #post-on-twitter, form #subscribe {float:left;margin:0.3em 0.5em 0 0;padding:0.5em 0 0;} /* apply to #subscribe within form, to fix http://www.coachcalorie.com issue */
 #comment-provider-google p{padding-top:0.5em;}

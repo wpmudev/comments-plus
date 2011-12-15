@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 17:28+0100\n"
-"PO-Revision-Date: 2011-10-23 17:28+0100\n"
+"POT-Creation-Date: 2011-12-15 15:56+0100\n"
+"PO-Revision-Date: 2011-12-15 15:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -123,6 +123,32 @@ msgstr ""
 msgid "Use this option if your theme already has color definitions needed for Comments Plus in its' stylesheets"
 msgstr ""
 
+#: lib/class_wdcp_admin_form_renderer.php:187
+msgid "Add-on name"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:188
+msgid "Add-on description"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:203
+msgid "Deactivate"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:205
+msgid "Activate"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:211
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:213
+#, php-format
+msgid "by %s"
+msgstr ""
+
 #: lib/class_wdcp_admin_pages.php:34
 msgid "App settings"
 msgstr ""
@@ -171,42 +197,194 @@ msgstr ""
 msgid "Finish injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:63
+#: lib/class_wdcp_admin_pages.php:50
+msgid "Comments Plus add-ons"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:51
+msgid "All add-ons"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:70
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:67
+#: lib/class_wdcp_comments_worker.php:70
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:114
-#: lib/class_wdcp_comments_worker.php:129
-#: lib/class_wdcp_comments_worker.php:144
+#: lib/class_wdcp_comments_worker.php:117
+#: lib/class_wdcp_comments_worker.php:132
+#: lib/class_wdcp_comments_worker.php:147
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:116
-#: lib/class_wdcp_comments_worker.php:131
-#: lib/class_wdcp_comments_worker.php:146
+#: lib/class_wdcp_comments_worker.php:119
+#: lib/class_wdcp_comments_worker.php:134
+#: lib/class_wdcp_comments_worker.php:149
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:118
+#: lib/class_wdcp_comments_worker.php:121
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:119
-#: lib/class_wdcp_comments_worker.php:133
-#: lib/class_wdcp_comments_worker.php:149
+#: lib/class_wdcp_comments_worker.php:122
+#: lib/class_wdcp_comments_worker.php:136
+#: lib/class_wdcp_comments_worker.php:152
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:148
+#: lib/class_wdcp_comments_worker.php:151
 msgid "Post my comment on Twitter"
 msgstr ""
 
 #: lib/forms/plugin_settings.php:2
 msgid "Comments Plus settings"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:22
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:38
+#, php-format
+msgid "%s "
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:41
+#: lib/forms/wdcp-social_discussion_root_comment.php:12
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:54
+msgid "Pingback:"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:54
+msgid "(Edit)"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:63
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:84
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:85
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:93
+msgid "Comments are closed."
+msgstr ""
+
+#: lib/forms/wdcp-social_discussion_comment.php:12
+#, php-format
+msgid "<span class=\"date\">%1$s at %2$s</span>"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:28
+msgid "Custom comments Template"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:29
+msgid "Use this style"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:39
+msgid "Default"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:40
+msgid "WPMU.org"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:54
+msgid "Do not load custom comments template styles - my theme already has all the needed styles"
+msgstr ""
+
+#: lib/plugins/wdcp-custom_comments_template.php:55
+msgid "If you check this option, no comments template style will be loaded."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:72
+msgid "Social Discussion"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:74
+msgid "Sync discussions from these services"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:75
+msgid "Default discussion tab"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:76
+msgid "Schedule"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:77
+msgid "Appearance"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:82
+msgid "Please, activate the <b>Custom Comments Template</b> add-on."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:107
+msgid "WordPress Comments"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:120
+msgid "The discussion panel you select here will be open by default on page load."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:125
+msgid "Hourly"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:126
+msgid "Every 3 hours"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:127
+msgid "Every 6 hours"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:128
+msgid "Every 12 hours"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:129
+msgid "Daily"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:138
+msgid "Discussions from your selected networks will be synced this often with your other comments."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:144
+msgid "Limit import to this many latest comments:"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:151
+msgid "Discussion import takes time, so it is a good idea to limit its scope."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:152
+msgid "This option lets you choose how many of your latest social comments will be polled for discussion updates."
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:161
+msgid "Do not load styles - my theme already has all the styles I need"
+msgstr ""
+
+#: lib/plugins/wdcp-social_discussion.php:162
+msgid "If you check this option, no social discussion style will be loaded."
 msgstr ""
 

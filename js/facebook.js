@@ -5,7 +5,7 @@ $(function () {
 $(document).bind('wdcp_facebook_login_attempt', function () {
 	FB.login(function (resp) {
 		if (resp.session) $(document).trigger('wdcp_logged_in', ['facebook']);
-	}, {perms: 'read_stream,publish_stream,email'});
+	}, {scope: 'read_stream,publish_stream,email'});
 });
 // Attempt auto-connect
 if ($("#login-with-facebook").length) {

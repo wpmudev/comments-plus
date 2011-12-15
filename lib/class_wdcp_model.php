@@ -44,7 +44,7 @@ class Wdcp_Model {
 		session_start();
 		// Facebook
 		try {
-			if ($this->facebook->getSession()) {
+			if ($this->facebook->getUser()) {
 				$_SESSION['wdcp_facebook_user_cache'] = isset($_SESSION['wdcp_facebook_user_cache'])
 					? $_SESSION['wdcp_facebook_user_cache'] : $this->facebook->api('/me');
 				$this->_facebook_user_cache = $_SESSION['wdcp_facebook_user_cache'];
@@ -213,6 +213,7 @@ class Wdcp_Model {
 		} catch (Exception $e) {
 			return false;
 		}
+		return $ret; // $ret['id']
 	}
 
 	function post_to_twitter ($data) {
@@ -226,5 +227,6 @@ class Wdcp_Model {
 		} catch (Exception $e) {
 			return false;
 		}
+		return $ret; // $ret->id_str
 	}
 }

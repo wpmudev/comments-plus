@@ -1,0 +1,36 @@
+Plugin Name: Comments Plus
+Author: Ve Bailovity (Incsub)
+
+Change Log:
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+1.2 - 2011-12-15
+----------------------------------------------------------------------
+- Added the support for add-on extensions.
+- Added Custom Comments Template add-on.
+- Added Social Discussion add-on.
+
+1.1.3 - 2011-11-10
+----------------------------------------------------------------------
+- Fix for issue with setting up WordPress as preferred provider for the first time.
+
+1.1.2 - 2011-11-09
+----------------------------------------------------------------------
+- Remembering preferred provider after commenting.
+
+1.1.1 - 2011-10-23
+----------------------------------------------------------------------
+- Added manual style override switch.
+- Fixes for localization strings.
+
+1.1 - 2011-10-06
+----------------------------------------------------------------------
+- Added WordPress icon and branding options.
+- Added skip services options.
+- Added Network-wide options
+- Added "network only" switches for Facebook and Twitter apps.
+
+1.0 - 2011-09-27
+----------------------------------------------------------------------
+- Initial release.
