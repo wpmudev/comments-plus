@@ -13,11 +13,11 @@ class Wdcp_CommentsWorker {
 
 	function js_load_scripts () {
 		wp_enqueue_script('jquery');
-		if (!WDCP_SKIP_FACEBOOK) {
+		if (!apply_filters('wdcp-script_inclusion-facebook', WDCP_SKIP_FACEBOOK)) {
 			$locale = preg_replace('/-/', '_', get_locale());
 			wp_enqueue_script('facebook-all', 'http://connect.facebook.net/' . $locale . '/all.js');
 		}
-		if (!WDCP_SKIP_TWITTER) {
+		if (!apply_filters('wdcp-script_inclusion-twitter', WDCP_SKIP_TWITTER)) {
 			wp_enqueue_script('twitter-anywhere', 'http://platform.twitter.com/anywhere.js?id=' . WDCP_TW_API_KEY . '&v=1');
 		}
 		wp_enqueue_script('wdcp_comments', WDCP_PLUGIN_URL . '/js/comments.js', array('jquery'));
@@ -159,8 +159,8 @@ class Wdcp_CommentsWorker {
 	}
 
 	function _prepare_footer_dependencies () {
-		if (WDCP_SKIP_FACEBOOK) return ''; // Solve possible UFb conflict
-		return "<div id='fb-root'></div>" .
+		if (WDCP_SKIP_FACEBOOK) $fb_part = ''; // Solve possible UFb conflict
+		else $fb_part = "<div id='fb-root'></div>" .
 			"<script>
 			FB.init({
 				appId: '" . WDCP_APP_ID . "',
@@ -169,12 +169,15 @@ class Wdcp_CommentsWorker {
 				xfbml: true,
 				oauth: true
 			});
-			</script>" .
-			sprintf(
-				'<script type="text/javascript">jQuery(function () { twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
-				get_permalink()
-			)
-		;
+			</script>";
+		
+		$tw_part = sprintf(
+			'<script type="text/javascript">jQuery(function () { twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
+			get_permalink()
+		);
+		$fb_part = apply_filters('wdcp-service_initialization-facebook', $fb_part);
+		$tw_part = apply_filters('wdcp-service_initialization-twitter', $tw_part);
+		return "{$fb_part}{$tw_part}";
 	}
 
 }

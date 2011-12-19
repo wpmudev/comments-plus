@@ -4,13 +4,13 @@ $(function () {
 // Bind local event handlers
 $(document).bind('wdcp_facebook_login_attempt', function () {
 	FB.login(function (resp) {
-		if (resp.session) $(document).trigger('wdcp_logged_in', ['facebook']);
+		if (resp.authResponse && resp.authResponse.userID) $(document).trigger('wdcp_logged_in', ['facebook']);
 	}, {scope: 'read_stream,publish_stream,email'});
 });
 // Attempt auto-connect
 if ($("#login-with-facebook").length) {
-	FB.getLoginStatus(function (resp) {
-		if (resp.session) $(document).trigger('wdcp_logged_in', ['facebook', true]);
+	if (typeof FB != "undefined") FB.getLoginStatus(function (resp) {
+		if (resp.authResponse && resp.authResponse.userID) $(document).trigger('wdcp_logged_in', ['facebook', true]);
 	});
 }
 

@@ -167,6 +167,7 @@ class Wdcp_Model {
 
 	function facebook_logout_user () {
 		$_SESSION['wdcp_facebook_user_cache'] = false;
+		$this->facebook->destroySession();
 		unset($_SESSION['wdcp_facebook_user_cache']);
 	}
 
@@ -201,13 +202,13 @@ class Wdcp_Model {
 		$fb_uid = $this->current_user_id('facebook');
 		$post_id = (int)$_POST['post_id'];
 		$post = get_post($post_id);
-		$send = array(
+		$send = apply_filters('wdcp-post_to_facebook-data', array(
 			'caption' => substr($data['comment'], 0, 999),
 			'message' => substr($data['comment'], 0, 999),
 			'link' => get_permalink($post_id),
 			'name' => $post->post_title,
 			'description' => get_option('blogdescription'),
-		);
+		), $post_id);
 		try {
 			$ret = $this->facebook->api('/' . $fb_uid . '/feed/', 'POST', $send);
 		} catch (Exception $e) {

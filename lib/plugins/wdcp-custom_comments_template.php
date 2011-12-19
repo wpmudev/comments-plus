@@ -25,7 +25,7 @@ class Wdcp_Cct_Admin_Pages {
 	}
 
 	function register_settings () {
-		add_settings_section('wdcp_cct_settings', __('Custom comments Template', 'wdcp'), create_function('', ''), 'wdcp_options');
+		add_settings_section('wdcp_cct_settings', __('Custom Comments Template', 'wdcp'), create_function('', ''), 'wdcp_options');
 		add_settings_field('wdcp_cct_theme', __('Use this style', 'wdcp'), array($this, 'create_theme_box'), 'wdcp_options', 'wdcp_cct_settings');
 	}
 
