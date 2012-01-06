@@ -136,7 +136,7 @@ class Wdcp_AdminPages {
 		$email = $this->model->current_user_email('facebook');
 		$url = $this->model->current_user_url('facebook');
 
-		$data = array(
+		$data = apply_filters('wdcp-comment_data-facebook', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
@@ -144,7 +144,7 @@ class Wdcp_AdminPages {
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		);
+		));
 
 		$meta = array (
 			'wdcp_fb_author_id' => $fb_uid,
@@ -176,7 +176,7 @@ class Wdcp_AdminPages {
 		$url = $this->model->current_user_url('twitter');
 		$avatar = $this->model->twitter_avatar();
 
-		$data = array(
+		$data = apply_filters('wdcp-comment_data-twitter', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
@@ -184,7 +184,7 @@ class Wdcp_AdminPages {
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		);
+		));
 
 		$meta = array (
 			'wdcp_tw_avatar' => $avatar,
@@ -215,14 +215,14 @@ class Wdcp_AdminPages {
 		$username = $this->model->current_user_name('google');
 		$email = $this->model->current_user_email('google');
 
-		$data = array(
+		$data = apply_filters('wdcp-comment_data-google', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		);
+		));
 
 		$meta = array (
 			'wdcp_gg_author_id' => $guid,
