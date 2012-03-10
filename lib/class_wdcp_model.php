@@ -77,6 +77,7 @@ class Wdcp_Model {
 				$_SESSION['wdcp_twitter_user_cache']['user'] = array (
 					'id' => $response->id_str,
 					'name' => $response->name,
+					'username' => $response->screen_name,
 					'url' => $response->url,
 					'image' => $response->profile_image_url,
 				);
@@ -133,6 +134,22 @@ class Wdcp_Model {
 				return $this->_twitter_user_cache['name'];
 			case "google":
 				return @$this->_google_user_cache['namePerson/first'] . ' ' . @$this->_google_user_cache['namePerson/last'];
+		}
+		return false;
+	}
+	
+	function current_user_username ($provider) {
+		$provider = esc_html(trim(strtolower($provider)));
+		switch ($provider) {
+			case "wordpress":
+				global $current_user;
+				return $current_user->user_login;
+			case "facebook":
+				return @$this->_facebook_user_cache['email'];
+			case "twitter":
+				return $this->_twitter_user_cache['username'];
+			case "google":
+				return @$this->_google_user_cache['contact/email'];
 		}
 		return false;
 	}
@@ -220,9 +237,9 @@ class Wdcp_Model {
 	function post_to_twitter ($data) {
 		$post_id = (int)$data['post_id'];
 		$link = get_permalink($post_id);
-		$send = array(
+		$send = apply_filters('wdcp-remote_post_data-twitter', array(
 			'status' => substr($link . ' ' . $data['comment'], 0, 140),
-		);
+		), $data);
 		try {
 			$ret = $this->twitter->post('statuses/update', $send);
 		} catch (Exception $e) {

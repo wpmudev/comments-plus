@@ -45,7 +45,7 @@ $("#send-twitter-comment").live('click', function () {
 	
 	$.post(_wdcp_ajax_url, {
     	"action": "wdcp_post_twitter_comment", 
-    	"post_id": _wdcp_post_id,
+    	"post_id": _wdcp_data.post_id,
     	"post_on_twitter": repost,
     	"comment_parent": commentParent,
     	"comment": comment

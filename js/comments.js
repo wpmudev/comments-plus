@@ -1,5 +1,20 @@
 (function ($) {
 $(function () {
+	
+function fitProviderWidths () {
+	var width = $("#all-comment-providers").parent().parent().width();
+	var count = $("#all-comment-providers li").length;
+	
+	var inner = $("#all-comment-providers li a").innerWidth();
+	var outer = $("#all-comment-providers li a").outerWidth();
+	var new_width = (width/count) - (outer-inner);
+	$("#all-comment-providers li a").width(new_width);
+	/*
+	$("#all-comment-providers li a").each(function () {
+		$(this).width(new_width);
+	});
+	*/
+}
 
 function selectProviderFromListItem ($li_a) {
 	var $li = $li_a.parents('li');
@@ -80,6 +95,11 @@ $("a.comment-reply-link").remove();
 // Kill WP HTML instructions
 $('.no-instructions p.form-allowed-tags').remove();
 
+if (_wdcp_data.fit_tabs) {
+	fitProviderWidths();
+	$(window).resize(fitProviderWidths);
+}
+
 // Handle comments moving up
 $("a.comment-plus-reply-link").click(function () {
 	var $li = $(this).parents('li');
@@ -92,6 +112,8 @@ $("a.comment-plus-reply-link").click(function () {
 	$("#comment-providers").find('#comment_parent').val(parentId);
 	if (!$providers.find(".comments-plus-reply-cancel").length) $providers.append('<a class="comments-plus-reply-cancel" href="#">Cancel reply</a>');
 	$("#comment-providers").find('textarea:visible').focus();
+	
+	if (_wdcp_data.fit_tabs) fitProviderWidths();
 	
 	return false;
 });
@@ -153,8 +175,9 @@ $(document).bind("wdcp_comment_sent", function (e, provider) {
 });
 
 // Initialize
-// Select first item
-selectProviderFromListItem($("#all-comment-providers li a:first"));
+// Try to select Facebook first, or first item if that fails
+if ($("#all-comment-providers li a#comment-provider-facebook-link").length) selectProviderFromListItem($("#all-comment-providers li a#comment-provider-facebook-link"));
+else selectProviderFromListItem($("#all-comment-providers li a:first"));
 // Try selecting previously used "logged in" item, if possible
 if ($(".connected-as").length) {
 	$(".connected-as").each(function () {

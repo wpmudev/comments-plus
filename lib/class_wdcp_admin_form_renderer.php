@@ -49,6 +49,7 @@ class Wdcp_AdminFormRenderer {
 			echo '<label for="fb_app_secret">' . __('App Secret', 'wdcp') . '</label> ' .
 				$this->_create_text_box('fb_app_secret', $this->_get_option('fb_app_secret')) .
 			'<br />';
+			echo '<p><a href="#wdcp-more_help-fb" class="wdcp-more_help-fb">' . __('More help', 'wdcp') . '</a></p>';
 		} else {
 			_e('<p><i>Your Network Admin already set this up for you</i></p>', 'wdcp');
 		}
@@ -164,6 +165,16 @@ class Wdcp_AdminFormRenderer {
 				"<br />" .
 			"";
 		}
+		echo '<br />';
+		echo
+			$this->_create_checkbox('stretch_tabs', $this->_get_option('stretch_tabs')) .
+			'<label for="stretch_tabs">' . __('Shrink or stretch provider selector tabs?', 'wdcp') . '</label> ' .
+		"";
+		echo '<br />';
+		echo
+			$this->_create_checkbox('dont_select_social_sharing', $this->_get_option('dont_select_social_sharing')) .
+			'<label for="dont_select_social_sharing">' . __('Don\'t pre-select social comments sharing', 'wdcp') . '</label> ' .
+		"";
 	}
 
 	function create_style_box () {
@@ -196,7 +207,7 @@ class Wdcp_AdminFormRenderer {
 			$is_active = in_array($plugin, $active);
 			echo "<tr>";
 			echo "<td width='30%'>";
-			echo '<b>' . $plugin_data['Name'] . '</b>';
+			echo '<b id="' . esc_attr($plugin) . '">' . $plugin_data['Name'] . '</b>';
 			echo "<br />";
 			echo ($is_active
 				?

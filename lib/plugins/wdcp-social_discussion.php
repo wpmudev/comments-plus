@@ -98,6 +98,7 @@ class Wdcp_Sd_AdminPages {
 				"<label for='sd_services-{$service}'>{$label}</label>" .
 			"<br />";
 		}
+		echo '<div><small>' . __('Please select service(s) you wish to sync social discussion with.', 'wdcp') . '</small></div>';
 	}
 
 	function create_default_service_box () {

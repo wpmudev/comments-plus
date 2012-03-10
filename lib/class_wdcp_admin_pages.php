@@ -136,7 +136,7 @@ class Wdcp_AdminPages {
 		$email = $this->model->current_user_email('facebook');
 		$url = $this->model->current_user_url('facebook');
 
-		$data = apply_filters('wdcp-comment_data-facebook', array(
+		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-facebook', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
@@ -144,7 +144,8 @@ class Wdcp_AdminPages {
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		));
+			'_wdcp_provider' => 'facebook',
+		)));
 
 		$meta = array (
 			'wdcp_fb_author_id' => $fb_uid,
@@ -176,7 +177,7 @@ class Wdcp_AdminPages {
 		$url = $this->model->current_user_url('twitter');
 		$avatar = $this->model->twitter_avatar();
 
-		$data = apply_filters('wdcp-comment_data-twitter', array(
+		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-twitter', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
@@ -184,7 +185,8 @@ class Wdcp_AdminPages {
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		));
+			'_wdcp_provider' => 'twitter',
+		)));
 
 		$meta = array (
 			'wdcp_tw_avatar' => $avatar,
@@ -215,14 +217,15 @@ class Wdcp_AdminPages {
 		$username = $this->model->current_user_name('google');
 		$email = $this->model->current_user_email('google');
 
-		$data = apply_filters('wdcp-comment_data-google', array(
+		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-google', array(
 			'comment_post_ID' => @$_POST['post_id'],
 			'comment_author' => $username,
 			'comment_author_email' => $email,
 			'comment_content' => @$_POST['comment'],
 			'comment_type' => '',
 			'comment_parent' => (int)@$_POST['comment_parent'],
-		));
+			'_wdcp_provider' => 'google',
+		)));
 
 		$meta = array (
 			'wdcp_gg_author_id' => $guid,
@@ -292,7 +295,6 @@ class Wdcp_AdminPages {
 
 		add_action('wp_ajax_wdcp_facebook_logout', array($this, 'json_facebook_logout'));
 		add_action('wp_ajax_nopriv_wdcp_facebook_logout', array($this, 'json_facebook_logout'));
-
 
 		add_action('wp_ajax_wdcp_google_logout', array($this, 'json_google_logout'));
 		add_action('wp_ajax_nopriv_wdcp_google_logout', array($this, 'json_google_logout'));

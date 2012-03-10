@@ -42,6 +42,14 @@ class Wdcp_PublicPages {
 	function css_load_styles () {
 		do_action('wdcp-load_styles-public');
 	}
+	
+	function check_if_wordpress_provider_allowed ($comment) {
+		$skips = (array)$this->data->get_option('skip_services');
+		if (!in_array('wordpress', $skips)) return $comment;
+		
+		if (!isset($comment['_wdcp_provider'])) return array();
+		return $comment;
+	}
 
 	function reset_preferred_provider ($data) {
 		//if (!isset($_COOKIE["wdcp_preferred_provider"])) return $data;
@@ -58,6 +66,7 @@ class Wdcp_PublicPages {
 		add_action('wp_print_scripts', array($this->worker, 'js_load_scripts'));
 		add_action('wp_print_styles', array($this->worker, 'css_load_styles'));
 
+		add_filter('preprocess_comment', array($this, 'check_if_wordpress_provider_allowed'));
 		add_filter('preprocess_comment', array($this, 'reset_preferred_provider'));
 
 		$start_hook = $this->data->get_option('begin_injection_hook');

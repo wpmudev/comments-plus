@@ -3,7 +3,7 @@
 Plugin Name: Comments Plus
 Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Description: Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts.
-Version: 1.3.1
+Version: 1.4
 Text Domain: wdcp
 Author: Incsub
 Author URI: http://premium.wpmudev.org
@@ -46,22 +46,23 @@ if ( !function_exists( 'wdp_un_check' ) ) {
 
 
 define ('WDCP_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)), true);
+define ('WDCP_PROTOCOL', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), true);
 
 //Setup proper paths/URLs and load text domains
 if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') && file_exists(WPMU_PLUGIN_DIR . '/' . basename(__FILE__))) {
 	define ('WDCP_PLUGIN_LOCATION', 'mu-plugins', true);
 	define ('WDCP_PLUGIN_BASE_DIR', WPMU_PLUGIN_DIR, true);
-	define ('WDCP_PLUGIN_URL', WPMU_PLUGIN_URL, true);
+	define ('WDCP_PLUGIN_URL', str_replace('http://', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), WPMU_PLUGIN_URL), true);
 	$textdomain_handler = 'load_muplugin_textdomain';
 } else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . WDCP_PLUGIN_SELF_DIRNAME . '/' . basename(__FILE__))) {
 	define ('WDCP_PLUGIN_LOCATION', 'subfolder-plugins', true);
 	define ('WDCP_PLUGIN_BASE_DIR', WP_PLUGIN_DIR . '/' . WDCP_PLUGIN_SELF_DIRNAME, true);
-	define ('WDCP_PLUGIN_URL', WP_PLUGIN_URL . '/' . WDCP_PLUGIN_SELF_DIRNAME, true);
+	define ('WDCP_PLUGIN_URL', str_replace('http://', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), WP_PLUGIN_URL) . '/' . WDCP_PLUGIN_SELF_DIRNAME, true);
 	$textdomain_handler = 'load_plugin_textdomain';
 } else if (defined('WP_PLUGIN_URL') && defined('WP_PLUGIN_DIR') && file_exists(WP_PLUGIN_DIR . '/' . basename(__FILE__))) {
 	define ('WDCP_PLUGIN_LOCATION', 'plugins', true);
 	define ('WDCP_PLUGIN_BASE_DIR', WP_PLUGIN_DIR, true);
-	define ('WDCP_PLUGIN_URL', WP_PLUGIN_URL, true);
+	define ('WDCP_PLUGIN_URL', str_replace('http://', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), WP_PLUGIN_URL), true);
 	$textdomain_handler = 'load_plugin_textdomain';
 } else {
 	// No textdomain is loaded because we can't determine the plugin location.
@@ -95,7 +96,11 @@ wdcp_initialize();
 if (is_admin()) {
 	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_form_renderer.php';
 	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_pages.php';
+	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_contextual_help.php';
+	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_tutorial.php';
 	Wdcp_AdminPages::serve();
+	Wdcp_ContextualHelp::serve();
+	Wdcp_Tutorial::serve();
 } else {
 	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_public_pages.php';
 	Wdcp_PublicPages::serve();

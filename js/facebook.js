@@ -39,7 +39,7 @@ $("#send-facebook-comment").live('click', function () {
 	
 	$.post(_wdcp_ajax_url, {
     	"action": "wdcp_post_facebook_comment", 
-    	"post_id": _wdcp_post_id,
+    	"post_id": _wdcp_data.post_id,
     	"post_on_facebook": repost,
     	"comment_parent": commentParent,
     	"subscribe": subscribe,

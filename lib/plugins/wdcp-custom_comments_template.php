@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Custom Comments Template
-Description: Uses the custom template bundled with the plugin to display comments, instead of your theme default. You can select from several preset styles, or follow instructions to set up your own. You can also just copy the plugin template to your theme folder and customize the markup too.
+Description: Using the custom template will override your themes default setup. We provide various default styles you can select from. You may also use those CSS styles within your own theme (found here <code>/plugins/comments-plus/css/themes/</code>) or you can simply move <code>lib/forms/wdcp-custom_comments_template.php</code> to your themes folder.
 Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Version: 1.0
 Author: Ve Bailovity (Incsub)
@@ -52,7 +52,8 @@ class Wdcp_Cct_Admin_Pages {
 			"<input type='checkbox' id='wdcp-cct_theme_override' name='wdcp_options[cct_theme_override]' value='1' {$override} />" .
 			'&nbsp;' .
 			'<label for="wdcp-cct_theme_override">' . __('Do not load custom comments template styles - my theme already has all the needed styles', 'wdcp') . '</label>' .
-			'<div><small>' . __('If you check this option, no comments template style will be loaded.', 'wdcp') . '</small></div>' .
+			'<div><small>' . __('If you check this option, no custom comments template style will be loaded and only the styles coming form your theme shall be applied.', 'wdcp') . '</small></div>' .
+			'<div><small>' . sprintf(__('To change the actual markup of the custom template, copy this file to your theme directory: <code>%s</code>, then make your changes there', 'wdcp'), WDCP_PLUGIN_BASE_DIR . '/lib/forms/wdcp-custom_comments_template.php') . '</small></div>' .
 		'';
 	}
 

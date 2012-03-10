@@ -15,3 +15,38 @@
 	</form>
 
 </div>
+
+<script type="text/javascript">
+(function ($) {
+$(function () {
+
+// ----- More help -----
+$(".wdcp-more_help-fb").live('click', function () {
+	if ($(this).parents(".wdcp-setup-pointer").length) $(this).parents(".wdcp-setup-pointer").remove();
+	$("#contextual-help-link").click();
+	$("#tab-link-wdcp-fb-setup a").click();
+	$(window).scrollTop(0);
+	return false;
+});
+
+/**
+ * Handle tutorial resets.
+ */
+$(".wdcp-restart_tutorial").click(function () {
+	var $me = $(this);
+	// Change UI
+	$me.after(
+		'<img src="<?php echo WDCP_PLUGIN_URL;?>/img/loading.gif" />'
+	).remove();
+	// Do call
+	$.post(ajaxurl, {
+		"action": "wdcp_restart_tutorial"
+	}, function () {
+		window.location.reload();
+	});
+	return false;
+});
+
+});
+})(jQuery);
+</script>

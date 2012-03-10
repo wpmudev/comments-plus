@@ -15,10 +15,10 @@ class Wdcp_CommentsWorker {
 		wp_enqueue_script('jquery');
 		if (!apply_filters('wdcp-script_inclusion-facebook', WDCP_SKIP_FACEBOOK)) {
 			$locale = preg_replace('/-/', '_', get_locale());
-			wp_enqueue_script('facebook-all', 'http://connect.facebook.net/' . $locale . '/all.js');
+			wp_enqueue_script('facebook-all', WDCP_PROTOCOL . 'connect.facebook.net/' . $locale . '/all.js');
 		}
 		if (!apply_filters('wdcp-script_inclusion-twitter', WDCP_SKIP_TWITTER)) {
-			wp_enqueue_script('twitter-anywhere', 'http://platform.twitter.com/anywhere.js?id=' . WDCP_TW_API_KEY . '&v=1');
+			wp_enqueue_script('twitter-anywhere', WDCP_PROTOCOL . 'platform.twitter.com/anywhere.js?id=' . WDCP_TW_API_KEY . '&v=1');
 		}
 		wp_enqueue_script('wdcp_comments', WDCP_PLUGIN_URL . '/js/comments.js', array('jquery'));
 		wp_enqueue_script('wdcp_twitter', WDCP_PLUGIN_URL . '/js/twitter.js', array('jquery', 'wdcp_comments'));
@@ -26,8 +26,10 @@ class Wdcp_CommentsWorker {
 		wp_enqueue_script('wdcp_google', WDCP_PLUGIN_URL . '/js/google.js', array('jquery', 'wdcp_comments'));
 
 		printf(
-			'<script type="text/javascript">var _wdcp_post_id="%d";</script>',
-			 get_the_ID()
+			//'<script type="text/javascript">var _wdcp_post_id="%d";</script>',
+			//get_the_ID()
+			'<script type="text/javascript">var _wdcp_data={"post_id": %d, "fit_tabs": %d};</script>',
+			get_the_ID(), (int)$this->data->get_option('stretch_tabs')
 		);
 	}
 
@@ -104,7 +106,7 @@ class Wdcp_CommentsWorker {
 			return "<img class='avatar avatar-40 photo' width='40' height='40' src='{$tw_avatar}' />";
 		}
 
-		return "<img class='avatar avatar-40 photo' width='40' height='40' src='http://graph.facebook.com/{$fb_uid}/picture' />";
+		return "<img class='avatar avatar-40 photo' width='40' height='40' src='". WDCP_PROTOCOL . "graph.facebook.com/{$fb_uid}/picture' />";
 	}
 
 /*** Privates ***/
@@ -114,11 +116,12 @@ class Wdcp_CommentsWorker {
 
 	function _prepare_facebook_comments () {
 		if (!$this->model->current_user_logged_in('facebook')) return $this->_prepare_facebook_login();
+		$preselect = $this->data->get_option('dont_select_social_sharing') ? '' : 'checked="checked"';
 		$disconnect = __('Disconnect', 'wdcp');
 		return "
 			<p>" . __('Connected as', 'wdcp') . " <b class='connected-as'>" . $this->model->current_user_name('facebook') . "</b>. <a class='comment-provider-logout' href='#'>{$disconnect}</a></p>
 			<textarea id='facebook-comment' rows='8' cols='45' rows='6'></textarea>
-			<p><label for='post-on-facebook'><input type='checkbox' id='post-on-facebook' value='1' checked='checked' /> " . __("Post my comment on my wall", "wdcp"). "</label></p>
+			<p><label for='post-on-facebook'><input type='checkbox' id='post-on-facebook' value='1' {$preselect} /> " . __("Post my comment on my wall", "wdcp"). "</label></p>
 			<p><a class='button' href='#' id='send-facebook-comment'>" . sprintf(__('Comment via %s', 'wdcp'), 'Facebook') . "</a></p>
 		";
 	}
@@ -138,23 +141,24 @@ class Wdcp_CommentsWorker {
 	}
 
 	function _prepare_google_login () {
-		$href = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$href = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		return "<img src='" . WDCP_PLUGIN_URL . "/img/gg-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-google"><a href="' . $href . '"><span>Login</span></a></div>';
 	}
 
 	function _prepare_twitter_comments () {
 		if (!$this->model->current_user_logged_in('twitter')) return $this->_prepare_twitter_login();
+		$preselect = $this->data->get_option('dont_select_social_sharing') ? '' : 'checked="checked"';
 		$disconnect = __('Disconnect', 'wdcp');
 		return "
 			<p>" . __('Connected as', 'wdcp') . " <b class='connected-as'>" . $this->model->current_user_name('twitter') . "</b>. <a class='comment-provider-logout' href='#'>{$disconnect}</a></p>
 			<textarea id='twitter-comment' rows='8' cols='45' rows='6'></textarea>
-			<p><label for='post-on-twitter'><input type='checkbox' id='post-on-twitter' value='1' checked='checked' /> " . __("Post my comment on Twitter", "wdcp"). "</label></p>
+			<p><label for='post-on-twitter'><input type='checkbox' id='post-on-twitter' value='1' {$preselect} /> " . __("Post my comment on Twitter", "wdcp"). "</label></p>
 			<p><a class='button' href='#' id='send-twitter-comment'>" . sprintf(__('Comment via %s', 'wdcp'), 'Twitter') . "</a></p>
 		";
 	}
 
 	function _prepare_twitter_login () {
-		$href = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$href = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		return "<img src='" . WDCP_PLUGIN_URL . "/img/tw-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-twitter"><a href="' . $href . '"><span>Login</span></a></div>';
 	}
 
