@@ -64,7 +64,10 @@ class Wdcp_CommentsWorker {
 		if (!in_array('twitter', $skips)) $tw_html = $this->_prepare_twitter_comments();
 		if (!in_array('google', $skips)) $gg_html = $this->_prepare_google_comments();
 
-		if (!in_array('wordpress', $skips)) $wp_name = $this->model->current_user_logged_in('wordpress') ? $this->model->current_user_name('wordpress') : 'WordPress';
+		if (!in_array('wordpress', $skips)) $wp_name = $this->model->current_user_logged_in('wordpress') 
+			? $this->model->current_user_name('wordpress') 
+			: (get_bloginfo('name') ? get_bloginfo('name') : 'WordPress')
+		;
 		if (!in_array('twitter', $skips)) $tw_name = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : 'Twitter';
 		if (!in_array('facebook', $skips)) $fb_name = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : 'Facebook';
 		if (!in_array('google', $skips)) $gg_name = $this->model->current_user_logged_in('google') ? $this->model->current_user_name('google') : 'Google';
