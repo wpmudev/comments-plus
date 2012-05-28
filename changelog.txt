@@ -5,6 +5,14 @@ Change Log:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 
+
+1.4.2 - 2012-05-28
+----------------------------------------------------------------------
+- Added configuration message on admin Dashboard pages.
+- Added network admin footer notice about add-ons.
+- Fix for the OpenID realm issue.
+
+
 1.4.1 - 2012-04-28
 ----------------------------------------------------------------------
 - Showing blog name by default instead of WordPress.

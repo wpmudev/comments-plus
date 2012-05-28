@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-10 16:00+0100\n"
-"PO-Revision-Date: 2012-03-10 16:00+0100\n"
+"POT-Creation-Date: 2012-05-28 14:35+0100\n"
+"PO-Revision-Date: 2012-05-28 14:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -163,95 +163,104 @@ msgstr ""
 msgid "by %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:34
-msgid "App settings"
-msgstr ""
-
 #: lib/class_wdcp_admin_pages.php:35
-msgid "Facebook App info"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:36
-msgid "Skip loading Facebook javascript"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:37
-msgid "Twitter App info"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:38
-msgid "Skip loading Twitter javascript"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:40
-msgid "General Settings"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:41
-msgid "WordPress branding &amp; options"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:42
-msgid "Do not show &quot;Comment with&hellip;&quot;"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:43
-msgid "Comments Plus Styling"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:45
-msgid "Hooks"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:46
-msgid "Start injection hook"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:47
-msgid "Finish injection hook"
-msgstr ""
-
-#: lib/class_wdcp_admin_pages.php:50
-msgid "Comments Plus add-ons"
+#, php-format
+msgid "You need to configure the Comments Plus plugin, you can do so <a href=\"%s\">here</a>"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:51
-msgid "All add-ons"
+msgid "You will also find add-ons that you can enable on a blog basis in Settings &gt; Comments Plus in the site admin"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:62
+msgid "App settings"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:63
+msgid "Facebook App info"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:64
+msgid "Skip loading Facebook javascript"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:65
+msgid "Twitter App info"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:66
+msgid "Skip loading Twitter javascript"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:68
+msgid "General Settings"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:69
+msgid "WordPress branding &amp; options"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:70
+msgid "Do not show &quot;Comment with&hellip;&quot;"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:71
+msgid "Comments Plus Styling"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:73
+msgid "Hooks"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:74
+msgid "Start injection hook"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:75
+msgid "Finish injection hook"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:78
+msgid "Comments Plus add-ons"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:79
+msgid "All add-ons"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:98
 #: lib/class_wdcp_contextual_help.php:28
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:72
+#: lib/class_wdcp_comments_worker.php:75
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:120
-#: lib/class_wdcp_comments_worker.php:135
-#: lib/class_wdcp_comments_worker.php:151
+#: lib/class_wdcp_comments_worker.php:123
+#: lib/class_wdcp_comments_worker.php:138
+#: lib/class_wdcp_comments_worker.php:154
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:122
-#: lib/class_wdcp_comments_worker.php:137
-#: lib/class_wdcp_comments_worker.php:153
+#: lib/class_wdcp_comments_worker.php:125
+#: lib/class_wdcp_comments_worker.php:140
+#: lib/class_wdcp_comments_worker.php:156
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:124
+#: lib/class_wdcp_comments_worker.php:127
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:125
-#: lib/class_wdcp_comments_worker.php:139
-#: lib/class_wdcp_comments_worker.php:156
+#: lib/class_wdcp_comments_worker.php:128
+#: lib/class_wdcp_comments_worker.php:142
+#: lib/class_wdcp_comments_worker.php:159
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:155
+#: lib/class_wdcp_comments_worker.php:158
 msgid "Post my comment on Twitter"
 msgstr ""
 

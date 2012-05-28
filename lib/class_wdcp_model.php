@@ -190,6 +190,7 @@ class Wdcp_Model {
 
 	function get_google_auth_url ($url) {
 		$this->openid->returnUrl = $url;
+		$this->openid->realm = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'];
 		return $this->openid->authUrl();
 	}
 	function google_logout_user () {

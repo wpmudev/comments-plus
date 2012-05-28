@@ -23,6 +23,34 @@ class Wdcp_AdminPages {
 		$me = new Wdcp_AdminPages;
 		$me->add_hooks();
 	}
+	
+	/**
+	 * Add an admin info message about plugin configuration.
+	 */
+	function show_nag_messages () {
+		if (isset($_GET['page']) && 'wdcp' == $_GET['page']) return false;
+		if (!$this->data->get_option('fb_app_id') || !$this->data->get_option('tw_api_key')) {
+			echo '<div class="error">' .
+				'<p>' . sprintf(
+					__('You need to configure the Comments Plus plugin, you can do so <a href="%s">here</a>', 'wdcp'),
+					admin_url('/options-general.php?page=wdcp')
+				) . '</p>' .
+			'</div>';
+		}
+	}
+	
+	/**
+	 * Add Network Admin footer messages.
+	 */
+	function show_nag_footer () {
+		//if (!is_network_admin()) return false;
+		$screen = get_current_screen();
+		if ('plugins' != $screen->id) return false;
+		
+		echo '<div class="wdcp-notice">' .
+			'<p>' . __('You will also find add-ons that you can enable on a blog basis in Settings &gt; Comments Plus in the site admin', 'wdcp') . '</p>' .		
+		'</div>';
+	}
 
 	/**
 	 * Registers settings.
@@ -274,6 +302,9 @@ class Wdcp_AdminPages {
 		add_action('admin_init', array($this, 'register_settings'));
 		add_action('admin_menu', array($this, 'create_admin_menu_entry'));
 		add_action('network_admin_menu', array($this, 'create_admin_menu_entry'));
+		
+		add_action('admin_notices', array($this, 'show_nag_messages'));
+		add_action('in_admin_footer', array($this, 'show_nag_footer'));
 
 		// Bind AJAX requests
 		add_action('wp_ajax_nopriv_wdcp_get_form', array($this, 'json_get_form'));
