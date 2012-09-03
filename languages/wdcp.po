@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-28 14:35+0100\n"
-"PO-Revision-Date: 2012-05-28 14:35+0100\n"
+"POT-Creation-Date: 2012-09-03 14:20+0100\n"
+"PO-Revision-Date: 2012-09-03 14:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -163,104 +163,112 @@ msgstr ""
 msgid "by %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:35
+#: lib/class_wdcp_admin_pages.php:41
 #, php-format
 msgid "You need to configure the Comments Plus plugin, you can do so <a href=\"%s\">here</a>"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:51
+#: lib/class_wdcp_admin_pages.php:57
 msgid "You will also find add-ons that you can enable on a blog basis in Settings &gt; Comments Plus in the site admin"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:62
+#: lib/class_wdcp_admin_pages.php:68
 msgid "App settings"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:63
+#: lib/class_wdcp_admin_pages.php:69
 msgid "Facebook App info"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:64
+#: lib/class_wdcp_admin_pages.php:70
 msgid "Skip loading Facebook javascript"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:65
+#: lib/class_wdcp_admin_pages.php:71
 msgid "Twitter App info"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:66
+#: lib/class_wdcp_admin_pages.php:72
 msgid "Skip loading Twitter javascript"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:68
+#: lib/class_wdcp_admin_pages.php:74
 msgid "General Settings"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:69
+#: lib/class_wdcp_admin_pages.php:75
 msgid "WordPress branding &amp; options"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:70
+#: lib/class_wdcp_admin_pages.php:76
 msgid "Do not show &quot;Comment with&hellip;&quot;"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:71
+#: lib/class_wdcp_admin_pages.php:77
 msgid "Comments Plus Styling"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:73
+#: lib/class_wdcp_admin_pages.php:79
 msgid "Hooks"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:74
+#: lib/class_wdcp_admin_pages.php:80
 msgid "Start injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:75
+#: lib/class_wdcp_admin_pages.php:81
 msgid "Finish injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:78
+#: lib/class_wdcp_admin_pages.php:84
 msgid "Comments Plus add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:79
+#: lib/class_wdcp_admin_pages.php:85
 msgid "All add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:98
+#: lib/class_wdcp_admin_pages.php:104
 #: lib/class_wdcp_contextual_help.php:28
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:75
+#: lib/class_wdcp_comments_worker.php:33
+msgid "Reply"
+msgstr ""
+
+#: lib/class_wdcp_comments_worker.php:33
+msgid "Cancel reply"
+msgstr ""
+
+#: lib/class_wdcp_comments_worker.php:80
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:123
-#: lib/class_wdcp_comments_worker.php:138
-#: lib/class_wdcp_comments_worker.php:154
+#: lib/class_wdcp_comments_worker.php:128
+#: lib/class_wdcp_comments_worker.php:143
+#: lib/class_wdcp_comments_worker.php:159
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:125
-#: lib/class_wdcp_comments_worker.php:140
-#: lib/class_wdcp_comments_worker.php:156
+#: lib/class_wdcp_comments_worker.php:130
+#: lib/class_wdcp_comments_worker.php:145
+#: lib/class_wdcp_comments_worker.php:161
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:127
+#: lib/class_wdcp_comments_worker.php:132
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:128
-#: lib/class_wdcp_comments_worker.php:142
-#: lib/class_wdcp_comments_worker.php:159
+#: lib/class_wdcp_comments_worker.php:133
+#: lib/class_wdcp_comments_worker.php:147
+#: lib/class_wdcp_comments_worker.php:164
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:158
+#: lib/class_wdcp_comments_worker.php:163
 msgid "Post my comment on Twitter"
 msgstr ""
 
@@ -529,6 +537,34 @@ msgstr ""
 msgid "Please, use full URL to image (e.g. <code>http://example.com/images/example.jpg</code>). If set, this image will <b>always</b> be used."
 msgstr ""
 
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:56
+msgid "MailChimp Settings"
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:57
+msgid "API key"
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:58
+msgid "Lists"
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:69
+msgid "Please set up your API key in the field above, and save the settings."
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:74
+msgid "Refresh"
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:75
+msgid "Select a list you wish to offer subscriptions to."
+msgstr ""
+
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:174
+msgid "Subscribe me to the newsletter"
+msgstr ""
+
 #: lib/plugins/wdcp-social_discussion.php:72
 msgid "Social Discussion"
 msgstr ""
@@ -619,5 +655,34 @@ msgstr ""
 
 #: lib/plugins/wdcp-tw_mention_me.php:48
 msgid "This is the Twitter username that will be prepended to all outgoing Tweets."
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:53
+msgid "URL shortening"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:54
+msgid "Process URLs posted to"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:55
+msgid "Process with"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:89
+msgid "Prevent shortened URL caching"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:92
+msgid "Your bit.ly Username"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:95
+msgid "Your bit.ly API Key"
+msgstr ""
+
+#: lib/plugins/wdcp-url_shorteners.php:97
+#, php-format
+msgid "Get your bit.ly API info <a href=\"%s\">here</a>"
 msgstr ""
 

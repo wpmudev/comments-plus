@@ -40,18 +40,20 @@ $("#send-google-comment").live('click', function () {
 	var commentParent = $('#comment_parent').val();
 	var subscribe = ($("#subscribe").length && $("#subscribe").is(":checked")) ? 'subscribe' : '';
 
-	// Start UI change...
-	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
-	
-	$.post(_wdcp_ajax_url, {
+	var to_send = {
     	"action": "wdcp_post_google_comment", 
     	"post_id": _wdcp_data.post_id,
     	"comment_parent": commentParent,
     	"subscribe": subscribe,
     	"comment": comment
-    }, function (data) {
+    };
+    $(document).trigger('wdcp_preprocess_comment_data', [to_send]);
+	// Start UI change...
+	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
+	
+	$.post(_wdcp_ajax_url, to_send, function (data) {
     	$(document).trigger('wdcp_comment_sent', ['google']);
-    	window.location.reload(); // Refresh
+    	//window.location.reload(); // Refresh
     });
 	return false;
 });

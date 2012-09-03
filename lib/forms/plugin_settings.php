@@ -47,6 +47,8 @@ $(".wdcp-restart_tutorial").click(function () {
 	return false;
 });
 
+<?php do_action('wdcp-plugin_settings-javascript_init'); ?>
+
 });
 })(jQuery);
 </script>

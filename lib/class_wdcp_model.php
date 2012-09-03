@@ -223,7 +223,7 @@ class Wdcp_Model {
 		$send = apply_filters('wdcp-post_to_facebook-data', array(
 			'caption' => substr($data['comment'], 0, 999),
 			'message' => substr($data['comment'], 0, 999),
-			'link' => get_permalink($post_id),
+			'link' => apply_filters('wdcp-remote_post_data-post_url', apply_filters('wdcp-remote_post_data-facebook-post_url', get_permalink($post_id), $post_id), $post_id),
 			'name' => $post->post_title,
 			'description' => get_option('blogdescription'),
 		), $post_id);
@@ -237,7 +237,7 @@ class Wdcp_Model {
 
 	function post_to_twitter ($data) {
 		$post_id = (int)$data['post_id'];
-		$link = get_permalink($post_id);
+		$link = apply_filters('wdcp-remote_post_data-post_url', apply_filters('wdcp-remote_post_data-twitter-post_url', get_permalink($post_id), $post_id), $post_id);
 		$send = apply_filters('wdcp-remote_post_data-twitter', array(
 			'status' => substr($link . ' ' . $data['comment'], 0, 140),
 		), $data);

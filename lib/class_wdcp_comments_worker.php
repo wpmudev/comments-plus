@@ -28,8 +28,9 @@ class Wdcp_CommentsWorker {
 		printf(
 			//'<script type="text/javascript">var _wdcp_post_id="%d";</script>',
 			//get_the_ID()
-			'<script type="text/javascript">var _wdcp_data={"post_id": %d, "fit_tabs": %d};</script>',
-			get_the_ID(), (int)$this->data->get_option('stretch_tabs')
+			'<script type="text/javascript">var _wdcp_data={"post_id": %d, "fit_tabs": %d, "text": {"reply": "%s", "cancel_reply": "%s"}};</script>',
+			get_the_ID(), (int)$this->data->get_option('stretch_tabs'),
+			esc_js(__('Reply', 'wdcp')), esc_js(__('Cancel reply', 'wdcp'))
 		);
 	}
 
@@ -64,13 +65,17 @@ class Wdcp_CommentsWorker {
 		if (!in_array('twitter', $skips)) $tw_html = $this->_prepare_twitter_comments();
 		if (!in_array('google', $skips)) $gg_html = $this->_prepare_google_comments();
 
-		if (!in_array('wordpress', $skips)) $wp_name = $this->model->current_user_logged_in('wordpress') 
-			? $this->model->current_user_name('wordpress') 
-			: (get_bloginfo('name') ? get_bloginfo('name') : 'WordPress')
-		;
-		if (!in_array('twitter', $skips)) $tw_name = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : 'Twitter';
-		if (!in_array('facebook', $skips)) $fb_name = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : 'Facebook';
-		if (!in_array('google', $skips)) $gg_name = $this->model->current_user_logged_in('google') ? $this->model->current_user_name('google') : 'Google';
+		if (!in_array('wordpress', $skips)) {
+			$default_name = defined('WDCP_DEFAULT_WP_PROVIDER_NAME') && WDCP_DEFAULT_WP_PROVIDER_NAME ? WDCP_DEFAULT_WP_PROVIDER_NAME : get_bloginfo('name');
+			$default_name = $default_name ? $default_name : 'WordPress';
+			$wp_name = $this->model->current_user_logged_in('wordpress') 
+				? $this->model->current_user_name('wordpress') 
+				: apply_filters('wdcp-providers-wordpress-name', $default_name)
+			;
+		}
+		if (!in_array('twitter', $skips)) $tw_name = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : apply_filters('wdcp-providers-twitter-name', 'Twitter');
+		if (!in_array('facebook', $skips)) $fb_name = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : apply_filters('wdcp-providers-facebook-name', 'Facebook');
+		if (!in_array('google', $skips)) $gg_name = $this->model->current_user_logged_in('google') ? $this->model->current_user_name('google') : apply_filters('wdcp-providers-google-name', 'Google');
 		echo "
 		<div id='comment-providers-select-message'>" . __("Click on a tab to select how you'd like to leave your comment", 'wdcp') . "</div>
 		<div id='comment-providers'><a name='comments-plus-form'></a>
@@ -179,7 +184,7 @@ class Wdcp_CommentsWorker {
 			</script>";
 		
 		$tw_part = sprintf(
-			'<script type="text/javascript">jQuery(function () { twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
+			'<script type="text/javascript">jQuery(function () { if ("undefined" != typeof twttr) twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
 			get_permalink()
 		);
 		$fb_part = apply_filters('wdcp-service_initialization-facebook', $fb_part);

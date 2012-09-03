@@ -29,7 +29,13 @@ class Wdcp_AdminPages {
 	 */
 	function show_nag_messages () {
 		if (isset($_GET['page']) && 'wdcp' == $_GET['page']) return false;
-		if (!$this->data->get_option('fb_app_id') || !$this->data->get_option('tw_api_key')) {
+		$skips = $this->data->get_option('skip_services');
+		$skips = $skips ? $skips : array();
+		if (
+			(!$this->data->get_option('fb_app_id') && !in_array('facebook', $skips)) // Not skipping Facebook, no FB API key
+			|| 
+			(!$this->data->get_option('tw_api_key') && !in_array('twitter', $skips)) // Not skipping Twitter, no Twitter API creds
+		) {
 			echo '<div class="error">' .
 				'<p>' . sprintf(
 					__('You need to configure the Comments Plus plugin, you can do so <a href="%s">here</a>', 'wdcp'),
@@ -279,6 +285,7 @@ class Wdcp_AdminPages {
 			setcookie('comment_author_email_' . COOKIEHASH, $comment->comment_author_email, time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
 			setcookie('comment_author_url_' . COOKIEHASH, esc_url($comment->comment_author_url), time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
 		}
+		do_action('wdcp-comment_posted-postprocess', $comment_id, $comment);
 	}
 
 	function json_activate_plugin () {

@@ -39,7 +39,7 @@ function selectProviderFromListItem ($li_a) {
 	if ($text.length && $oldText.length) $text.val($oldText.val());
 
 	// Try to move the subscription box around (optional)
-	var $box = $('.comment-provider p.subscribe-to-comments');
+	var $box = $('.comment-provider p.subscribe-to-comments, .comment-provider p.wdcp-mcls-subscription');
 	if (!$box.length) return true;
 	
 	if ($text.length && !$provider.attr('id').match(/twitter/) && !$provider.attr('id').match(/wordpress/)) $provider.append($box);
@@ -90,7 +90,7 @@ function isPreferredProvider (provider) {
 }
 
 // Attempt to kill reply events and rebind them here
-$("a.comment-reply-link").unbind('click').after('<a class="comment-plus-reply-link" href="#comments-plus-form">Reply</a>');
+$("a.comment-reply-link").unbind('click').after('<a class="comment-plus-reply-link" href="#comments-plus-form">' + _wdcp_data.text.reply + '</a>');
 $("a.comment-reply-link").remove();
 // Kill WP HTML instructions
 $('.no-instructions p.form-allowed-tags').remove();
@@ -110,7 +110,7 @@ $("a.comment-plus-reply-link").click(function () {
 	
 	$(this).parents('li').first().append($providers);
 	$("#comment-providers").find('#comment_parent').val(parentId);
-	if (!$providers.find(".comments-plus-reply-cancel").length) $providers.append('<a class="comments-plus-reply-cancel" href="#">Cancel reply</a>');
+	if (!$providers.find(".comments-plus-reply-cancel").length) $providers.append('<a class="comments-plus-reply-cancel" href="#">' + _wdcp_data.text.cancel_reply + '</a>');
 	$("#comment-providers").find('textarea:visible').focus();
 	
 	if (_wdcp_data.fit_tabs) fitProviderWidths();

@@ -6,6 +6,15 @@ Change Log:
 ----------------------------------------------------------------------
 
 
+1.5 - 2012-09-03
+----------------------------------------------------------------------
+- Improved exception handling.
+- Exposed default provider names as filterables.
+- Fix for localization issue.
+- Taking skipped services into account for admin notices.
+- Added MailChimp integration add-on.
+- Added URL shortening add-on hub.
+
 1.4.2 - 2012-05-28
 ----------------------------------------------------------------------
 - Added configuration message on admin Dashboard pages.

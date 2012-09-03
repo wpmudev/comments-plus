@@ -40,16 +40,18 @@ $("#send-twitter-comment").live('click', function () {
 	var repost = $("#post-on-twitter").is(":checked") ? 1 : 0;
 	var commentParent = $('#comment_parent').val();
 
-	// Start UI change...
-	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
-	
-	$.post(_wdcp_ajax_url, {
+	var to_send = {
     	"action": "wdcp_post_twitter_comment", 
     	"post_id": _wdcp_data.post_id,
     	"post_on_twitter": repost,
     	"comment_parent": commentParent,
     	"comment": comment
-    }, function (data) {
+    };
+    $(document).trigger('wdcp_preprocess_comment_data', [to_send]);
+	// Start UI change...
+	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
+	
+	$.post(_wdcp_ajax_url, to_send, function (data) {
     	$(document).trigger('wdcp_comment_sent', ['twitter']);
     	window.location.reload(); // Refresh
     });

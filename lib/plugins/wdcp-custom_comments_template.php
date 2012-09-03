@@ -89,7 +89,7 @@ class Wdcp_Cct_Public_Pages {
 
 	function load_comments_template () {
 		if (!is_singular()) return false;
-		$theme_file = locate_template(array('wdcp-custom_comments_template'));
+		$theme_file = locate_template(array('wdcp-custom_comments_template.php'));
 
 		return $theme_file ? $theme_file : WDCP_PLUGIN_BASE_DIR . '/lib/forms/wdcp-custom_comments_template.php';
 	}
