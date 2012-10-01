@@ -53,7 +53,7 @@ $("#send-google-comment").live('click', function () {
 	
 	$.post(_wdcp_ajax_url, to_send, function (data) {
     	$(document).trigger('wdcp_comment_sent', ['google']);
-    	//window.location.reload(); // Refresh
+    	window.location.reload(); // Refresh
     });
 	return false;
 });

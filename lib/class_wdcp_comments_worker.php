@@ -14,7 +14,10 @@ class Wdcp_CommentsWorker {
 	function js_load_scripts () {
 		wp_enqueue_script('jquery');
 		if (!apply_filters('wdcp-script_inclusion-facebook', WDCP_SKIP_FACEBOOK)) {
-			$locale = preg_replace('/-/', '_', get_locale());
+			$locale = defined('WDCP_FACEBOOK_LOCALE') && WDCP_FACEBOOK_LOCALE
+				? WDCP_FACEBOOK_LOCALE : preg_replace('/-/', '_', get_locale())
+			;
+			$locale = apply_filters('wdcp-locale-facebook_locale', $locale);
 			wp_enqueue_script('facebook-all', WDCP_PROTOCOL . 'connect.facebook.net/' . $locale . '/all.js');
 		}
 		if (!apply_filters('wdcp-script_inclusion-twitter', WDCP_SKIP_TWITTER)) {
@@ -184,7 +187,7 @@ class Wdcp_CommentsWorker {
 			</script>";
 		
 		$tw_part = sprintf(
-			'<script type="text/javascript">jQuery(function () { if ("undefined" != typeof twttr) twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
+			'<script type="text/javascript">jQuery(function () { if ("undefined" != typeof twttr && twttr.anywhere && twttr.anywhere.config) twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
 			get_permalink()
 		);
 		$fb_part = apply_filters('wdcp-service_initialization-facebook', $fb_part);

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-03 14:20+0100\n"
-"PO-Revision-Date: 2012-09-03 14:20+0100\n"
+"POT-Creation-Date: 2012-10-01 14:22+0100\n"
+"PO-Revision-Date: 2012-10-01 14:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -233,42 +233,42 @@ msgstr ""
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:33
+#: lib/class_wdcp_comments_worker.php:36
 msgid "Reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:33
+#: lib/class_wdcp_comments_worker.php:36
 msgid "Cancel reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:80
+#: lib/class_wdcp_comments_worker.php:83
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:128
-#: lib/class_wdcp_comments_worker.php:143
-#: lib/class_wdcp_comments_worker.php:159
+#: lib/class_wdcp_comments_worker.php:131
+#: lib/class_wdcp_comments_worker.php:146
+#: lib/class_wdcp_comments_worker.php:162
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:130
-#: lib/class_wdcp_comments_worker.php:145
-#: lib/class_wdcp_comments_worker.php:161
+#: lib/class_wdcp_comments_worker.php:133
+#: lib/class_wdcp_comments_worker.php:148
+#: lib/class_wdcp_comments_worker.php:164
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:132
+#: lib/class_wdcp_comments_worker.php:135
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:133
-#: lib/class_wdcp_comments_worker.php:147
-#: lib/class_wdcp_comments_worker.php:164
+#: lib/class_wdcp_comments_worker.php:136
+#: lib/class_wdcp_comments_worker.php:150
+#: lib/class_wdcp_comments_worker.php:167
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:163
+#: lib/class_wdcp_comments_worker.php:166
 msgid "Post my comment on Twitter"
 msgstr ""
 
@@ -503,6 +503,22 @@ msgstr ""
 #: lib/plugins/wdcp-custom_comments_template.php:56
 #, php-format
 msgid "To change the actual markup of the custom template, copy this file to your theme directory: <code>%s</code>, then make your changes there"
+msgstr ""
+
+#: lib/plugins/wdcp-fb_locale.php:28
+msgid "Facebook Locale"
+msgstr ""
+
+#: lib/plugins/wdcp-fb_locale.php:29
+msgid "Select your locale"
+msgstr ""
+
+#: lib/plugins/wdcp-fb_locale.php:33
+msgid "By default, the plugin will try to auto-detect your locale settings and load the appropriate API scripts. However, not all locales are supported by Facebook, so your milleage may vary. With this option, you can explicitly tell which language you want to use for communicating with Facebook."
+msgstr ""
+
+#: lib/plugins/wdcp-fb_locale.php:39
+msgid "Automatic detection"
 msgstr ""
 
 #: lib/plugins/wdcp-fb_post_image.php:49
