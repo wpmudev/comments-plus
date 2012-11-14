@@ -9,7 +9,7 @@
 					<?php printf( '<cite class="fn">%s</cite>', $comment->comment_author ); ?>
 					&nbsp;&nbsp;
 					<?php printf( 
-						__( '<span class="date">%1$s at %2$s</span>', TEMPLATE_DOMAIN ), 
+						__('<span class="date">%1$s at %2$s</span>'), 
 						mysql2date(get_option('date_format'), $comment->comment_date),  
 						mysql2date(get_option('time_format'), $comment->comment_date)  
 					); ?>

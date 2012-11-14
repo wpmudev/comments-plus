@@ -348,6 +348,7 @@ class Wdcp_Sd_Importer {
 		$limit = $limit ? $limit : self::PROCESSING_SCOPE_LIMIT;
 
 		$post_ids = $this->_db->get_col("SELECT DISTINCT meta_value FROM {$this->_db->comments} AS c, {$this->_db->commentmeta} AS mc WHERE mc.meta_key = 'wdcp_sd_root' AND c.comment_ID = mc.comment_id ORDER BY c.comment_date LIMIT {$limit}");
+
 		foreach ($post_ids as $post_id) {
 			$this->_process_discussion($post_id);
 		}
@@ -356,12 +357,12 @@ class Wdcp_Sd_Importer {
 	private function _process_discussion ($post_id) {
 		$post_id = (int)$post_id;
 		if (!$post_id) return false;
-		
+
 		$now = time();
 		
 		$meta = get_post_meta($post_id, 'wdcp_sd_meta', true);
-		if (!in_array($meta['sd_type'], $this->_services)) return false; // Don't sync this
-		
+		if (!isset($meta['sd_type']) || !in_array($meta['sd_type'], $this->_services)) return false; // Don't sync this
+
 		$last_polled = (int)get_post_meta($post_id, 'wdcp_sd_last_polled', true);
 		if ($last_polled + (int)$this->_data->get_option('wdcp_sd_poll_interval') > $now) return false; // No need to poll this item
 	
@@ -379,7 +380,8 @@ class Wdcp_Sd_Importer {
 	
 	private function _fetch_facebook_discussion ($post_id, $item_id) {
 		if (!$item_id) return false;
-		$res = wp_remote_get("https://graph.facebook.com/{$item_id}/comments", array(
+		$token = WDCP_APP_ID . '|' . WDCP_APP_SECRET;
+		$res = wp_remote_get("https://graph.facebook.com/{$item_id}/comments?access_token={$token}", array(
 			'method' 		=> 'GET',
 			'timeout' 		=> '5',
 			'redirection' 	=> '5',
@@ -389,11 +391,12 @@ class Wdcp_Sd_Importer {
 			'decompress'	=> true,
 			'sslverify'		=> false
 		));
+
 		if (is_wp_error($res)) return false; // Request fail
 		if ((int)$res['response']['code'] != 200) return false; // Request fail
-		
+
 		$body = @json_decode($res['body']);
-		if (!@$body->data) return false; // No data found
+		if (empty($body->data)) return false; // No data found
 		
 		foreach ($body->data as $item) {
 			if ($this->_comment_already_imported($item->id, 'facebook')) continue; // We already have this comment, continue.
@@ -410,6 +413,7 @@ class Wdcp_Sd_Importer {
 				'wdcp_fb_author_id' => $item->from->id,
 				'wdcp_sd_facebook_remote_id' => $item->id,
 			);
+
 			$comment_id = wp_insert_comment($data);
 			if (!$comment_id) continue;
 			

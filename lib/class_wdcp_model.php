@@ -220,6 +220,7 @@ class Wdcp_Model {
 		$fb_uid = $this->current_user_id('facebook');
 		$post_id = (int)$_POST['post_id'];
 		$post = get_post($post_id);
+		$data['comment'] = stripslashes($data['comment']); // Forcing stripslashes
 		$send = apply_filters('wdcp-post_to_facebook-data', array(
 			'caption' => substr($data['comment'], 0, 999),
 			'message' => substr($data['comment'], 0, 999),
