@@ -38,6 +38,7 @@ class Wdcp_Cct_Admin_Pages {
 		$themes = array(
 			'default' => __('Default', 'wdcp'),
 			'wpmu' => __('WPMU.org', 'wdcp'),
+			'shadow' => __('Shadows', 'wdcp'),
 		);
 
 		echo '<select name="wdcp_options[cct_theme]">';

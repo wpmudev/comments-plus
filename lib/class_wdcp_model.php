@@ -12,6 +12,12 @@ class Wdcp_Model {
 
 	function __construct () {
 		if ($this->_load_dependencies()) {
+			if (!(defined('WDCP_FACEBOOK_SSL_CERTIFICATE') && WDCP_FACEBOOK_SSL_CERTIFICATE)) {
+				if (isset(Facebook::$CURL_OPTS)) {
+					Facebook::$CURL_OPTS[CURLOPT_SSL_VERIFYHOST] = 0;
+					Facebook::$CURL_OPTS[CURLOPT_SSL_VERIFYPEER] = 0;
+				}
+			}
 			$this->facebook = new Facebook(array(
 				'appId' => WDCP_APP_ID,
 				'secret' => WDCP_APP_SECRET,

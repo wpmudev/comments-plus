@@ -44,3 +44,14 @@ ul#all-comment-providers li.selected-comment-provider a {
 	padding:4px 10px;
 	text-transform:uppercase;
 }
+
+
+/* ----- Media queries ----- */
+
+@media (max-width: 480px) {
+    #all-comment-providers li a span {
+        display: none;
+        position: absolute;
+        left: -1200000000px;
+    }
+}

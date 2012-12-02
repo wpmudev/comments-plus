@@ -138,7 +138,7 @@ class Wdcp_CommentsWorker {
 	}
 
 	function _prepare_facebook_login () {
-		return "<img src='" . WDCP_PLUGIN_URL . "/img/fb-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-facebook"><a href="#"><span>Login</span></a></div>';
+		return "<img src='" . WDCP_PLUGIN_URL . "/img/fb-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-facebook"><a href="#" title="' . __('Login with Facebook', 'wdcp') . '"><span>Login</span></a></div>';
 	}
 
 	function _prepare_google_comments () {
@@ -153,7 +153,7 @@ class Wdcp_CommentsWorker {
 
 	function _prepare_google_login () {
 		$href = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		return "<img src='" . WDCP_PLUGIN_URL . "/img/gg-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-google"><a href="' . $href . '"><span>Login</span></a></div>';
+		return "<img src='" . WDCP_PLUGIN_URL . "/img/gg-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-google"><a href="' . $href . '" title="' . __('Login with Google', 'wdcp') . '"><span>Login</span></a></div>';
 	}
 
 	function _prepare_twitter_comments () {
@@ -170,7 +170,7 @@ class Wdcp_CommentsWorker {
 
 	function _prepare_twitter_login () {
 		$href = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		return "<img src='" . WDCP_PLUGIN_URL . "/img/tw-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-twitter"><a href="' . $href . '"><span>Login</span></a></div>';
+		return "<img src='" . WDCP_PLUGIN_URL . "/img/tw-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-twitter"><a href="' . $href . '" title="' . __('Login with Twitter', 'wdcp') . '"><span>Login</span></a></div>';
 	}
 
 	function _prepare_footer_dependencies () {

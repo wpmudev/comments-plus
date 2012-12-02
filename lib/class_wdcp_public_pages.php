@@ -58,6 +58,14 @@ class Wdcp_PublicPages {
 		return $data;
 	}
 
+	public function get_footer_hook () {
+		$hook = defined('WDCP_FOOTER_DEPENDENCIES_HOOK') && WDCP_FOOTER_DEPENDENCIES_HOOK
+			? WDCP_FOOTER_DEPENDENCIES_HOOK
+			: 'get_footer'
+		;
+		return apply_filters('wdcp-core-hooks-footer_dependencies', $hook);
+	}
+
 	function add_hooks () {
 		add_action('wp_print_scripts', array($this, 'js_load_scripts'));
 		add_action('wp_print_styles', array($this, 'css_load_styles'));
@@ -76,7 +84,7 @@ class Wdcp_PublicPages {
 		add_action('wp_head', array($this->worker, 'header_dependencies'));
 		add_filter($begin_injection_hook, array($this->worker, 'begin_injection'));
 		add_filter($finish_injection_hook, array($this->worker, 'finish_injection'));
-		add_action('get_footer', array($this->worker, 'footer_dependencies'));
+		add_action($this->get_footer_hook(), array($this->worker, 'footer_dependencies'));
 
 		add_filter('get_avatar', array($this->worker, 'replace_avatars'), 10, 2);
 

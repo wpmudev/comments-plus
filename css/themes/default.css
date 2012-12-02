@@ -1,3 +1,4 @@
+#comments {font-weight: normal; text-transform: none;}
 #comments ul li, #comments ol li {
 	margin-bottom: 2em;
 }
