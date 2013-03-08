@@ -465,7 +465,11 @@ class OAuthRequest {
   /**
    * util function: current timestamp
    */
-  private static function generate_timestamp() {
+  /*private */static function generate_timestamp() {
+    return apply_filters('wdcp-oauth-twitter-generate_timestamp', self::generate_raw_timestamp());
+  }
+
+  static function generate_raw_timestamp () {
     return time();
   }
 

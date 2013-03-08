@@ -3,7 +3,7 @@
 Plugin Name: Comments Plus
 Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Description: Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts. Once activated, go to Settings &gt; Comments Plus to configure.
-Version: 1.5.3
+Version: 1.6
 Text Domain: wdcp
 Author: Incsub
 Author URI: http://premium.wpmudev.org
@@ -80,28 +80,29 @@ require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_plugins_handler.php';
 Wdcp_PluginsHandler::init();
 
 function wdcp_initialize () {
-	//$opts = get_option('wdcp_options');
 	$data = new Wdcp_Options;
 	define('WDCP_TW_API_KEY', $data->get_option('tw_api_key'));
 	define('WDCP_CONSUMER_KEY', $data->get_option('tw_api_key'));
 	define('WDCP_CONSUMER_SECRET', $data->get_option('tw_app_secret'));
 	define('WDCP_SKIP_TWITTER', $data->get_option('tw_skip_init'));
 
+	if (!defined('WDCP_TIMESTAMP_DELTA_THRESHOLD')) define('WDCP_TIMESTAMP_DELTA_THRESHOLD', 10, true);
+
 	define('WDCP_APP_ID', $data->get_option('fb_app_id'));
 	define('WDCP_APP_SECRET', $data->get_option('fb_app_secret'));
 	if (!defined('WDCP_SKIP_FACEBOOK')) define('WDCP_SKIP_FACEBOOK', $data->get_option('fb_skip_init'));
+	
+	if (is_admin()) {
+		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_form_renderer.php';
+		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_pages.php';
+		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_contextual_help.php';
+		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_tutorial.php';
+		Wdcp_AdminPages::serve();
+		Wdcp_ContextualHelp::serve();
+		Wdcp_Tutorial::serve();
+	} else {
+		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_public_pages.php';
+		Wdcp_PublicPages::serve();
+	}
 }
-wdcp_initialize();
-
-if (is_admin()) {
-	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_form_renderer.php';
-	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_pages.php';
-	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_contextual_help.php';
-	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_tutorial.php';
-	Wdcp_AdminPages::serve();
-	Wdcp_ContextualHelp::serve();
-	Wdcp_Tutorial::serve();
-} else {
-	require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_public_pages.php';
-	Wdcp_PublicPages::serve();
-}
+add_action('plugins_loaded', 'wdcp_initialize');

@@ -26,6 +26,13 @@ class Wdcp_Options {
 	}
 
 	/**
+	 * Gets all stored options.
+	 */
+	function get_options () {
+		return WP_NETWORK_ADMIN ? get_site_option('wdcp_options', array()) : get_option('wdcp_options', array());
+	}
+
+	/**
 	 * Sets all stored options.
 	 */
 	function set_options ($opts) {

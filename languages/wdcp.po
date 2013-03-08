@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-02 14:33+0100\n"
-"PO-Revision-Date: 2012-12-02 14:33+0100\n"
+"POT-Creation-Date: 2013-03-08 14:55+0100\n"
+"PO-Revision-Date: 2013-03-08 14:55+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: D:\\xampp\\htdocs\\wdorg\\wp-content\\plugins\\comments-"
-"plus\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: /Volumes/Trunk/xampp/htdocs/wdorg/wp-content/plugins/"
+"comments-plus\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: lib\n"
 "X-Poedit-SearchPath-1: lib/forms\n"
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "WordPress"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:152
+#: lib/class_wdcp_admin_form_renderer.php:152 lib/plugins/wdcp-debugger.php:34
 #: lib/plugins/wdcp-social_discussion.php:88
 #: lib/plugins/wdcp-social_discussion.php:107
 msgid "Twitter"
@@ -162,7 +162,7 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:154
+#: lib/class_wdcp_admin_form_renderer.php:154 lib/plugins/wdcp-debugger.php:33
 msgid "Google"
 msgstr ""
 
@@ -599,6 +599,71 @@ msgstr ""
 msgid ""
 "To change the actual markup of the custom template, copy this file to your "
 "theme directory: <code>%s</code>, then make your changes there"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:31
+msgid "Troubleshooter"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:32
+msgid "General"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:41
+msgid "The required cURL extension seems to be missing."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:46
+msgid "There seems to be problems with the required TwitterOAuth class."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:50
+msgid "There seems to be problems with the required Facebook class."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:54
+msgid "There seems to be problems with the required LightOpenID class."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:58
+msgid "There seems to be problems with the required OAuthRequest class."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:62
+msgid "Basic prerequisites seem to be in order."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:67
+msgid "Check response handling prerequisites"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:104
+msgid "Check timestamps"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:153
+#, php-format
+msgid ""
+"There seems to be some differences in Twitter and your notion of time, by %d "
+"sec. This should now be fixed."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:159
+msgid "Timestamp settings seem to be within acceptable limits"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:166
+msgid "Could not determine Twitter time, assuming everything is OK."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:176
+msgid ""
+"URLs in query strings seem not to be allowed, which will cause issues with "
+"Google OpenID authentication."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:181
+msgid "Response handling seems to be under control"
 msgstr ""
 
 #: lib/plugins/wdcp-fb_locale.php:28

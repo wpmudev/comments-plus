@@ -47,7 +47,7 @@ class Wdcp_Model {
 	 * @access private
 	 */
 	function _initialize () {
-		session_start();
+		if (!session_id()) session_start();
 		// Facebook
 		try {
 			if ($this->facebook->getUser()) {
@@ -66,9 +66,10 @@ class Wdcp_Model {
 				$_SESSION['wdcp_google_user_cache'] = $cache;
 			}
 		}
-		$this->_google_user_cache = $_SESSION['wdcp_google_user_cache'];
+		$this->_google_user_cache = !empty($_SESSION['wdcp_google_user_cache']) ? $_SESSION['wdcp_google_user_cache'] : false;
 
 		// Twitter
+		add_filter('wdcp-oauth-twitter-generate_timestamp', array($this, 'set_up_twitter_timestamp_delta'));
 		if (isset($_REQUEST['oauth_verifier']) && !isset($_SESSION['wdcp_twitter_user_cache']['_done'])) {
 			$_SESSION['wdcp_twitter_user_cache']['token']['oauth_token'] = $_REQUEST['oauth_token'];
 			$verifier = $_REQUEST['oauth_verifier'];
@@ -87,14 +88,22 @@ class Wdcp_Model {
 					'url' => $response->url,
 					'image' => $response->profile_image_url,
 				);
-				$this->_twitter_user_cache = @$_SESSION['wdcp_twitter_user_cache']['user'];
+				$this->_twitter_user_cache = !empty($_SESSION['wdcp_twitter_user_cache']['user']) ? $_SESSION['wdcp_twitter_user_cache']['user'] : false;
 			}
 			$_SESSION['wdcp_twitter_user_cache']['_done'] = true;
-		} else if ($_SESSION['wdcp_twitter_user_cache']['access_token']) {
+		} else if (!empty($_SESSION['wdcp_twitter_user_cache']['access_token'])) {
 			$token = $_SESSION['wdcp_twitter_user_cache']['access_token'];
 			$this->twitter = new TwitterOAuth(WDCP_CONSUMER_KEY, WDCP_CONSUMER_SECRET, $token['oauth_token'], $token['oauth_token_secret']);
-			$this->_twitter_user_cache = @$_SESSION['wdcp_twitter_user_cache']['user'];
+			$this->_twitter_user_cache = !empty($_SESSION['wdcp_twitter_user_cache']['user']) ? $_SESSION['wdcp_twitter_user_cache']['user'] : false;
 		}
+	}
+
+	function set_up_twitter_timestamp_delta ($time) {
+		$timestamp_delta = get_site_option('wdcp_twitter_timestamp_delta_fix', false);
+		return !empty($timestamp_delta)
+			? $time + $timestamp_delta
+			: $time
+		;
 	}
 
 	function current_user_logged_in ($provider) {
@@ -208,8 +217,19 @@ class Wdcp_Model {
 		return $this->_twitter_user_cache['image'];
 	}
 	function get_twitter_auth_url ($url) {
-		if (isset($_SESSION['wdcp_twitter_user_cache']['oauth_url'])) return $_SESSION['wdcp_twitter_user_cache']['oauth_url'];
+		if (isset($_SESSION['wdcp_twitter_user_cache']['oauth_url'])) {
+			$query = parse_url($_SESSION['wdcp_twitter_user_cache']['oauth_url'], PHP_URL_QUERY);
+			parse_str($query, $url_test);
+			if (!empty($url_test['oauth_token'])) return $_SESSION['wdcp_twitter_user_cache']['oauth_url'];
+
+			// Here we are, meaning we have erroneous URL cached. Clear and proceed
+			unset($_SESSION['wdcp_twitter_user_cache']['oauth_url']);
+		}
 		$tw_token = $this->twitter->getRequestToken($url);
+		if (empty($tw_token['oauth_token'])) {
+			return false;
+		}
+
 		$tw_url = $this->twitter->getAuthorizeURL($tw_token['oauth_token']);
 		$_SESSION['wdcp_twitter_user_cache']['token'] = $tw_token;
 		$_SESSION['wdcp_twitter_user_cache']['oauth_url'] = $tw_url;

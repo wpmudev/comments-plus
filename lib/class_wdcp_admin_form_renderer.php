@@ -236,16 +236,16 @@ $(function () {
 		var me = $(this);
 		var plugin_id = me.attr("wdcp:plugin_id");
 		$.post(ajaxurl, {"action": "wdcp_activate_plugin", "plugin": plugin_id}, function (data) {
-			window.location = window.location;
-		});
+			window.location.reload();
+		}, 'json');
 		return false;
 	});
 	$(".wdcp_deactivate_plugin").click(function () {
 		var me = $(this);
 		var plugin_id = me.attr("wdcp:plugin_id");
 		$.post(ajaxurl, {"action": "wdcp_deactivate_plugin", "plugin": plugin_id}, function (data) {
-			window.location = window.location;
-		});
+			window.location.reload();
+		}, 'json');
 		return false;
 	});
 });
