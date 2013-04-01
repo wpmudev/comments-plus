@@ -154,7 +154,7 @@ class Wdcp_Mcls_Public_Pages {
 
 	private function _add_hooks () {
 		add_action('comment_form', array($this, 'show_subscription_checkbox'));
-		add_action('comment_post', 'wdcp_mcls_mailchimp_signup');
+		//add_action('comment_post', 'wdcp_mcls_mailchimp_signup');
 	}
 
 	function show_subscription_checkbox () {
