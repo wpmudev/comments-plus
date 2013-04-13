@@ -1,6 +1,6 @@
 (function ($) {
 $(function () {
-	
+
 // Bind local event handlers
 $(document).bind('wdcp_twitter_login_attempt', function () {
 	var url = $("#login-with-twitter a").attr('href');
@@ -25,35 +25,35 @@ $(document).bind('wdcp_twitter_login_attempt', function () {
 });
 
 //Handle logout requests gracefully
-$("#comment-provider-twitter a.comment-provider-logout").live('click', function () {
+$(document).on('click', "#comment-provider-twitter a.comment-provider-logout", function () {
 	$.post(_wdcp_ajax_url, {
-    	"action": "wdcp_twitter_logout"
+		"action": "wdcp_twitter_logout"
     }, function (data) {
-    	window.location.reload(); // Refresh
+		window.location.reload(); // Refresh
     });
 	return false;
 });
 
 //Handle post comment requests
-$("#send-twitter-comment").live('click', function () {
+$(document).on('click', "#send-twitter-comment", function () {
 	var comment = $("#twitter-comment").val();
 	var repost = $("#post-on-twitter").is(":checked") ? 1 : 0;
 	var commentParent = $('#comment_parent').val();
 
 	var to_send = {
-    	"action": "wdcp_post_twitter_comment", 
-    	"post_id": _wdcp_data.post_id,
-    	"post_on_twitter": repost,
-    	"comment_parent": commentParent,
-    	"comment": comment
+		"action": "wdcp_post_twitter_comment",
+		"post_id": _wdcp_data.post_id,
+		"post_on_twitter": repost,
+		"comment_parent": commentParent,
+		"comment": comment
     };
     $(document).trigger('wdcp_preprocess_comment_data', [to_send]);
 	// Start UI change...
 	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
-	
+
 	$.post(_wdcp_ajax_url, to_send, function (data) {
-    	$(document).trigger('wdcp_comment_sent', ['twitter']);
-    	window.location.reload(); // Refresh
+		$(document).trigger('wdcp_comment_sent', ['twitter']);
+		window.location.reload(); // Refresh
     });
 	return false;
 });

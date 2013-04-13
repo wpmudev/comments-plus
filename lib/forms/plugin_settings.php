@@ -21,7 +21,7 @@
 $(function () {
 
 // ----- More help -----
-$(".wdcp-more_help-fb").live('click', function () {
+$(document).on('click', ".wdcp-more_help-fb", function () {
 	if ($(this).parents(".wdcp-setup-pointer").length) $(this).parents(".wdcp-setup-pointer").remove();
 	$("#contextual-help-link").click();
 	$("#tab-link-wdcp-fb-setup a").click();

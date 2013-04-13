@@ -7,24 +7,20 @@ Version: 1.0
 Author: Ve Bailovity (Incsub)
 */
 
-class Wdcp_Mcls_Admin_Pages {
+class Wdcp_Mcls_Mailchimp_Worker {
 
 	private $_data;
 
-	private function __construct () {
+	public function __construct () {
 		$this->_data = new Wdcp_Options;
 	}
 
 	public static function serve () {
-		$me = new Wdcp_Mcls_Admin_Pages;
+		$me = new Wdcp_Mcls_Mailchimp_Worker;
 		$me->_add_hooks();
 	}
 
 	private function _add_hooks () {
-		add_action('wdcp-options-plugins_options', array($this, 'register_settings'));
-		add_action('wdcp-plugin_settings-javascript_init', array($this, 'add_javascript'));
-		add_action('wp_ajax_wdcp_mcls_refresh_lists', array($this, 'json_refresh_lists'));
-
 		add_action('comment_post', array($this, 'mailchimp_signup'));
 	}
 
@@ -38,7 +34,7 @@ class Wdcp_Mcls_Admin_Pages {
 		$email = $comment->comment_author_email;
 		if (!is_email($email)) return false;
 
-		list($server, $key) = $this->_get_parsed_key();
+		list($server, $key) = $this->get_parsed_key();
 		if (!$server || !$key) return false;
 
 		$resp = wp_remote_get("http://{$server}.api.mailchimp.com/1.3/?method=listSubscribe&apikey={$key}&id={$current}&email_address={$email}");
@@ -50,6 +46,37 @@ class Wdcp_Mcls_Admin_Pages {
 		$subscribed[] = $email;
 		update_option("wdcp-mcls-{$current}", array_unique($subscribed));
 
+	}
+
+	public function get_parsed_key () {
+		$err = array(false,false);
+		$key = $this->_data->get_option('mcls_apikey');
+		if (preg_match('/-/', $key)) list($key, $server) = explode('-', $key);
+		else return err;
+		if (!$key || !$server) return $err;
+		return array($server, $key);
+	}
+}
+
+class Wdcp_Mcls_Admin_Pages {
+
+	private $_data;
+	private $_worker;
+
+	private function __construct () {
+		$this->_data = new Wdcp_Options;
+		$this->_worker = new Wdcp_Mcls_Mailchimp_Worker;
+	}
+
+	public static function serve () {
+		$me = new Wdcp_Mcls_Admin_Pages;
+		$me->_add_hooks();
+	}
+
+	private function _add_hooks () {
+		add_action('wdcp-options-plugins_options', array($this, 'register_settings'));
+		add_action('wdcp-plugin_settings-javascript_init', array($this, 'add_javascript'));
+		add_action('wp_ajax_wdcp_mcls_refresh_lists', array($this, 'json_refresh_lists'));
 	}
 
 	function register_settings () {
@@ -98,17 +125,8 @@ $("#wdcp-mcls-refresh").click(mcls_refresh_lists);
 EOMclsAdminJs;
 	}
 
-	private function _get_parsed_key () {
-		$err = array(false,false);
-		$key = $this->_data->get_option('mcls_apikey');
-		if (preg_match('/-/', $key)) list($key, $server) = explode('-', $key);
-		else return err;
-		if (!$key || !$server) return $err;
-		return array($server, $key);
-	}
-
 	private function _refresh_lists () {
-		list($server, $key) = $this->_get_parsed_key();
+		list($server, $key) = $this->_worker->get_parsed_key();
 		$resp = wp_remote_get("http://{$server}.api.mailchimp.com/1.3/?method=lists&apikey={$key}");
 		if(is_wp_error($resp)) return false; // Request fail
 		if ((int)$resp['response']['code'] != 200) return false; // Request fail
@@ -153,8 +171,9 @@ class Wdcp_Mcls_Public_Pages {
 	}
 
 	private function _add_hooks () {
-		add_action('comment_form', array($this, 'show_subscription_checkbox'));
-		//add_action('comment_post', 'wdcp_mcls_mailchimp_signup');
+		$end_hook = $this->_data->get_option('finish_injection_hook');
+		$finish_injection_hook = $end_hook ? $end_hook : 'comment_form_after';
+		add_action($finish_injection_hook, array($this, 'show_subscription_checkbox'));
 	}
 
 	function show_subscription_checkbox () {
@@ -192,3 +211,5 @@ EOMclsPublicJs;
 
 if (is_admin()) Wdcp_Mcls_Admin_Pages::serve();
 else Wdcp_Mcls_Public_Pages::serve();
+
+Wdcp_Mcls_Mailchimp_Worker::serve();

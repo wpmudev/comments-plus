@@ -8,7 +8,7 @@ class Wdcp_AdminFormRenderer {
 	function Wdcp_AdminFormRenderer () { $this->__construct(); }
 
 	function __construct () {
-		$this->_opts = WP_NETWORK_ADMIN ? get_site_option('wdcp_options') : get_option('wdcp_options');
+		$this->_opts = is_network_admin() ? get_site_option('wdcp_options') : get_option('wdcp_options');
 	}
 
 	function _get_option ($name) {
@@ -28,7 +28,7 @@ class Wdcp_AdminFormRenderer {
 
 	function create_facebook_app_box () {
 		$site_opts = get_site_option('wdcp_options');
-		$has_creds = WP_NETWORK_ADMIN ? false : $site_opts['fb_network_only'];
+		$has_creds = is_network_admin() ? false : @$site_opts['fb_network_only'];
 		if (!$has_creds) {
 			printf(__(
 				'<p><b>You must make a Facebook Application to start using Comments Plus.</b></p>' .
@@ -41,7 +41,7 @@ class Wdcp_AdminFormRenderer {
 					'<li>Copy the values from these fields: <strong>App ID</strong>/<strong>API key</strong>, and <strong>Application Secret</strong>, and enter them here:</li>' .
 				'</ol>',
 			'wdcp'),
-				get_bloginfo('siteurl')
+				get_bloginfo('url')
 			);
 			echo '<label for="fb_app_id">' . __('App ID/API key', 'wdcp') . '</label> ' .
 				$this->_create_text_box('fb_app_id', $this->_get_option('fb_app_id')) .
@@ -53,7 +53,7 @@ class Wdcp_AdminFormRenderer {
 		} else {
 			_e('<p><i>Your Network Admin already set this up for you</i></p>', 'wdcp');
 		}
-		if (WP_NETWORK_ADMIN) {
+		if (is_network_admin()) {
 			echo ''.
 				$this->_create_checkbox('fb_network_only', $this->_get_option('fb_network_only')) .
 				' <label for="fb_network_only">' . __('I want to use this app on all subsites too', 'wdcp') . '</label>' .
@@ -72,7 +72,7 @@ class Wdcp_AdminFormRenderer {
 
 	function create_twitter_app_box () {
 		$site_opts = get_site_option('wdcp_options');
-		$has_creds = WP_NETWORK_ADMIN ? false : $site_opts['tw_network_only'];
+		$has_creds = is_network_admin() ? false : @$site_opts['tw_network_only'];
 		if (!$has_creds) {
 			printf(__(
 				'<p><b>You must make a Twitter Application to start using Comments Plus.</b></p>' .
@@ -86,7 +86,7 @@ class Wdcp_AdminFormRenderer {
 					'<li>Copy the values from these fields: <strong>Consumer Key</strong> and <strong>Consumer Secret</strong>, and enter them here:</li>' .
 				'</ol>',
 			'wdcp'),
-				get_bloginfo('siteurl')
+				get_bloginfo('url')
 			);
 			echo '<label for="tw_api_key">' . __('Consumer key', 'wdcp') . '</label> ' .
 				$this->_create_text_box('tw_api_key', $this->_get_option('tw_api_key')) .
@@ -97,7 +97,7 @@ class Wdcp_AdminFormRenderer {
 		} else {
 			_e('<p><i>Your Network Admin already set this up for you</i></p>', 'wdcp');
 		}
-	if (WP_NETWORK_ADMIN) {
+	if (is_network_admin()) {
 			echo ''.
 				$this->_create_checkbox('tw_network_only', $this->_get_option('tw_network_only')) .
 				' <label for="tw_network_only">' . __('I want to use this app on all subsites too', 'wdcp') . '</label>' .

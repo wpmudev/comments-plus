@@ -1,10 +1,10 @@
 (function ($) {
 $(function () {
-	
+
 function fitProviderWidths () {
 	var width = $("#all-comment-providers").parent().parent().width();
 	var count = $("#all-comment-providers li").length;
-	
+
 	var inner = $("#all-comment-providers li a").innerWidth();
 	var outer = $("#all-comment-providers li a").outerWidth();
 	var new_width = (width/count) - (outer-inner);
@@ -19,21 +19,21 @@ function fitProviderWidths () {
 function selectProviderFromListItem ($li_a) {
 	var $li = $li_a.parents('li');
 	if (!$li.length) return false;
-	
+
 	var $provider = $($li_a.attr('href'));
 	if (!$provider.length) return false;
-	
+
 	var $oldText = $(".selected-comment-provider textarea:visible");
-	
+
 	// Reset all selected providers
 	$('.comment-provider, ul#all-comment-providers li').each(function (){
 		$(this).removeClass('selected-comment-provider');
 	});
-	
+
 	// Select providers
 	$provider.addClass('selected-comment-provider');
 	$li.addClass('selected-comment-provider');
-	
+
 	// Move any entered text too
 	var $text = $provider.find("textarea");
 	if ($text.length && $oldText.length) $text.val($oldText.val());
@@ -41,7 +41,7 @@ function selectProviderFromListItem ($li_a) {
 	// Try to move the subscription box around (optional)
 	var $box = $('.comment-provider p.subscribe-to-comments, .comment-provider p.wdcp-mcls-subscription');
 	if (!$box.length) return true;
-	
+
 	if ($text.length && !$provider.attr('id').match(/twitter/) && !$provider.attr('id').match(/wordpress/)) $provider.append($box);
 	else if ($provider.attr('id').match(/wordpress/)) $provider.find('form').append($box);
 
@@ -52,7 +52,7 @@ function selectProviderFromListItem ($li_a) {
  * Try to parse comment id from the LI ID.
  */
 function getCommentId ($li) {
-	return parseInt($li.attr('id').replace(/^.*comment-/, ''));
+	return parseInt($li.attr('id').replace(/^.*comment-/, ''), 10);
 }
 
 /**
@@ -63,7 +63,7 @@ function getPreferredProvider () {
 	var value = "";
 	$.each(cks, function (idx, ck) {
 		if ("wdcp_preferred_provider" != $.trim(ck.substr(0, ck.indexOf("=")))) return true;
-		
+
 		value = $.trim(ck.substr(ck.indexOf("=") + 1));
 		return false;
 	});
@@ -76,7 +76,7 @@ function getPreferredProvider () {
 function setPreferredProvider (provider) {
 	var d = new Date();
 	d.setDate(d.getDate() + 365);
-	
+
 	var value = escape("comment-provider-" + provider) + ";expires=" + d.toGMTString() + ";path=/";
 	document.cookie = "wdcp_preferred_provider=" + value;
 }
@@ -105,19 +105,19 @@ $("a.comment-plus-reply-link").click(function () {
 	var $li = $(this).parents('li');
 	var parentId = getCommentId($li);
 	if (!parentId) return false;
-	
+
 	var $providers = $("#comment-providers");
-	
+
 	$(this).parents('li').first().append($providers);
 	$("#comment-providers").find('#comment_parent').val(parentId);
 	if (!$providers.find(".comments-plus-reply-cancel").length) $providers.append('<a class="comments-plus-reply-cancel" href="#">' + _wdcp_data.text.cancel_reply + '</a>');
 	$("#comment-providers").find('textarea:visible').focus();
-	
+
 	if (_wdcp_data.fit_tabs) fitProviderWidths();
-	
+
 	return false;
 });
-$(".comments-plus-reply-cancel").live('click', function () {
+$(document).on('click', ".comments-plus-reply-cancel", function () {
 	$(this).remove();
 	var $providers = $("#comment-providers");
 	$("#comment-providers").find('#comment_parent').val(0);
@@ -126,19 +126,19 @@ $(".comments-plus-reply-cancel").live('click', function () {
 });
 
 // Bind tab select events
-$("#all-comment-providers li a").live('click', function () {
+$(document).on('click', "#all-comment-providers li a", function () {
 	selectProviderFromListItem($(this));
 	return false;
 });
 
 // Bind login button events
-$(".comment-provider-login-button a").live('click', function () {
+$(document).on('click', ".comment-provider-login-button a", function () {
 	var $parent = $(this).parents(".comment-provider-login-button");
 	if (!$parent.length) return false;
-	
+
 	var provider = $parent.attr('id').replace(/login-with-/, '');
 	if (!provider) return false;
-	
+
 	// Trigger login attempt event
 	$(document).trigger('wdcp_' + provider + '_login_attempt');
 	return false;
@@ -157,12 +157,12 @@ $(document).bind('wdcp_logged_in', function (e, provider, autoconnect) {
 	}, function (data) {
 		if (!data) return false;
 		$parent.empty().html(data.html);
-		
+
 		// Attempt adding the name
 		var $login = $("#comment-provider-" + provider + " .connected-as");
 		if (!$login.length) return false;
 		$("#comment-provider-" + provider + "-link span").html($login.text());
-		
+
 		// Attempt to switch to proper tab
 		// for auto-connect
 		if (autoconnect && isPreferredProvider("comment-provider-" + provider)) selectProviderFromListItem($("#comment-provider-" + provider + "-link"));
@@ -184,10 +184,10 @@ if ($(".connected-as").length) {
 		var $item = $(this).first().parents('div.comment-provider');
 		if (!$item.length) return true;
 		if (!isPreferredProvider($item.attr("id"))) return true;
-		
+
 		if ($item.length) selectProviderFromListItem($('#' + $item.attr('id') + '-link'));
 		return false;
-	});	
+	});
 }
 
 
