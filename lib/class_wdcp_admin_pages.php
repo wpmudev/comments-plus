@@ -74,6 +74,7 @@ class Wdcp_AdminPages {
 		add_settings_section('wdcp_general', __('General Settings', 'wdcp'), create_function('', ''), 'wdcp_options');
 		add_settings_field('wdcp_wp_icon', __('WordPress branding &amp; options', 'wdcp'), array($form, 'create_wp_icon_box'), 'wdcp_options', 'wdcp_general');
 		add_settings_field('wdcp_skip_services', __('Do not show &quot;Comment with&hellip;&quot;', 'wdcp'), array($form, 'create_skip_services_box'), 'wdcp_options', 'wdcp_general');
+		add_settings_field('wdcp_preferred_profider', __('Preferred provider', 'wdcp'), array($form, 'create_preferred_profider_box'), 'wdcp_options', 'wdcp_general');
 		add_settings_field('wdcp_style', __('Comments Plus Styling', 'wdcp'), array($form, 'create_style_box'), 'wdcp_options', 'wdcp_general');
 
 		add_settings_section('wdcp_hooks', __('Hooks', 'wdcp'), array($form, 'create_hooks_section'), 'wdcp_options');

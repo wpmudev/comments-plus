@@ -176,7 +176,7 @@ $(document).bind("wdcp_comment_sent", function (e, provider) {
 
 // Initialize
 // Try to select Facebook first, or first item if that fails
-if ($("#all-comment-providers li a#comment-provider-facebook-link").length) selectProviderFromListItem($("#all-comment-providers li a#comment-provider-facebook-link"));
+if (_wdcp_data && _wdcp_data.preferred_provider && $("#all-comment-providers li a#comment-provider-" + _wdcp_data.preferred_provider + "-link").length) selectProviderFromListItem($("#all-comment-providers li a#comment-provider-" + _wdcp_data.preferred_provider + "-link"));
 else selectProviderFromListItem($("#all-comment-providers li a:first"));
 // Try selecting previously used "logged in" item, if possible
 if ($(".connected-as").length) {

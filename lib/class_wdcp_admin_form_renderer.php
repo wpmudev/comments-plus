@@ -177,6 +177,28 @@ class Wdcp_AdminFormRenderer {
 		"";
 	}
 
+	function create_preferred_profider_box () {
+		$services = array (
+			'wordpress' => __('WordPress', 'wdcp'),
+			'twitter' => __('Twitter', 'wdcp'),
+			'facebook' => __('Facebook', 'wdcp'),
+			'google' => __('Google', 'wdcp'),
+		);
+		$preferred = $this->_get_option('preferred_provider');
+		$skips = $this->_get_option('skip_services');
+		$skips = $skips ? $skips : array();
+
+		foreach ($services as $key => $label) {
+			if (in_array($key, $skips)) continue;
+			$checked = $key == $preferred ? 'checked="checked"' : '';
+			echo '' .
+				"<input type='radio' name='wdcp_options[preferred_provider]' id='wdcp-preferred-{$key}' value='{$key}' {$checked} />" .
+				'&nbsp;' .
+				"<label for='wdcp-preferred-{$key}'>{$label}</label>" .
+			'<br />';
+		}
+	}
+
 	function create_style_box () {
 		echo '' .
 			$this->_create_checkbox('skip_color_css', $this->_get_option('skip_color_css')) .

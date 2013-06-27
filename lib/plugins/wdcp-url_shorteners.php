@@ -145,6 +145,12 @@ abstract class Wdcp_Ussc_BaseProvider {
 	}
 }
 
+class Wdcp_Ussc_WpDefaultProvider extends Wdcp_Ussc_BaseProvider {
+	public static function get_name () { return 'WordPress'; }
+	public function get_service_url () {} // Won't be needing this.
+	public function get_short_url ($url, $post_id) { return wp_get_shortlink($post_id); }
+}
+
 class Wdcp_Ussc_IsGdProvider extends Wdcp_Ussc_BaseProvider {
 
 	public static function get_name () { return 'is.gd'; }
@@ -172,5 +178,6 @@ class Wdcp_Ussc_BitLyProvider extends Wdcp_Ussc_BaseProvider {
 		return @$resp['data']['url'];
 	}
 }
+
 
 if (is_admin()) Wdcp_Ussc_AdminPages::serve();

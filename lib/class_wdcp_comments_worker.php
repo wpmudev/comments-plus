@@ -28,13 +28,19 @@ class Wdcp_CommentsWorker {
 		wp_enqueue_script('wdcp_facebook', WDCP_PLUGIN_URL . '/js/facebook.js', array('jquery', 'wdcp_comments'));
 		wp_enqueue_script('wdcp_google', WDCP_PLUGIN_URL . '/js/google.js', array('jquery', 'wdcp_comments'));
 
-		printf(
-			//'<script type="text/javascript">var _wdcp_post_id="%d";</script>',
-			//get_the_ID()
-			'<script type="text/javascript">var _wdcp_data={"post_id": %d, "fit_tabs": %d, "text": {"reply": "%s", "cancel_reply": "%s"}};</script>',
-			get_the_ID(), (int)$this->data->get_option('stretch_tabs'),
-			esc_js(__('Reply', 'wdcp')), esc_js(__('Cancel reply', 'wdcp'))
-		);
+		$preferred_provider = $this->data->get_option('preferred_provider');
+		$preferred_provider = $preferred_provider ? $preferred_provider : 'facebook';
+
+		$js_data = apply_filters('wdcp-javascript-data', array(
+			"post_id" => get_the_ID(),
+			"fit_tabs" => (int)$this->data->get_option('stretch_tabs'),
+			"text" => array(
+				"reply" => esc_js(__('Reply', 'wdcp')),
+				"cancel_reply" => esc_js(__('Cancel reply', 'wdcp')),
+			),
+			'preferred_provider' => $preferred_provider,
+		));
+		echo '<script type="text/javascript">var _wdcp_data=' . json_encode($js_data) . ';</script>';
 	}
 
 	function css_load_styles () {

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-08 14:55+0100\n"
-"PO-Revision-Date: 2013-03-08 14:55+0100\n"
+"POT-Creation-Date: 2013-06-27 15:48+0100\n"
+"PO-Revision-Date: 2013-06-27 15:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -147,22 +147,26 @@ msgid "Attempt to show or hide allowed tags text for WordPress comments"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:151
+#: lib/class_wdcp_admin_form_renderer.php:182
 msgid "WordPress"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:152 lib/plugins/wdcp-debugger.php:34
+#: lib/class_wdcp_admin_form_renderer.php:152
+#: lib/class_wdcp_admin_form_renderer.php:183 lib/plugins/wdcp-debugger.php:34
 #: lib/plugins/wdcp-social_discussion.php:88
 #: lib/plugins/wdcp-social_discussion.php:107
 msgid "Twitter"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:153
+#: lib/class_wdcp_admin_form_renderer.php:184
 #: lib/plugins/wdcp-social_discussion.php:87
 #: lib/plugins/wdcp-social_discussion.php:106
 msgid "Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:154 lib/plugins/wdcp-debugger.php:33
+#: lib/class_wdcp_admin_form_renderer.php:154
+#: lib/class_wdcp_admin_form_renderer.php:185 lib/plugins/wdcp-debugger.php:33
 msgid "Google"
 msgstr ""
 
@@ -174,38 +178,38 @@ msgstr ""
 msgid "Don't pre-select social comments sharing"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:184
+#: lib/class_wdcp_admin_form_renderer.php:206
 msgid "Let my theme determine colors"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:185
+#: lib/class_wdcp_admin_form_renderer.php:207
 msgid ""
 "Use this option if your theme already has color definitions needed for "
 "Comments Plus in its' stylesheets"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:198
+#: lib/class_wdcp_admin_form_renderer.php:220
 msgid "Add-on name"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:199
+#: lib/class_wdcp_admin_form_renderer.php:221
 msgid "Add-on description"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:214
+#: lib/class_wdcp_admin_form_renderer.php:236
 msgid "Deactivate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:216
+#: lib/class_wdcp_admin_form_renderer.php:238
 msgid "Activate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:222
+#: lib/class_wdcp_admin_form_renderer.php:244
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:224
+#: lib/class_wdcp_admin_form_renderer.php:246
 #, php-format
 msgid "by %s"
 msgstr ""
@@ -256,81 +260,85 @@ msgid "Do not show &quot;Comment with&hellip;&quot;"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:77
+msgid "Preferred provider"
+msgstr ""
+
+#: lib/class_wdcp_admin_pages.php:78
 msgid "Comments Plus Styling"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:79
+#: lib/class_wdcp_admin_pages.php:80
 msgid "Hooks"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:80
+#: lib/class_wdcp_admin_pages.php:81
 msgid "Start injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:81
+#: lib/class_wdcp_admin_pages.php:82
 msgid "Finish injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:84
+#: lib/class_wdcp_admin_pages.php:85
 msgid "Comments Plus add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:85
+#: lib/class_wdcp_admin_pages.php:86
 msgid "All add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:104 lib/class_wdcp_contextual_help.php:28
+#: lib/class_wdcp_admin_pages.php:105 lib/class_wdcp_contextual_help.php:28
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:36
+#: lib/class_wdcp_comments_worker.php:38
 msgid "Reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:36
+#: lib/class_wdcp_comments_worker.php:39
 msgid "Cancel reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:83
+#: lib/class_wdcp_comments_worker.php:89
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:131
-#: lib/class_wdcp_comments_worker.php:146
-#: lib/class_wdcp_comments_worker.php:162
+#: lib/class_wdcp_comments_worker.php:137
+#: lib/class_wdcp_comments_worker.php:152
+#: lib/class_wdcp_comments_worker.php:168
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:133
-#: lib/class_wdcp_comments_worker.php:148
-#: lib/class_wdcp_comments_worker.php:164
+#: lib/class_wdcp_comments_worker.php:139
+#: lib/class_wdcp_comments_worker.php:154
+#: lib/class_wdcp_comments_worker.php:170
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:135
+#: lib/class_wdcp_comments_worker.php:141
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:136
-#: lib/class_wdcp_comments_worker.php:150
-#: lib/class_wdcp_comments_worker.php:167
+#: lib/class_wdcp_comments_worker.php:142
+#: lib/class_wdcp_comments_worker.php:156
+#: lib/class_wdcp_comments_worker.php:173
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:141
+#: lib/class_wdcp_comments_worker.php:147
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:156
+#: lib/class_wdcp_comments_worker.php:162
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:166
+#: lib/class_wdcp_comments_worker.php:172
 msgid "Post my comment on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:173
+#: lib/class_wdcp_comments_worker.php:179
 msgid "Login with Twitter"
 msgstr ""
 
@@ -515,6 +523,24 @@ msgstr ""
 #: lib/external/pointers_tutorial.php:498
 #, php-format
 msgid "%s: Step %d of %d"
+msgstr ""
+
+#: lib/external/wpmudev-dash-notification.php:57
+#, php-format
+msgid ""
+"Easily get updates, support, and one-click WPMU DEV plugin/theme "
+"installations right from in your dashboard - <strong><a href=\"%s\" title="
+"\"Install Now &raquo;\">install the free WPMU DEV Dashboard plugin</a></"
+"strong>. &nbsp;&nbsp;&nbsp;<small><a href=\"http://premium.wpmudev.org/wpmu-"
+"dev/update-notifications-plugin-information/\">(find out more)</a></small>"
+msgstr ""
+
+#: lib/external/wpmudev-dash-notification.php:61
+#, php-format
+msgid ""
+"Updates, Support, Premium Plugins, Community - <strong><a href=\"%s\" title="
+"\"Activate Now &raquo;\">activate the WPMU DEV Dashboard plugin now</a></"
+"strong>."
 msgstr ""
 
 #: lib/forms/plugin_settings.php:2
@@ -724,31 +750,31 @@ msgid ""
 "jpg</code>). If set, this image will <b>always</b> be used."
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:56
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:83
 msgid "MailChimp Settings"
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:57
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:84
 msgid "API key"
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:58
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:85
 msgid "Lists"
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:69
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:96
 msgid "Please set up your API key in the field above, and save the settings."
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:74
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:101
 msgid "Refresh"
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:75
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:102
 msgid "Select a list you wish to offer subscriptions to."
 msgstr ""
 
-#: lib/plugins/wdcp-mailchimp_list_subscription.php:174
+#: lib/plugins/wdcp-mailchimp_list_subscription.php:193
 msgid "Subscribe me to the newsletter"
 msgstr ""
 

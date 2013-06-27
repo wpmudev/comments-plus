@@ -6,6 +6,12 @@ Change Log:
 ----------------------------------------------------------------------
 
 
+1.6.3 - 2013-06-27
+----------------------------------------------------------------------
+- Twitter API URL update.
+- Added the default WordPress shortlink provider.
+- Added preferred provider selection.
+
 1.6.2 - 2013-04-13
 ----------------------------------------------------------------------
 - Event delegation update.
