@@ -92,7 +92,9 @@ class Wdcp_AdminPages {
 	 * Creates Admin menu entry.
 	 */
 	function create_admin_menu_entry () {
-		if (@$_POST && isset($_POST['option_page']) && 'wdcp' == @$_POST['option_page']) {
+		$page = defined('WP_NETWORK_ADMIN') && WP_NETWORK_ADMIN ? 'settings.php' : 'options-general.php';
+		$perms = defined('WP_NETWORK_ADMIN') && WP_NETWORK_ADMIN ? 'manage_network_options' : 'manage_options';
+		if (current_user_can($perms) && !empty($_POST) && isset($_POST['option_page']) && 'wdcp' == $_POST['option_page']) {
 			if (isset($_POST['wdcp_options'])) {
 				$this->data->set_options($_POST['wdcp_options']);
 			}
@@ -100,8 +102,6 @@ class Wdcp_AdminPages {
 			wp_redirect($goback);
 			die;
 		}
-		$page = WP_NETWORK_ADMIN ? 'settings.php' : 'options-general.php';
-		$perms = WP_NETWORK_ADMIN ? 'manage_network_options' : 'manage_options';
 		add_submenu_page($page, __('Comments Plus', 'wdcp'), __('Comments Plus', 'wdcp'), $perms, 'wdcp', array($this, 'create_admin_page'));
 	}
 

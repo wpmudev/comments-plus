@@ -4,22 +4,28 @@ $(function () {
 // Bind local event handlers
 $(document).bind('wdcp_twitter_login_attempt', function () {
 	var url = $("#login-with-twitter a").attr('href');
-	var twLogin = window.open('https://api.twitter.com', "twitter_login", "scrollbars=no,resizable=no,toolbar=no,location=no,directories=no,status=no,menubar=no,copyhistory=no,height=400,width=600");
+	var twLogin = window.open('', "twitter_login", "scrollbars=no,resizable=no,toolbar=no,location=no,directories=no,status=no,menubar=no,copyhistory=no,height=400,width=600");
+	twLogin.document.write(_wdcp_data.text.please_wait);
 	$.post(_wdcp_ajax_url, {
 		"action": "wdcp_twitter_auth_url",
 		"url": url
 	}, function (data) {
-		var href = data.url;//$("#login-with-twitter a").attr('href');
+		var href = data.url,
+			cback = function () {
+				$(twLogin).off("unload", cback);
+				var tTimer = setInterval(function () {
+					try {
+						if (twLogin.location.hostname == window.location.hostname) {
+							clearInterval(tTimer);
+							twLogin.close();
+							$(document).trigger('wdcp_logged_in', ['twitter']);
+						}
+					} catch (e) {}
+				}, 300);
+			}
+		;
+		$(twLogin).on("unload", cback);
 		twLogin.location = href;
-		var tTimer = setInterval(function () {
-			try {
-				if (twLogin.location.hostname == window.location.hostname) {
-					clearInterval(tTimer);
-					twLogin.close();
-					$(document).trigger('wdcp_logged_in', ['twitter']);
-				}
-			} catch (e) {}
-		}, 300);
 		return false;
 	});
 });

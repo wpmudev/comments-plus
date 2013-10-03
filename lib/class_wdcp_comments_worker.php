@@ -37,6 +37,7 @@ class Wdcp_CommentsWorker {
 			"text" => array(
 				"reply" => esc_js(__('Reply', 'wdcp')),
 				"cancel_reply" => esc_js(__('Cancel reply', 'wdcp')),
+				"please_wait" => esc_js(__('Please, wait...', 'wdcp')),
 			),
 			'preferred_provider' => $preferred_provider,
 		));

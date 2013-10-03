@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-27 15:48+0100\n"
-"PO-Revision-Date: 2013-06-27 15:49+0100\n"
+"POT-Creation-Date: 2013-10-03 15:26+0100\n"
+"PO-Revision-Date: 2013-10-03 15:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgid "WordPress"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:152
-#: lib/class_wdcp_admin_form_renderer.php:183 lib/plugins/wdcp-debugger.php:34
+#: lib/class_wdcp_admin_form_renderer.php:183 lib/plugins/wdcp-debugger.php:38
 #: lib/plugins/wdcp-social_discussion.php:88
 #: lib/plugins/wdcp-social_discussion.php:107
 msgid "Twitter"
@@ -166,7 +166,7 @@ msgid "Facebook"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:154
-#: lib/class_wdcp_admin_form_renderer.php:185 lib/plugins/wdcp-debugger.php:33
+#: lib/class_wdcp_admin_form_renderer.php:185 lib/plugins/wdcp-debugger.php:37
 msgid "Google"
 msgstr ""
 
@@ -299,46 +299,50 @@ msgstr ""
 msgid "Cancel reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:89
+#: lib/class_wdcp_comments_worker.php:40
+msgid "Please, wait..."
+msgstr ""
+
+#: lib/class_wdcp_comments_worker.php:90
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:137
-#: lib/class_wdcp_comments_worker.php:152
-#: lib/class_wdcp_comments_worker.php:168
+#: lib/class_wdcp_comments_worker.php:138
+#: lib/class_wdcp_comments_worker.php:153
+#: lib/class_wdcp_comments_worker.php:169
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:139
-#: lib/class_wdcp_comments_worker.php:154
-#: lib/class_wdcp_comments_worker.php:170
+#: lib/class_wdcp_comments_worker.php:140
+#: lib/class_wdcp_comments_worker.php:155
+#: lib/class_wdcp_comments_worker.php:171
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:141
+#: lib/class_wdcp_comments_worker.php:142
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:142
-#: lib/class_wdcp_comments_worker.php:156
-#: lib/class_wdcp_comments_worker.php:173
+#: lib/class_wdcp_comments_worker.php:143
+#: lib/class_wdcp_comments_worker.php:157
+#: lib/class_wdcp_comments_worker.php:174
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:147
+#: lib/class_wdcp_comments_worker.php:148
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:162
+#: lib/class_wdcp_comments_worker.php:163
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:172
+#: lib/class_wdcp_comments_worker.php:173
 msgid "Post my comment on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:179
+#: lib/class_wdcp_comments_worker.php:180
 msgid "Login with Twitter"
 msgstr ""
 
@@ -627,68 +631,150 @@ msgid ""
 "theme directory: <code>%s</code>, then make your changes there"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:31
+#: lib/plugins/wdcp-debugger.php:34
 msgid "Troubleshooter"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:32
+#: lib/plugins/wdcp-debugger.php:35
 msgid "General"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:41
+#: lib/plugins/wdcp-debugger.php:36
+msgid "Theme"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:45
 msgid "The required cURL extension seems to be missing."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:46
+#: lib/plugins/wdcp-debugger.php:50
 msgid "There seems to be problems with the required TwitterOAuth class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:50
+#: lib/plugins/wdcp-debugger.php:54
 msgid "There seems to be problems with the required Facebook class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:54
+#: lib/plugins/wdcp-debugger.php:58
 msgid "There seems to be problems with the required LightOpenID class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:58
+#: lib/plugins/wdcp-debugger.php:62
 msgid "There seems to be problems with the required OAuthRequest class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:62
+#: lib/plugins/wdcp-debugger.php:66
 msgid "Basic prerequisites seem to be in order."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:67
+#: lib/plugins/wdcp-debugger.php:71
+msgid "Check theme compatibility"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:108
 msgid "Check response handling prerequisites"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:104
+#: lib/plugins/wdcp-debugger.php:145
 msgid "Check timestamps"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:153
+#: lib/plugins/wdcp-debugger.php:201
+#, php-format
+msgid "Fetching the post page: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:202
+#, php-format
+msgid "Parsing the post page: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:203
+#, php-format
+msgid "Checking header prerequisites: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:204
+#, php-format
+msgid "Checking footer prerequisites: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:205
+#, php-format
+msgid "Checking Facebook initialization: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:206
+#, php-format
+msgid "Checking form overall prerequisites: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:207
+#, php-format
+msgid "Checking form opening prerequisites: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:208
+#, php-format
+msgid "Checking form closing prerequisites: %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:210
+msgid ""
+"Consider setting the <code>WDCP_FOOTER_DEPENDENCIES_HOOK</code> define to "
+"something your theme supports."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:211
+msgid ""
+"Consider activating the &quot;Alternative Facebook Initialization&quot; add-"
+"on."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:212
+msgid ""
+"Consider activating the &quot;Custom Comments Template&quot; add-on, <b>or</"
+"b> changing injection hooks to something your theme supports."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:214
+msgid "OK"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:215
+msgid "failure"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:227
+msgid "Sorry, we couldn't find a post to test."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:285
+msgid "All seems to be okay."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:309
 #, php-format
 msgid ""
 "There seems to be some differences in Twitter and your notion of time, by %d "
 "sec. This should now be fixed."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:159
+#: lib/plugins/wdcp-debugger.php:315
 msgid "Timestamp settings seem to be within acceptable limits"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:166
+#: lib/plugins/wdcp-debugger.php:322
 msgid "Could not determine Twitter time, assuming everything is OK."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:176
+#: lib/plugins/wdcp-debugger.php:332
 msgid ""
 "URLs in query strings seem not to be allowed, which will cause issues with "
 "Google OpenID authentication."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:181
+#: lib/plugins/wdcp-debugger.php:337
 msgid "Response handling seems to be under control"
 msgstr ""
 
