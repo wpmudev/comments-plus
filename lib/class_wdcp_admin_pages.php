@@ -102,7 +102,7 @@ class Wdcp_AdminPages {
 			wp_redirect($goback);
 			die;
 		}
-		add_submenu_page($page, __('Comments Plus', 'wdcp'), __('Comments Plus', 'wdcp'), $perms, 'wdcp', array($this, 'create_admin_page'));
+		do_action('wdcp-settings-page', add_submenu_page($page, __('Comments Plus', 'wdcp'), __('Comments Plus', 'wdcp'), $perms, 'wdcp', array($this, 'create_admin_page')));
 	}
 
 	/**

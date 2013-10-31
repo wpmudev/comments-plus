@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-03 15:26+0100\n"
-"PO-Revision-Date: 2013-10-03 15:27+0100\n"
+"POT-Creation-Date: 2013-10-31 14:50+0100\n"
+"PO-Revision-Date: 2013-10-31 14:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "MIME-Version: 1.0\n"
@@ -291,58 +291,58 @@ msgstr ""
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:38
+#: lib/class_wdcp_comments_worker.php:47
 msgid "Reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:39
+#: lib/class_wdcp_comments_worker.php:48
 msgid "Cancel reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:40
+#: lib/class_wdcp_comments_worker.php:49
 msgid "Please, wait..."
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:90
+#: lib/class_wdcp_comments_worker.php:102
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:138
-#: lib/class_wdcp_comments_worker.php:153
-#: lib/class_wdcp_comments_worker.php:169
+#: lib/class_wdcp_comments_worker.php:155
+#: lib/class_wdcp_comments_worker.php:170
+#: lib/class_wdcp_comments_worker.php:186
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:140
-#: lib/class_wdcp_comments_worker.php:155
-#: lib/class_wdcp_comments_worker.php:171
+#: lib/class_wdcp_comments_worker.php:157
+#: lib/class_wdcp_comments_worker.php:172
+#: lib/class_wdcp_comments_worker.php:188
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:142
+#: lib/class_wdcp_comments_worker.php:159
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:143
-#: lib/class_wdcp_comments_worker.php:157
+#: lib/class_wdcp_comments_worker.php:160
 #: lib/class_wdcp_comments_worker.php:174
+#: lib/class_wdcp_comments_worker.php:191
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:148
+#: lib/class_wdcp_comments_worker.php:165
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:163
+#: lib/class_wdcp_comments_worker.php:180
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:173
+#: lib/class_wdcp_comments_worker.php:190
 msgid "Post my comment on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:180
+#: lib/class_wdcp_comments_worker.php:197
 msgid "Login with Twitter"
 msgstr ""
 
@@ -862,6 +862,18 @@ msgstr ""
 
 #: lib/plugins/wdcp-mailchimp_list_subscription.php:193
 msgid "Subscribe me to the newsletter"
+msgstr ""
+
+#: lib/plugins/wdcp-services_list_order.php:33
+msgid "Tab list order"
+msgstr ""
+
+#: lib/plugins/wdcp-services_list_order.php:34
+msgid "Order"
+msgstr ""
+
+#: lib/plugins/wdcp-services_list_order.php:38
+msgid "Drag and drop services into proper order."
 msgstr ""
 
 #: lib/plugins/wdcp-social_discussion.php:72

@@ -11,6 +11,15 @@ class Wdcp_CommentsWorker {
 		$this->data = new Wdcp_Options;
 	}
 
+	public static function get_services_list () {
+		return apply_filters('wdcp-services-list', array(
+			'wordpress',
+			'twitter',
+			'facebook',
+			'google',
+		));
+	}
+
 	function js_load_scripts () {
 		wp_enqueue_script('jquery');
 		if (!apply_filters('wdcp-script_inclusion-facebook', WDCP_SKIP_FACEBOOK)) {
@@ -71,29 +80,37 @@ class Wdcp_CommentsWorker {
 		$skips = (array)$this->data->get_option('skip_services');
 		$instructions = $this->data->get_option('show_instructions') ? '' : 'no-instructions';
 
+		$services = self::get_services_list();
+
 		if (!in_array('facebook', $skips)) $fb_html = $this->_prepare_facebook_comments();
 		if (!in_array('twitter', $skips)) $tw_html = $this->_prepare_twitter_comments();
 		if (!in_array('google', $skips)) $gg_html = $this->_prepare_google_comments();
 
+		$names = array();
 		if (!in_array('wordpress', $skips)) {
 			$default_name = defined('WDCP_DEFAULT_WP_PROVIDER_NAME') && WDCP_DEFAULT_WP_PROVIDER_NAME ? WDCP_DEFAULT_WP_PROVIDER_NAME : get_bloginfo('name');
 			$default_name = $default_name ? $default_name : 'WordPress';
-			$wp_name = $this->model->current_user_logged_in('wordpress') 
+			$names['wordpress'] = $this->model->current_user_logged_in('wordpress') 
 				? $this->model->current_user_name('wordpress') 
 				: apply_filters('wdcp-providers-wordpress-name', $default_name)
 			;
 		}
-		if (!in_array('twitter', $skips)) $tw_name = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : apply_filters('wdcp-providers-twitter-name', 'Twitter');
-		if (!in_array('facebook', $skips)) $fb_name = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : apply_filters('wdcp-providers-facebook-name', 'Facebook');
-		if (!in_array('google', $skips)) $gg_name = $this->model->current_user_logged_in('google') ? $this->model->current_user_name('google') : apply_filters('wdcp-providers-google-name', 'Google');
+		if (!in_array('twitter', $skips)) $names['twitter'] = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : apply_filters('wdcp-providers-twitter-name', 'Twitter');
+		if (!in_array('facebook', $skips)) $names['facebook'] = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : apply_filters('wdcp-providers-facebook-name', 'Facebook');
+		if (!in_array('google', $skips)) $names['google'] = $this->model->current_user_logged_in('google') ? $this->model->current_user_name('google') : apply_filters('wdcp-providers-google-name', 'Google');
 		echo "
 		<div id='comment-providers-select-message'>" . __("Click on a tab to select how you'd like to leave your comment", 'wdcp') . "</div>
 		<div id='comment-providers'><a name='comments-plus-form'></a>
 			<ul id='all-comment-providers'>";
-		if (!in_array('wordpress', $skips)) echo "<li><a id='comment-provider-wordpress-link' href='#comment-provider-wordpress'><span>$wp_name</span></a></li>";
-		if (!in_array('twitter', $skips)) echo "<li><a id='comment-provider-twitter-link' href='#comment-provider-twitter'><span>$tw_name</span></a></li>";
-		if (!in_array('facebook', $skips)) echo "<li><a id='comment-provider-facebook-link' href='#comment-provider-facebook'><span>$fb_name</span></a></li>";
-		if (!in_array('google', $skips)) echo "<li><a id='comment-provider-google-link' href='#comment-provider-google'><span>$gg_name</span></a></li>";
+
+		foreach ($services as $service) {
+			if (in_array($service, $skips)) continue;
+			echo '<li>' .
+				"<a id='comment-provider-{$service}-link' href='#comment-provider-{$service}'><span>" .
+					$names[$service] .
+				'</span></a>' .
+			'</li>';
+		}
 		echo "</ul>";
 		if (!in_array('facebook', $skips)) echo "<div class='comment-provider' id='comment-provider-facebook'>$fb_html</div>";
 		if (!in_array('twitter', $skips)) echo "<div class='comment-provider' id='comment-provider-twitter'>$tw_html</div>";
