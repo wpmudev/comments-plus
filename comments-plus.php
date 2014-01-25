@@ -5,12 +5,12 @@ Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Description: Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts. Once activated, go to Settings &gt; Comments Plus to configure.
 Version: 1.6.5
 Text Domain: wdcp
-Author: Incsub
+Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 WDP ID: 247
 
 Copyright 2009-2011 Incsub (http://incsub.com)
-
+Author - Ve Bailovity (Incsub)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
 the Free Software Foundation.
