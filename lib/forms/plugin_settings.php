@@ -29,6 +29,18 @@ $(document).on('click', ".wdcp-more_help-fb", function () {
 	return false;
 });
 
+// ----- Subprovider toggling -----
+$(document).on("click", ".wdcp-provider-wrapper h4", function () {
+	var $me = $(this),
+		$selected = $me.closest(".wdcp-provider-wrapper"),
+		$root = $me.closest(".wdcp-provider-toggle")
+	;
+	if (!$root.length) return false;
+
+	$root.find(".wdcp-provider-wrapper").removeClass("selected");
+	$selected.addClass("selected");
+});
+
 /**
  * Handle tutorial resets.
  */
@@ -52,3 +64,31 @@ $(".wdcp-restart_tutorial").click(function () {
 });
 })(jQuery);
 </script>
+<style type="text/css">
+.wdcp-provider-wrapper {
+	border: 1px solid #ccc;
+}
+.wdcp-provider-wrapper h4 {
+	background-color: #343434;
+	color: #eee;
+	margin: 0;
+	padding: 1em 2em;
+}
+.wdcp-provider-wrapper h4:before {
+	content: "[+]";
+	color: #eee;
+	display: block;
+	position: absolute;
+	margin-left: -1.5em;
+}
+.wdcp-provider-wrapper.selected h4:before {
+	content: "[-]";
+}
+.wdcp-provider-wrapper-inside {
+	display: none;
+}
+.wdcp-provider-wrapper.selected .wdcp-provider-wrapper-inside {
+	display: block;
+	padding: 1em 2em;
+}
+</style>

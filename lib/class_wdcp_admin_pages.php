@@ -70,6 +70,7 @@ class Wdcp_AdminPages {
 		add_settings_field('wdcp_facebook_skip', __('Skip loading Facebook javascript', 'wdcp'), array($form, 'create_skip_facebook_init_box'), 'wdcp_options', 'wdcp_options');
 		add_settings_field('wdcp_twitter_app', __('Twitter App info', 'wdcp'), array($form, 'create_twitter_app_box'), 'wdcp_options', 'wdcp_options');
 		add_settings_field('wdcp_twitter_skip', __('Skip loading Twitter javascript', 'wdcp'), array($form, 'create_skip_twitter_init_box'), 'wdcp_options', 'wdcp_options');
+		add_settings_field('wdcp_google_app', __('Google App info', 'wdcp'), array($form, 'create_google_app_box'), 'wdcp_options', 'wdcp_options');
 
 		add_settings_section('wdcp_general', __('General Settings', 'wdcp'), create_function('', ''), 'wdcp_options');
 		add_settings_field('wdcp_wp_icon', __('WordPress branding &amp; options', 'wdcp'), array($form, 'create_wp_icon_box'), 'wdcp_options', 'wdcp_general');
@@ -187,7 +188,7 @@ class Wdcp_AdminPages {
 		);
 		$comment_id = wp_new_comment($data);
 		add_comment_meta($comment_id, 'wdcp_comment', $meta) ;
-		do_action('comment_post', $comment_id, $data['comment_approved']);
+		do_action('comment_post', $comment_id, (!empty($data['comment_approved']) ? $data['comment_approved'] : false));
 		$this->_postprocess_comment($comment_id);
 
 
@@ -229,7 +230,7 @@ class Wdcp_AdminPages {
 		//$comment_id = wp_insert_comment($data);
 		$comment_id = wp_new_comment($data);
 		add_comment_meta($comment_id, 'wdcp_comment', $meta) ;
-		do_action('comment_post', $comment_id, $data['comment_approved']);
+		do_action('comment_post', $comment_id, (!empty($data['comment_approved']) ? $data['comment_approved'] : false));
 		$this->_postprocess_comment($comment_id);
 
 
@@ -251,6 +252,8 @@ class Wdcp_AdminPages {
 		$guid = $this->model->current_user_id('google');
 		$username = $this->model->current_user_name('google');
 		$email = $this->model->current_user_email('google');
+		$url = $this->model->current_user_url('google');
+		$avatar = $this->model->google_plus_avatar();
 
 		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-google', array(
 			'comment_post_ID' => @$_POST['post_id'],
@@ -262,13 +265,18 @@ class Wdcp_AdminPages {
 			'_wdcp_provider' => 'google',
 		)));
 
+		if (!empty($url)) {
+			$data['comment_author_url'] = $url;
+		} else localhost_log("empty url");
+		
 		$meta = array (
 			'wdcp_gg_author_id' => $guid,
 		);
+		if (!empty($avatar)) $meta['wdcp_gg_avatar'] = $avatar;
 		//$comment_id = wp_insert_comment($data);
 		$comment_id = wp_new_comment($data);
 		add_comment_meta($comment_id, 'wdcp_comment', $meta) ;
-		do_action('comment_post', $comment_id, $data['comment_approved']);
+		do_action('comment_post', $comment_id, (!empty($data['comment_approved']) ? $data['comment_approved'] : false));
 		$this->_postprocess_comment($comment_id);
 
 		header('Content-type: application/json');
@@ -287,6 +295,45 @@ class Wdcp_AdminPages {
 			setcookie('comment_author_url_' . COOKIEHASH, esc_url($comment->comment_author_url), time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
 		}
 		do_action('wdcp-comment_posted-postprocess', $comment_id, $comment);
+	}
+
+	function json_verify_gplus_auth () {
+		$error = array(
+			'status' => 0,
+			'message' => esc_js(__('Error', 'wdcp')),
+		);
+		$data = stripslashes_deep($_POST);
+		$token = !empty($data['token']) ? $data['token'] : false;
+		if (empty($token)) die(json_encode($error));
+
+		// Start verifying
+		$page = wp_remote_get('https://www.googleapis.com/userinfo/v2/me', array(
+			'sslverify' => false,
+			'timeout' => 5,
+			'headers' => array(
+				'Authorization' => sprintf('Bearer %s', $token),
+			)
+		));
+		if (200 != wp_remote_retrieve_response_code($page)) die(json_encode($error));
+
+		$body = wp_remote_retrieve_body($page);
+		$response = json_decode($body, true); // Body is JSON
+		if (empty($response['id'])) die(json_encode($error));
+
+		$_SESSION['wdcp_google_user_cache'] = array(
+			'namePerson/first' => (!empty($response['given_name']) ? $response['given_name'] : ''),
+			'namePerson/last' => (!empty($response['family_name']) ? $response['family_name'] : ''),
+			'contact/email' => (!empty($response['email']) ? $response['email'] : 'email'),
+			'extra' => array(
+				'link' => (!empty($response['link']) ? $response['link'] : ''),
+				'picture' => (!empty($response['picture']) ? $response['picture'] : ''),
+			)
+		); // Write our stuff to the session
+
+		die(json_encode(array(
+			'status' => 1,
+			'message' => esc_js(__('All good', 'wdcp')),
+		)));
 	}
 
 	function json_activate_plugin () {
@@ -337,6 +384,12 @@ class Wdcp_AdminPages {
 
 		add_action('wp_ajax_wdcp_google_logout', array($this, 'json_google_logout'));
 		add_action('wp_ajax_nopriv_wdcp_google_logout', array($this, 'json_google_logout'));
+
+		if ($this->data->get_option('gg_client_id')) {
+			// Plus actions
+			add_action('wp_ajax_wdcp_google_plus_auth_check', array($this, 'json_verify_gplus_auth'));
+			add_action('wp_ajax_nopriv_wdcp_google_plus_auth_check', array($this, 'json_verify_gplus_auth'));
+		}
 
 		add_action('wp_ajax_wdcp_twitter_logout', array($this, 'json_twitter_logout'));
 		add_action('wp_ajax_nopriv_wdcp_twitter_logout', array($this, 'json_twitter_logout'));

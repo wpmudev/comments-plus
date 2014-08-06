@@ -35,7 +35,11 @@ class Wdcp_CommentsWorker {
 		wp_enqueue_script('wdcp_comments', WDCP_PLUGIN_URL . '/js/comments.js', array('jquery'));
 		wp_enqueue_script('wdcp_twitter', WDCP_PLUGIN_URL . '/js/twitter.js', array('jquery', 'wdcp_comments'));
 		wp_enqueue_script('wdcp_facebook', WDCP_PLUGIN_URL . '/js/facebook.js', array('jquery', 'wdcp_comments'));
-		wp_enqueue_script('wdcp_google', WDCP_PLUGIN_URL . '/js/google.js', array('jquery', 'wdcp_comments'));
+		if ($this->data->get_option('gg_client_id')) {
+			wp_enqueue_script('wdcp_google_plus', WDCP_PLUGIN_URL . '/js/google_plus.js', array('jquery', 'wdcp_comments'));
+		} else {
+			wp_enqueue_script('wdcp_google', WDCP_PLUGIN_URL . '/js/google.js', array('jquery', 'wdcp_comments'));
+		}
 
 		$preferred_provider = $this->data->get_option('preferred_provider');
 		$preferred_provider = $preferred_provider ? $preferred_provider : 'facebook';
@@ -134,14 +138,15 @@ class Wdcp_CommentsWorker {
 		$meta = get_comment_meta($comment->comment_ID, 'wdcp_comment', true);
 		if (!$meta) return $avatar;
 
-		$fb_uid = @$meta['wdcp_fb_author_id'];
-		if (!$fb_uid) {
-			$tw_avatar = @$meta['wdcp_tw_avatar'];
-			if (!$tw_avatar) return $avatar;
-			return "<img class='avatar avatar-40 photo' width='40' height='40' src='{$tw_avatar}' />";
-		}
+		$fb_uid = !empty($meta['wdcp_fb_author_id']) ? $meta['wdcp_fb_author_id'] : false;
+		$tw_avatar = !empty($meta['wdcp_tw_avatar']) ? $meta['wdcp_tw_avatar'] : false;
+		$gg_avatar = !empty($meta['wdcp_gg_avatar']) ? $meta['wdcp_gg_avatar'] : false;
 
-		return "<img class='avatar avatar-40 photo' width='40' height='40' src='". WDCP_PROTOCOL . "graph.facebook.com/{$fb_uid}/picture' />";
+		if (!empty($fb_uid)) return "<img class='avatar avatar-40 photo' width='40' height='40' src='". WDCP_PROTOCOL . "graph.facebook.com/{$fb_uid}/picture' />";
+		if (!empty($tw_avatar)) return "<img class='avatar avatar-40 photo' width='40' height='40' src='{$tw_avatar}' />";
+		if (!empty($gg_avatar)) return "<img class='avatar avatar-40 photo' width='40' height='40' src='{$gg_avatar}' />";
+
+		return $avatar;
 	}
 
 /*** Privates ***/
@@ -176,8 +181,22 @@ class Wdcp_CommentsWorker {
 	}
 
 	function _prepare_google_login () {
+		if ($this->data->get_option('gg_client_id')) return $this->_prepare_google_plus_login();
+
 		$href = WDCP_PROTOCOL . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		return "<img src='" . WDCP_PLUGIN_URL . "/img/gg-login.png' style='position:absolute;left:-1200000000px;display:none' />" . '<div class="comment-provider-login-button" id="login-with-google"><a href="' . $href . '" title="' . __('Login with Google', 'wdcp') . '"><span>Login</span></a></div>';
+	}
+
+	function _prepare_google_plus_login () {
+		return '<div id="login-with-google" class="plus"><span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="wdcp_google_plus_login_callback"
+    data-clientid="' . esc_attr($this->data->get_option('gg_client_id')) . '"
+    data-cookiepolicy="single_host_origin"
+    data-scope="profile email">
+  </span>
+</span></div>';
 	}
 
 	function _prepare_twitter_comments () {

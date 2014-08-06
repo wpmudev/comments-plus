@@ -97,7 +97,7 @@ class Wdcp_AdminFormRenderer {
 		} else {
 			_e('<p><i>Your Network Admin already set this up for you</i></p>', 'wdcp');
 		}
-	if (is_network_admin()) {
+		if (is_network_admin()) {
 			echo ''.
 				$this->_create_checkbox('tw_network_only', $this->_get_option('tw_network_only')) .
 				' <label for="tw_network_only">' . __('I want to use this app on all subsites too', 'wdcp') . '</label>' .
@@ -112,6 +112,69 @@ class Wdcp_AdminFormRenderer {
 			'<label for="tw_skip_init">' . __('Pages on my website already use javascript from Twitter', 'wdcp') . '</label> ' .
 		"";
 		echo "<p><small>" . __('If you already use a plugin or custom script to interact with Twitter, check this option', 'wdcp') . '</small></p>';
+	}
+
+	function create_google_app_box () {
+		echo '<div class="wdcp-provider-toggle">';
+		
+		$this->_create_google_legacy_app_box();
+		$this->_create_google_plus_app_box();
+		
+		echo '</div>';
+	}
+
+	private function _create_google_legacy_app_box () {
+		$client_id = $this->_get_option('gg_client_id');
+		echo '<div class="wdcp-provider-wrapper ' . (empty($client_id) ? 'selected' : '') . '" id="wdcp-provider-google_legacy">';
+		echo '<h4><span class="toggle"></span>' . esc_html(__('Legacy Google auth', 'wdcp')) . '</h4>';
+		echo '<div class="wdcp-provider-wrapper-inside">';
+		echo '<div class="updated below-h2"><p>' . esc_html(__('Legacy authentication method requires no setup.', 'wdcp')) . '</p></div>';
+		echo '</div>';
+		echo '</div>';
+	}
+	private function _create_google_plus_app_box () {
+		$site_opts = get_site_option('wdcp_options');
+		$has_creds = is_network_admin() ? false : @$site_opts['gg_network_only'];
+
+		$client_id = $this->_get_option('gg_client_id');
+
+		if (!$has_creds) {
+			echo '<div class="wdcp-provider-wrapper ' . (!empty($client_id) ? 'selected' : '') . '" id="wdcp-provider-google_plus">';
+			echo '<h4><span class="toggle"></span>' . esc_html(__('Google+ auth', 'wdcp')) . '</h4>';
+			echo '<div class="wdcp-provider-wrapper-inside">';
+			printf(__(
+				'<p><b>You must make a Google Application to start using Comments Plus.</b></p>' .
+				'<p>Before we begin, you need to <a target="_blank" href="https://console.developers.google.com/">create a Google Application</a>.</p>' .
+				'<p>To do so, follow these steps:</p>' .
+				'<ol>' .
+					'<li><a target="_blank" href="https://console.developers.google.com/">Create your application</a></li>' .
+					'<li>Click <em>Create Project</em> button</li>' .
+					'<li>In the left sidebar, select <em>APIs & auth</em>.</li>' .
+					'<li>Find the <em>Google+ API</em> service and set its status to <em>ON</em>.</li>' .
+					'<li>In the sidebar, select <em>Credentials</em>, then in the <em>OAuth</em> section of the page, select <em>Create New Client ID</em>.</li>' .
+					'<li>In the <em>Application type</em> section of the dialog, select <em>Web application</em>.</li>' .
+					'<li>In the <em>Authorized JavaScript origins</em> field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains.</li>' .
+					'<li>In the <em>Authorized redirect URI</em> field, delete the default value.</li>' .
+					'<li>Select <em>Create Client ID</em>.</li>' .
+					'<li>Copy the value of the field labeled <strong>Client ID</strong>, and enter it here:</li>' .
+				'</ol>',
+			'wdcp'));
+			echo '<label for="gg_client_id">' . __('Client ID', 'wdcp') . '</label> ' .
+				$this->_create_text_box('gg_client_id', $client_id) .
+			'<br />';
+			echo '<small>' . esc_html(__('To revert back to legacy Google auth, remove the client ID and save your settings.', 'wdcp')) . '</small>';
+			echo '</div>';
+			echo '</div>';
+		}
+
+		if (is_network_admin()) {
+			echo ''.
+				$this->_create_checkbox('gg_network_only', $this->_get_option('gg_network_only')) .
+				' <label for="gg_network_only">' . __('I want to use this app on all subsites too', 'wdcp') . '</label>' .
+				'<div><small>' . __('Please, do <b>NOT</b> check this option if any of your sites use domain mapping.', 'wdcp') . '</small></div>' .
+			'<br />';
+		}
+
 	}
 
 	function create_hooks_section () {
