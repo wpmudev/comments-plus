@@ -190,9 +190,17 @@ class Wdcp_Model {
 			case "wordpress":
 				return site_url();
 			case "facebook":
-				return 'http://www.facebook.com/profile.php?id=' . $this->current_user_id('facebook');
+				return !empty($this->_facebook_user_cache['link'])
+					? $this->_facebook_user_cache['link']
+					: 'http://www.facebook.com/profile.php?id=' . $this->current_user_id('facebook')
+				;
 			case "twitter":
 				return $this->_twitter_user_cache['url'];
+			case "google":
+				return !empty($this->_google_user_cache['extra']['link'])
+					? $this->_google_user_cache['extra']['link']
+					: false
+				;
 		}
 		return false;
 	}
@@ -211,6 +219,12 @@ class Wdcp_Model {
 	function google_logout_user () {
 		$_SESSION['wdcp_google_user_cache'] = false;
 		unset($_SESSION['wdcp_google_user_cache']);
+	}
+	function google_plus_avatar () {
+		return !empty($this->_google_user_cache['extra']['picture'])
+			? $this->_google_user_cache['extra']['picture']
+			: false
+		;
 	}
 
 	function twitter_avatar () {
