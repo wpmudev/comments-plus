@@ -6,6 +6,11 @@ Change Log:
 ----------------------------------------------------------------------
 
 
+1.6.6 - 2014-08-06
+----------------------------------------------------------------------
+- Allowing for new Google+ login in addition to legacy OpenID.
+- Enforcing proper user link generation, if possible.
+
 1.6.5 - 2013-10-31
 ----------------------------------------------------------------------
 - Added the services order add-on.

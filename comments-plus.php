@@ -3,7 +3,7 @@
 Plugin Name: Comments Plus
 Plugin URI: http://premium.wpmudev.org/project/comments-plus
 Description: Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts. Once activated, go to Settings &gt; Comments Plus to configure.
-Version: 1.6.5
+Version: 1.6.6
 Text Domain: wdcp
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
@@ -58,8 +58,6 @@ require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_model.php';
 require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_comments_worker.php';
 require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_plugins_handler.php';
 
-if (file_exists(WDCP_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) require_once WDCP_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
-
 Wdcp_PluginsHandler::init();
 
 function wdcp_initialize () {
@@ -83,6 +81,21 @@ function wdcp_initialize () {
 		Wdcp_AdminPages::serve();
 		Wdcp_ContextualHelp::serve();
 		Wdcp_Tutorial::serve();
+
+		// Setup dashboard notices
+		if (file_exists(WDCP_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php')) {
+			global $wpmudev_notices;
+			if (!is_array($wpmudev_notices)) $wpmudev_notices = array();
+			$wpmudev_notices[] = array(
+				'id' => 247,
+				'name' => 'Comments Plus',
+				'screens' => array(
+					'settings_page_wdcp',
+				),
+			);
+			require_once WDCP_PLUGIN_BASE_DIR . '/lib/external/wpmudev-dash-notification.php';
+		}
+		// End dash bootstrap
 	} else {
 		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_public_pages.php';
 		Wdcp_PublicPages::serve();
