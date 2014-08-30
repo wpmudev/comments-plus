@@ -1,11 +1,18 @@
 (function ($) {
 $(function () {
 
+function send_request (request) {
+	$.post(_wdcp_ajax_url, request, function (data) {
+		$(document).trigger('wdcp_comment_sent', ['facebook']);
+		window.location.reload(); // Refresh
+    });
+}
+
 // Bind local event handlers
 $(document).bind('wdcp_facebook_login_attempt', function () {
 	FB.login(function (resp) {
 		if (resp.authResponse && resp.authResponse.userID) $(document).trigger('wdcp_logged_in', ['facebook']);
-	}, {scope: 'read_stream,publish_stream,email'});
+	}, {scope: 'email'});
 });
 // Attempt auto-connect
 if ($("#login-with-facebook").length) {
@@ -29,15 +36,16 @@ $(document).on('click', "#comment-provider-facebook a.comment-provider-logout", 
 
 // Handle post comment requests
 $(document).on('click', "#send-facebook-comment", function () {
-	var comment = $("#facebook-comment").val();
-	var repost = $("#post-on-facebook").is(":checked") ? 1 : 0;
-	var commentParent = $('#comment_parent').val();
-	var subscribe = ($("#subscribe").length && $("#subscribe").is(":checked")) ? 'subscribe' : '';
+	var comment = $("#facebook-comment").val(),
+		repost = !!$("#post-on-facebook").is(":checked"),
+		commentParent = $('#comment_parent').val(),
+		subscribe = ($("#subscribe").length && $("#subscribe").is(":checked")) ? 'subscribe' : ''
+	;
 
 	var to_send = {
 		"action": "wdcp_post_facebook_comment",
 		"post_id": _wdcp_data.post_id,
-		"post_on_facebook": repost,
+		"post_on_facebook": 0,
 		"comment_parent": commentParent,
 		"subscribe": subscribe,
 		"comment": comment
@@ -46,10 +54,17 @@ $(document).on('click', "#send-facebook-comment", function () {
 	// Start UI change...
 	$(this).parents(".comment-provider").empty().append('<div class="comment-provider-waiting-response"></div>');
 
-	$.post(_wdcp_ajax_url, to_send, function (data) {
-		$(document).trigger('wdcp_comment_sent', ['facebook']);
-		window.location.reload(); // Refresh
-    });
+	if (repost) {
+		FB.login(function (resp) {
+			if (!resp.authResponse) return false;
+			if (!resp.authResponse.grantedScopes) return false;
+			var do_repost = !!resp.authResponse.grantedScopes.match(/publish_actions/);
+			to_send.post_on_facebook = do_repost ? 1 : 0;
+			send_request(to_send);
+		}, {scope: 'publish_actions', return_scopes: true});
+	} else {
+		send_request(to_send);
+	}
 	return false;
 });
 
