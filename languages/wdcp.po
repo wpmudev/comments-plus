@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comments Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 15:32+0100\n"
-"PO-Revision-Date: 2014-08-06 15:32+0100\n"
+"POT-Creation-Date: 2014-08-30 15:46+0100\n"
+"PO-Revision-Date: 2014-08-30 15:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: Incsub\n"
 "Language: en\n"
@@ -48,19 +48,19 @@ msgid "More help"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:54
-#: lib/class_wdcp_admin_form_renderer.php:98
+#: lib/class_wdcp_admin_form_renderer.php:104
 msgid "<p><i>Your Network Admin already set this up for you</i></p>"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:59
-#: lib/class_wdcp_admin_form_renderer.php:103
-#: lib/class_wdcp_admin_form_renderer.php:173
+#: lib/class_wdcp_admin_form_renderer.php:109
+#: lib/class_wdcp_admin_form_renderer.php:185
 msgid "I want to use this app on all subsites too"
 msgstr ""
 
 #: lib/class_wdcp_admin_form_renderer.php:60
-#: lib/class_wdcp_admin_form_renderer.php:104
-#: lib/class_wdcp_admin_form_renderer.php:174
+#: lib/class_wdcp_admin_form_renderer.php:110
+#: lib/class_wdcp_admin_form_renderer.php:186
 msgid ""
 "Please, do <b>NOT</b> check this option if any of your sites use domain "
 "mapping."
@@ -70,13 +70,23 @@ msgstr ""
 msgid "Pages on my website already use javascript from Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:70
+#: lib/class_wdcp_admin_form_renderer.php:69
 msgid ""
 "If you already use a plugin or custom script to interact with Facebook, "
 "check this option"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:78
+#: lib/class_wdcp_admin_form_renderer.php:74
+msgid "Do not allow users to post their comments on Facebook"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:75
+msgid ""
+"Enabling this option will hide the &quot;Post my comment on my wall&quot; "
+"box to your visitors when they authenticate with Facebook"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:84
 #, php-format
 msgid ""
 "<p><b>You must make a Twitter Application to start using Comments Plus.</b></"
@@ -92,37 +102,47 @@ msgid ""
 "strong> and <strong>Consumer Secret</strong>, and enter them here:</li></ol>"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:91
+#: lib/class_wdcp_admin_form_renderer.php:97
 msgid "Consumer key"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:94
+#: lib/class_wdcp_admin_form_renderer.php:100
 msgid "Consumer secret"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:112
+#: lib/class_wdcp_admin_form_renderer.php:118
 msgid "Pages on my website already use javascript from Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:114
+#: lib/class_wdcp_admin_form_renderer.php:119
 msgid ""
 "If you already use a plugin or custom script to interact with Twitter, check "
 "this option"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:129
+#: lib/class_wdcp_admin_form_renderer.php:124
+msgid "Do not allow users to post their comments on Twitter"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:125
+msgid ""
+"Enabling this option will hide the &quot;Post my comment on Twitter&quot; "
+"box to your visitors when they authenticate with Twitter"
+msgstr ""
+
+#: lib/class_wdcp_admin_form_renderer.php:141
 msgid "Legacy Google auth"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:131
+#: lib/class_wdcp_admin_form_renderer.php:143
 msgid "Legacy authentication method requires no setup."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:143
+#: lib/class_wdcp_admin_form_renderer.php:155
 msgid "Google+ auth"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:146
+#: lib/class_wdcp_admin_form_renderer.php:158
 msgid ""
 "<p><b>You must make a Google Application to start using Comments Plus.</b></"
 "p><p>Before we begin, you need to <a target=\"_blank\" href=\"https://"
@@ -143,119 +163,119 @@ msgid ""
 "</li></ol>"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:162
+#: lib/class_wdcp_admin_form_renderer.php:174
 msgid "Client ID"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:165
+#: lib/class_wdcp_admin_form_renderer.php:177
 msgid ""
 "To revert back to legacy Google auth, remove the client ID and save your "
 "settings."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:182
+#: lib/class_wdcp_admin_form_renderer.php:194
 msgid ""
 "<p>If you do not see Comments Plus on your pages, it is likely that your "
 "theme doesn't use the hooks we need to display our interface.</p><p>It's not "
 "a problem, though - here you can specify the hooks your theme does use.</p>"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:190
+#: lib/class_wdcp_admin_form_renderer.php:202
 msgid ""
 "This is the hook that starts your comments form interface. By default, we're "
 "using <code>comment_form_before</code>. To reset to default, delete all "
 "contents of this field and save changes."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:197
+#: lib/class_wdcp_admin_form_renderer.php:209
 msgid ""
 "This is the hook that ends your comments form interface. By default, we're "
 "using <code>comment_form_after</code>. To reset to default, delete all "
 "contents of this field and save changes."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:201
+#: lib/class_wdcp_admin_form_renderer.php:213
 msgid "Icon URL:"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:204
+#: lib/class_wdcp_admin_form_renderer.php:216
 msgid ""
 "Full URL of the icon you wish to use for your WP comments instead of the "
 "default one"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:205
+#: lib/class_wdcp_admin_form_renderer.php:217
 msgid "For best results, use a 16x16px image."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:208
+#: lib/class_wdcp_admin_form_renderer.php:220
 msgid "Attempt to show or hide allowed tags text for WordPress comments"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:214
-#: lib/class_wdcp_admin_form_renderer.php:245
+#: lib/class_wdcp_admin_form_renderer.php:226
+#: lib/class_wdcp_admin_form_renderer.php:257
 msgid "WordPress"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:215
-#: lib/class_wdcp_admin_form_renderer.php:246 lib/plugins/wdcp-debugger.php:38
+#: lib/class_wdcp_admin_form_renderer.php:227
+#: lib/class_wdcp_admin_form_renderer.php:258 lib/plugins/wdcp-debugger.php:43
 #: lib/plugins/wdcp-social_discussion.php:88
 #: lib/plugins/wdcp-social_discussion.php:107
 msgid "Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:216
-#: lib/class_wdcp_admin_form_renderer.php:247
+#: lib/class_wdcp_admin_form_renderer.php:228
+#: lib/class_wdcp_admin_form_renderer.php:259
 #: lib/plugins/wdcp-social_discussion.php:87
 #: lib/plugins/wdcp-social_discussion.php:106
 msgid "Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:217
-#: lib/class_wdcp_admin_form_renderer.php:248 lib/plugins/wdcp-debugger.php:37
+#: lib/class_wdcp_admin_form_renderer.php:229
+#: lib/class_wdcp_admin_form_renderer.php:260 lib/plugins/wdcp-debugger.php:42
 msgid "Google"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:234
+#: lib/class_wdcp_admin_form_renderer.php:246
 msgid "Shrink or stretch provider selector tabs?"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:239
+#: lib/class_wdcp_admin_form_renderer.php:251
 msgid "Don't pre-select social comments sharing"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:269
+#: lib/class_wdcp_admin_form_renderer.php:281
 msgid "Let my theme determine colors"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:270
+#: lib/class_wdcp_admin_form_renderer.php:282
 msgid ""
 "Use this option if your theme already has color definitions needed for "
 "Comments Plus in its' stylesheets"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:283
+#: lib/class_wdcp_admin_form_renderer.php:295
 msgid "Add-on name"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:284
+#: lib/class_wdcp_admin_form_renderer.php:296
 msgid "Add-on description"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:299
+#: lib/class_wdcp_admin_form_renderer.php:311
 msgid "Deactivate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:301
+#: lib/class_wdcp_admin_form_renderer.php:313
 msgid "Activate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:307
+#: lib/class_wdcp_admin_form_renderer.php:319
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:309
+#: lib/class_wdcp_admin_form_renderer.php:321
 #, php-format
 msgid "by %s"
 msgstr ""
@@ -282,7 +302,7 @@ msgid "Facebook App info"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:70
-msgid "Skip loading Facebook javascript"
+msgid "Facebook Options"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:71
@@ -290,7 +310,7 @@ msgid "Twitter App info"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:72
-msgid "Skip loading Twitter javascript"
+msgid "Twitter Options"
 msgstr ""
 
 #: lib/class_wdcp_admin_pages.php:73
@@ -366,41 +386,41 @@ msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
 #: lib/class_wdcp_comments_worker.php:160
-#: lib/class_wdcp_comments_worker.php:175
-#: lib/class_wdcp_comments_worker.php:205
+#: lib/class_wdcp_comments_worker.php:179
+#: lib/class_wdcp_comments_worker.php:209
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:162
-#: lib/class_wdcp_comments_worker.php:177
-#: lib/class_wdcp_comments_worker.php:207
-msgid "Connected as"
-msgstr ""
-
-#: lib/class_wdcp_comments_worker.php:164
+#: lib/class_wdcp_comments_worker.php:163
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:165
-#: lib/class_wdcp_comments_worker.php:179
-#: lib/class_wdcp_comments_worker.php:210
+#: lib/class_wdcp_comments_worker.php:166
+#: lib/class_wdcp_comments_worker.php:181
+#: lib/class_wdcp_comments_worker.php:215
+msgid "Connected as"
+msgstr ""
+
+#: lib/class_wdcp_comments_worker.php:169
+#: lib/class_wdcp_comments_worker.php:183
+#: lib/class_wdcp_comments_worker.php:218
 #, php-format
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:170
+#: lib/class_wdcp_comments_worker.php:174
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:187
+#: lib/class_wdcp_comments_worker.php:191
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:209
+#: lib/class_wdcp_comments_worker.php:212
 msgid "Post my comment on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:216
+#: lib/class_wdcp_comments_worker.php:224
 msgid "Login with Twitter"
 msgstr ""
 
@@ -671,150 +691,179 @@ msgid ""
 "theme directory: <code>%s</code>, then make your changes there"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:34
+#: lib/plugins/wdcp-debugger.php:39
 msgid "Troubleshooter"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:35
+#: lib/plugins/wdcp-debugger.php:40
 msgid "General"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:36
+#: lib/plugins/wdcp-debugger.php:41
 msgid "Theme"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:45
+#: lib/plugins/wdcp-debugger.php:44
+msgid "Issue Tracker"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:51
 msgid "The required cURL extension seems to be missing."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:50
+#: lib/plugins/wdcp-debugger.php:56
 msgid "There seems to be problems with the required TwitterOAuth class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:54
+#: lib/plugins/wdcp-debugger.php:60
 msgid "There seems to be problems with the required Facebook class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:58
+#: lib/plugins/wdcp-debugger.php:64
 msgid "There seems to be problems with the required LightOpenID class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:62
+#: lib/plugins/wdcp-debugger.php:68
 msgid "There seems to be problems with the required OAuthRequest class."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:66
+#: lib/plugins/wdcp-debugger.php:72
 msgid "Basic prerequisites seem to be in order."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:71
+#: lib/plugins/wdcp-debugger.php:77
 msgid "Check theme compatibility"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:108
+#: lib/plugins/wdcp-debugger.php:114
 msgid "Check response handling prerequisites"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:145
+#: lib/plugins/wdcp-debugger.php:151
 msgid "Check timestamps"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:201
+#: lib/plugins/wdcp-debugger.php:197
+msgid "Enable issue tracking"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:204
+msgid "No registered issues."
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:207 lib/plugins/wdcp-debugger.php:219
+msgid "Source"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:207 lib/plugins/wdcp-debugger.php:219
+msgid "Date"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:207 lib/plugins/wdcp-debugger.php:219
+msgid "Message"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:212
+#, php-format
+msgid "Local: %s, server %s"
+msgstr ""
+
+#: lib/plugins/wdcp-debugger.php:256
 #, php-format
 msgid "Fetching the post page: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:202
+#: lib/plugins/wdcp-debugger.php:257
 #, php-format
 msgid "Parsing the post page: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:203
+#: lib/plugins/wdcp-debugger.php:258
 #, php-format
 msgid "Checking header prerequisites: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:204
+#: lib/plugins/wdcp-debugger.php:259
 #, php-format
 msgid "Checking footer prerequisites: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:205
+#: lib/plugins/wdcp-debugger.php:260
 #, php-format
 msgid "Checking Facebook initialization: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:206
+#: lib/plugins/wdcp-debugger.php:261
 #, php-format
 msgid "Checking form overall prerequisites: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:207
+#: lib/plugins/wdcp-debugger.php:262
 #, php-format
 msgid "Checking form opening prerequisites: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:208
+#: lib/plugins/wdcp-debugger.php:263
 #, php-format
 msgid "Checking form closing prerequisites: %s"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:210
+#: lib/plugins/wdcp-debugger.php:265
 msgid ""
 "Consider setting the <code>WDCP_FOOTER_DEPENDENCIES_HOOK</code> define to "
 "something your theme supports."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:211
+#: lib/plugins/wdcp-debugger.php:266
 msgid ""
 "Consider activating the &quot;Alternative Facebook Initialization&quot; add-"
 "on."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:212
+#: lib/plugins/wdcp-debugger.php:267
 msgid ""
 "Consider activating the &quot;Custom Comments Template&quot; add-on, <b>or</"
 "b> changing injection hooks to something your theme supports."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:214
+#: lib/plugins/wdcp-debugger.php:269
 msgid "OK"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:215
+#: lib/plugins/wdcp-debugger.php:270
 msgid "failure"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:227
+#: lib/plugins/wdcp-debugger.php:282
 msgid "Sorry, we couldn't find a post to test."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:285
+#: lib/plugins/wdcp-debugger.php:340
 msgid "All seems to be okay."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:309
+#: lib/plugins/wdcp-debugger.php:364
 #, php-format
 msgid ""
 "There seems to be some differences in Twitter and your notion of time, by %d "
 "sec. This should now be fixed."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:315
+#: lib/plugins/wdcp-debugger.php:370
 msgid "Timestamp settings seem to be within acceptable limits"
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:322
+#: lib/plugins/wdcp-debugger.php:377
 msgid "Could not determine Twitter time, assuming everything is OK."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:332
+#: lib/plugins/wdcp-debugger.php:387
 msgid ""
 "URLs in query strings seem not to be allowed, which will cause issues with "
 "Google OpenID authentication."
 msgstr ""
 
-#: lib/plugins/wdcp-debugger.php:337
+#: lib/plugins/wdcp-debugger.php:392
 msgid "Response handling seems to be under control"
 msgstr ""
 
