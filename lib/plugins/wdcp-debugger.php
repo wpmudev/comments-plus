@@ -27,6 +27,11 @@ class Wdcp_Debugger {
 		add_action('wp_ajax_wdcp_dbg_twitter_timestamp', array($this, 'json_twitter_timestamp_test'));
 		add_action('wp_ajax_wdcp_dbg_google_mod_security', array($this, 'json_google_response_test'));
 
+		// Track posting issues
+		if ($this->_data->get_option('issue_tracker_on')) {
+			add_action('wdcp-social_posting-failed', array($this, 'record_posting_failure'), 10, 3);
+		}
+
 		add_action('init', array($this, 'dispatch_theme_compat_debug_testing'));
 	}
 
@@ -36,6 +41,7 @@ class Wdcp_Debugger {
 		add_settings_field('wdcp_dbg_theme', __('Theme', 'wdcp'), array($this, 'create_theme_box'), 'wdcp_options', 'wdcp_dbg_debugger');
 		add_settings_field('wdcp_dbg_google', __('Google', 'wdcp'), array($this, 'create_google_box'), 'wdcp_options', 'wdcp_dbg_debugger');
 		add_settings_field('wdcp_dbg_twitter', __('Twitter', 'wdcp'), array($this, 'create_twitter_box'), 'wdcp_options', 'wdcp_dbg_debugger');
+		add_settings_field('wdcp_dbg_issue_tracker', __('Issue Tracker', 'wdcp'), array($this, 'create_tracker_box'), 'wdcp_options', 'wdcp_dbg_debugger');
 	}
 
 	function create_general_box () {
@@ -176,6 +182,55 @@ $(function () {
 })(jQuery);
 </script>
 EoTwitterJs;
+	}
+
+	function create_tracker_box () {
+		if ($this->_data->get_option('issue_tracker_on')) $this->_create_tracker_output_box();
+		$this->_create_tracker_toggle_box();
+	}
+
+	private function _create_tracker_toggle_box () {
+		echo '<label for="wdcp-issue_tracker_on">' .
+			'<input type="hidden" name="wdcp_options[issue_tracker_on]" value="" />' .
+			'<input type="checkbox" id="wdcp-issue_tracker_on" name="wdcp_options[issue_tracker_on]" value="1" ' . checked($this->_data->get_option('issue_tracker_on'), 1, false) . ' />' .
+			'&nbsp' .
+			__('Enable issue tracking', 'wdcp') .
+		'</label>';
+	}
+
+	private function _create_tracker_output_box () {
+		$issues = Wdcp_IssueTracker::get_all();
+		if (empty($issues)) {
+			echo '<div class="updated below-h2"><p>' . __('No registered issues.', 'wdcp') . '</p></div>';
+			return false;
+		}
+		$out = $this->_wrap_issue(__('Source', 'wdcp'), __('Date', 'wdcp'), __('Message', 'wdcp'), 'thead');
+		foreach ($issues as $issue) {
+			$issue = Wdcp_IssueTracker::validate($issue);
+			$time_delta = abs($issue['server_timestamp'] - $issue['local_timestamp']);
+			$date = $time_delta
+				? sprintf(__('Local: %s, server %s', 'wdcp'), date('Y-m-d H:i:s', $issue['local_timestamp']), date('Y-m-d H:i:s', $issue['server_timestamp']))
+				: date('Y-m-d H:i:s', $issue['server_timestamp'])
+			;
+			$source = ucfirst($issue['source']);
+			$msg = esc_html($issue['msg']);
+			$out .= $this->_wrap_issue($source, $date, $msg);
+		}
+		$out .= $this->_wrap_issue(__('Source', 'wdcp'), __('Date', 'wdcp'), __('Message', 'wdcp'), 'tfoot');
+		echo '<table class="widefat">' . $out . '</table>';
+	}
+
+	private function _wrap_issue ($source, $date, $msg, $part=false) {
+		$wrapper = !empty($part) ? 'th' : 'td';
+		$out = '<tr>' .
+			"<{$wrapper}>" . $source . "</{$wrapper}>" .
+			"<{$wrapper}>" . $date . "</{$wrapper}>" .
+			"<{$wrapper}>" . $msg . "</{$wrapper}>" .
+		'</tr>';
+		return !empty($part)
+			? "<{$part}>{$out}</{$part}>"
+			: $out
+		;
 	}
 
 	function dispatch_theme_compat_debug_testing () {
@@ -338,5 +393,58 @@ EoTwitterJs;
 			)));
 		}
 	}
+
+	function record_posting_failure ($source, $sent, $exception) {
+		$msg = is_object($exception) && method_exists($exception, 'getMessage')
+			? $exception->getMessage()
+			: var_export($exception, 1)
+		;
+		Wdcp_IssueTracker::log($source, $msg);
+	}
 }
 Wdcp_Debugger::serve();
+
+
+class Wdcp_IssueTracker {
+
+	const STORAGE_KEY = 'wdcp_issue_tracker';
+	const STORAGE_SIZE = 10;
+
+	public static function log ($source, $message) {
+		if (empty($source) || empty($message)) return false;
+		$data = array(
+			'source' => $source,
+			'server_timestamp' => time(),
+			'local_timestamp' => current_time('timestamp'),
+			'msg' => $message,
+		);
+		$all_data = self::get_all();
+		if (count($all_data) > self::STORAGE_SIZE) {
+			$all_data = array_slice($all_data, count($all_data) - self::STORAGE_SIZE);
+		}
+		$all_data[] = self::validate($data);
+		return update_option(self::STORAGE_KEY, $all_data);
+	}
+
+	public static function get_all () {
+		return get_option(self::STORAGE_KEY, array());
+	}
+
+	public static function clear () {
+		return update_option(self::STORAGE_KEY, array());
+	}
+
+	public static function validate ($issue) {
+		$issue = !empty($issue) && is_array($issue)
+			? $issue
+			: array()
+		;
+		return wp_parse_args($issue, array(
+			'source' => false,
+			'server_timestamp' => false,
+			'local_timestamp' => false,
+			'msg' => false,
+		));
+	}
+
+}

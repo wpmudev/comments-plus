@@ -257,6 +257,9 @@ class Wdcp_Model {
 /*** Posting ***/
 
 	function post_to_facebook ($data) {
+		$opts = new Wdcp_Options;
+		if ($opts->get_option('fb_dont_post_on_facebook')) return false;
+
 		$fb_uid = $this->current_user_id('facebook');
 		$post_id = (int)$_POST['post_id'];
 		$post = get_post($post_id);
@@ -271,12 +274,16 @@ class Wdcp_Model {
 		try {
 			$ret = $this->facebook->api('/' . $fb_uid . '/feed/', 'POST', $send);
 		} catch (Exception $e) {
+			do_action('wdcp-social_posting-failed', 'facebook', $send, $e);
 			return false;
 		}
-		return $ret; // $ret['id']
+		return $ret;
 	}
 
 	function post_to_twitter ($data) {
+		$opts = new Wdcp_Options;
+		if ($opts->get_option('tw_dont_post_on_twitter')) return false;
+		
 		$post_id = (int)$data['post_id'];
 		$link = apply_filters('wdcp-remote_post_data-post_url', apply_filters('wdcp-remote_post_data-twitter-post_url', get_permalink($post_id), $post_id), $post_id);
 		$send = apply_filters('wdcp-remote_post_data-twitter', array(
@@ -285,8 +292,9 @@ class Wdcp_Model {
 		try {
 			$ret = $this->twitter->post('statuses/update', $send);
 		} catch (Exception $e) {
+			do_action('wdcp-social_posting-failed', 'twitter', $send, $e);
 			return false;
 		}
-		return $ret; // $ret->id_str
+		return $ret;
 	}
 }

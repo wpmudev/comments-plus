@@ -29,13 +29,13 @@ class Wdcp_Options {
 	 * Gets all stored options.
 	 */
 	function get_options () {
-		return WP_NETWORK_ADMIN ? get_site_option('wdcp_options', array()) : get_option('wdcp_options', array());
+		return defined('WP_NETWORK_ADMIN') && WP_NETWORK_ADMIN ? get_site_option('wdcp_options', array()) : get_option('wdcp_options', array());
 	}
 
 	/**
 	 * Sets all stored options.
 	 */
 	function set_options ($opts) {
-		return WP_NETWORK_ADMIN ? update_site_option('wdcp_options', $opts) : update_option('wdcp_options', $opts);
+		return defined('WP_NETWORK_ADMIN') && WP_NETWORK_ADMIN ? update_site_option('wdcp_options', $opts) : update_option('wdcp_options', $opts);
 	}
 }
