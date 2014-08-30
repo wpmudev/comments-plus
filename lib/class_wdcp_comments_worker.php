@@ -158,10 +158,14 @@ class Wdcp_CommentsWorker {
 		if (!$this->model->current_user_logged_in('facebook')) return $this->_prepare_facebook_login();
 		$preselect = $this->data->get_option('dont_select_social_sharing') ? '' : 'checked="checked"';
 		$disconnect = __('Disconnect', 'wdcp');
+		$posting_box = $this->data->get_option('fb_dont_post_on_facebook')
+			? ''
+			: "<p><label for='post-on-facebook'><input type='checkbox' id='post-on-facebook' value='1' {$preselect} /> " . __("Post my comment on my wall", "wdcp"). "</label></p>"
+		;
 		return "
 			<p>" . __('Connected as', 'wdcp') . " <b class='connected-as'>" . $this->model->current_user_name('facebook') . "</b>. <a class='comment-provider-logout' href='#'>{$disconnect}</a></p>
 			<textarea id='facebook-comment' rows='8' cols='45' rows='6'></textarea>
-			<p><label for='post-on-facebook'><input type='checkbox' id='post-on-facebook' value='1' {$preselect} /> " . __("Post my comment on my wall", "wdcp"). "</label></p>
+			{$posting_box}	
 			<p><a class='button' href='#' id='send-facebook-comment'>" . sprintf(__('Comment via %s', 'wdcp'), 'Facebook') . "</a></p>
 		";
 	}
@@ -203,10 +207,14 @@ class Wdcp_CommentsWorker {
 		if (!$this->model->current_user_logged_in('twitter')) return $this->_prepare_twitter_login();
 		$preselect = $this->data->get_option('dont_select_social_sharing') ? '' : 'checked="checked"';
 		$disconnect = __('Disconnect', 'wdcp');
+		$posting_box = $this->data->get_option('tw_dont_post_on_twitter')
+			? ''
+			: "<p><label for='post-on-twitter'><input type='checkbox' id='post-on-twitter' value='1' {$preselect} /> " . __("Post my comment on Twitter", "wdcp"). "</label></p>"
+		;
 		return "
 			<p>" . __('Connected as', 'wdcp') . " <b class='connected-as'>" . $this->model->current_user_name('twitter') . "</b>. <a class='comment-provider-logout' href='#'>{$disconnect}</a></p>
 			<textarea id='twitter-comment' rows='8' cols='45' rows='6'></textarea>
-			<p><label for='post-on-twitter'><input type='checkbox' id='post-on-twitter' value='1' {$preselect} /> " . __("Post my comment on Twitter", "wdcp"). "</label></p>
+			{$posting_box}
 			<p><a class='button' href='#' id='send-twitter-comment'>" . sprintf(__('Comment via %s', 'wdcp'), 'Twitter') . "</a></p>
 		";
 	}

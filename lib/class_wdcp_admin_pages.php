@@ -67,9 +67,9 @@ class Wdcp_AdminPages {
 
 		add_settings_section('wdcp_options', __('App settings', 'wdcp'), create_function('', ''), 'wdcp_options');
 		add_settings_field('wdcp_facebook_app', __('Facebook App info', 'wdcp'), array($form, 'create_facebook_app_box'), 'wdcp_options', 'wdcp_options');
-		add_settings_field('wdcp_facebook_skip', __('Skip loading Facebook javascript', 'wdcp'), array($form, 'create_skip_facebook_init_box'), 'wdcp_options', 'wdcp_options');
+		add_settings_field('wdcp_facebook_skip', __('Facebook Options', 'wdcp'), array($form, 'create_facebook_options_box'), 'wdcp_options', 'wdcp_options');
 		add_settings_field('wdcp_twitter_app', __('Twitter App info', 'wdcp'), array($form, 'create_twitter_app_box'), 'wdcp_options', 'wdcp_options');
-		add_settings_field('wdcp_twitter_skip', __('Skip loading Twitter javascript', 'wdcp'), array($form, 'create_skip_twitter_init_box'), 'wdcp_options', 'wdcp_options');
+		add_settings_field('wdcp_twitter_skip', __('Twitter Options', 'wdcp'), array($form, 'create_twitter_options_box'), 'wdcp_options', 'wdcp_options');
 		add_settings_field('wdcp_google_app', __('Google App info', 'wdcp'), array($form, 'create_google_app_box'), 'wdcp_options', 'wdcp_options');
 
 		add_settings_section('wdcp_general', __('General Settings', 'wdcp'), create_function('', ''), 'wdcp_options');
@@ -267,7 +267,7 @@ class Wdcp_AdminPages {
 
 		if (!empty($url)) {
 			$data['comment_author_url'] = $url;
-		} else localhost_log("empty url");
+		}
 		
 		$meta = array (
 			'wdcp_gg_author_id' => $guid,

@@ -62,12 +62,18 @@ class Wdcp_AdminFormRenderer {
 		}
 	}
 
-	function create_skip_facebook_init_box () {
-		echo
+	function create_facebook_options_box () {
+		echo '' .
 			$this->_create_checkbox('fb_skip_init', $this->_get_option('fb_skip_init')) .
 			'<label for="fb_skip_init">' . __('Pages on my website already use javascript from Facebook', 'wdcp') . '</label> ' .
-		"";
-		echo "<p><small>" . __('If you already use a plugin or custom script to interact with Facebook, check this option', 'wdcp') . '</small></p>';
+			'<div><small>' . __('If you already use a plugin or custom script to interact with Facebook, check this option', 'wdcp') . '</small></div>' .
+		'';
+		echo '<br />';
+		echo '' .
+			$this->_create_checkbox('fb_dont_post_on_facebook', $this->_get_option('fb_dont_post_on_facebook')) .
+			'<label for="fb_dont_post_on_facebook">' . __('Do not allow users to post their comments on Facebook', 'wdcp') . '</label> ' .
+			'<div><small>' . __('Enabling this option will hide the &quot;Post my comment on my wall&quot; box to your visitors when they authenticate with Facebook', 'wdcp') . '</small></div>' .
+		'';
 	}
 
 	function create_twitter_app_box () {
@@ -106,12 +112,18 @@ class Wdcp_AdminFormRenderer {
 		}
 	}
 
-	function create_skip_twitter_init_box () {
-		echo
+	function create_twitter_options_box () {
+		echo '' .
 			$this->_create_checkbox('tw_skip_init', $this->_get_option('tw_skip_init')) .
 			'<label for="tw_skip_init">' . __('Pages on my website already use javascript from Twitter', 'wdcp') . '</label> ' .
-		"";
-		echo "<p><small>" . __('If you already use a plugin or custom script to interact with Twitter, check this option', 'wdcp') . '</small></p>';
+			'<div><small>' . __('If you already use a plugin or custom script to interact with Twitter, check this option', 'wdcp') . '</small></p>' .
+		'';
+		echo '<br />';
+		echo '' .
+			$this->_create_checkbox('tw_dont_post_on_twitter', $this->_get_option('tw_dont_post_on_twitter')) .
+			'<label for="tw_dont_post_on_twitter">' . __('Do not allow users to post their comments on Twitter', 'wdcp') . '</label> ' .
+			'<div><small>' . __('Enabling this option will hide the &quot;Post my comment on Twitter&quot; box to your visitors when they authenticate with Twitter', 'wdcp') . '</small></div>' .
+		'';
 	}
 
 	function create_google_app_box () {
