@@ -98,6 +98,7 @@ class Wdcp_CommentsWorker {
 				? $this->model->current_user_name('wordpress') 
 				: apply_filters('wdcp-providers-wordpress-name', $default_name)
 			;
+			$names['wordpress'] = apply_filters( 'wdcp_wp_comment_name', $names['wordpress'] );
 		}
 		if (!in_array('twitter', $skips)) $names['twitter'] = $this->model->current_user_logged_in('twitter') ? $this->model->current_user_name('twitter') : apply_filters('wdcp-providers-twitter-name', 'Twitter');
 		if (!in_array('facebook', $skips)) $names['facebook'] = $this->model->current_user_logged_in('facebook') ? $this->model->current_user_name('facebook') : apply_filters('wdcp-providers-facebook-name', 'Facebook');
