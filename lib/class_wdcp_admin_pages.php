@@ -19,7 +19,7 @@ class Wdcp_AdminPages {
 	 *
 	 * @static
 	 */
-	function serve () {
+	public static function serve () {
 		$me = new Wdcp_AdminPages;
 		$me->add_hooks();
 	}
