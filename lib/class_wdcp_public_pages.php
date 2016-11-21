@@ -26,7 +26,7 @@ class Wdcp_PublicPages {
 	 *
 	 * @static
 	 */
-	function serve () {
+	public static function serve () {
 		$me = new Wdcp_PublicPages;
 		$me->add_hooks();
 	}
