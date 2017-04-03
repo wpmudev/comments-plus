@@ -192,7 +192,7 @@ class Wdcp_Model {
 			case "facebook":
 				return !empty($this->_facebook_user_cache['link'])
 					? $this->_facebook_user_cache['link']
-					: 'http://www.facebook.com/profile.php?id=' . $this->current_user_id('facebook')
+					: 'https://www.facebook.com/' . $this->current_user_id('facebook')
 				;
 			case "twitter":
 				return $this->_twitter_user_cache['url'];

@@ -68,5 +68,17 @@ $(document).on('click', "#send-facebook-comment", function () {
 	return false;
 });
 
+
+// Attempt clearing out old style FB profile links
+$('[class*="comment"] a[href*="facebook.com/profile.php?id="]').each(function () {
+	var $me = jQuery(this),
+		href = $me.attr('href'),
+		nhref = (href && href.length ? href.split('?id=') : false)
+	;
+	if (!nhref) return true;
+
+	$me.attr('href', 'https://facebook.com/' + nhref[1]);
+});
+
 });
 })(jQuery);
