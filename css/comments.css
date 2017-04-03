@@ -10,7 +10,7 @@
 	display: block; /* Reset the initial display */
 	clear: both;
 }
-	
+
 
 .comment-provider-waiting-response {
 	background: url(../img/loading.gif) top left no-repeat;
@@ -54,24 +54,56 @@ ul#all-comment-providers li a span {
 
 
 ul#all-comment-providers li a#comment-provider-wordpress-link {
-	background-image: url(../img/wp.png);
-	background-position: 8px 8px; 
-	background-repeat: no-repeat
+	position: relative;
+}
+ul#all-comment-providers li a#comment-provider-wordpress-link:before {
+	background: url(../img/media-sprite.png) -504px 0 no-repeat;
+	position: absolute;
+	display: block;
+	content: " ";
+	height: 16px;
+	width: 16px;
+	top: 8px;
+	left: 8px;
 }
 ul#all-comment-providers li a#comment-provider-facebook-link {
-	background-image: url(../img/fb.png);
-	background-position: 8px 8px; 
-	background-repeat: no-repeat
+	position: relative;
+}
+ul#all-comment-providers li a#comment-provider-facebook-link:before {
+	background: url(../img/media-sprite.png) 0 0 no-repeat;
+	position: absolute;
+	display: block;
+	content: " ";
+	height: 16px;
+	width: 16px;
+	top: 8px;
+	left: 8px;
 }
 ul#all-comment-providers li a#comment-provider-twitter-link {
-	background-image: url(../img/tw.png);
-	background-position: 8px 8px; 
-	background-repeat: no-repeat
+	position: relative;
+}
+ul#all-comment-providers li a#comment-provider-twitter-link:before {
+	background: url(../img/media-sprite.png) -337px 0 no-repeat;
+	position: absolute;
+	display: block;
+	content: " ";
+	height: 16px;
+	width: 16px;
+	top: 8px;
+	left: 8px;
 }
 ul#all-comment-providers li a#comment-provider-google-link {
-	background-image: url(../img/gg.png);
-	background-position: 8px 8px; 
-	background-repeat: no-repeat
+	position: relative;
+}
+ul#all-comment-providers li a#comment-provider-google-link:before {
+	background: url(../img/media-sprite.png) -166px 0 no-repeat;
+	position: absolute;
+	display: block;
+	content: " ";
+	height: 16px;
+	width: 16px;
+	top: 8px;
+	left: 8px;
 }
 
 /*** Login buttons ***/
@@ -91,13 +123,19 @@ ul#all-comment-providers li a#comment-provider-google-link {
 	left: -1200000000px;
 }
 #login-with-twitter {
-	background: url(../img/tw-login.png) top left no-repeat;
+	background: url(../img/media-sprite.png) -353px 0 no-repeat;
+	width: 151px;
+	height: 23px;
 }
 #login-with-facebook {
-	background: url(../img/fb-login.png) top left no-repeat;
+	background: url(../img/media-sprite.png) -16px 0 no-repeat;
+	width: 150px;
+	height: 23px;
 }
 #login-with-google {
-	background: url(../img/gg-login.png) top left no-repeat;
+	background: url(../img/media-sprite.png) -182px 0 no-repeat;
+	width: 155px;
+	height: 25px;
 }
 #login-with-google.plus {
 	background: none;
