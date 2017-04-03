@@ -115,8 +115,15 @@ class Wdcp_AdminPages {
 
 	function json_get_form () {
 		$worker = new Wdcp_CommentsWorker;
-		$provider = $_POST['provider'];
-		$html = call_user_func(array($worker, "_prepare_{$provider}_comments"), $_POST['page']);
+		$data = stripslashes_deep($_POST);
+		$provider = $data['provider'];
+		$method = "_prepare_{$provider}_comments";
+
+		$html = '';
+		if (is_callable(array($worker, $method))) {
+			$html = call_user_func(array($worker, $method), $data['page']);
+		}
+
 		header('Content-type: application/json');
 		echo json_encode(array(
 			'html' => $html,
@@ -172,14 +179,25 @@ class Wdcp_AdminPages {
 		$email = $this->model->current_user_email('facebook');
 		$url = $this->model->current_user_url('facebook');
 
+		$post_data = stripslashes_deep($_POST);
+		$post_id = !empty($post_data['post_id']) && is_numeric($post_data['post_id'])
+			? (int)$post_data['post_id']
+			: false
+		;
+		$parent_id = !empty($post_data['comment_parent']) && is_numeric($post_data['comment_parent'])
+			? (int)$post_data['comment_parent']
+			: false
+		;
+		$comment = !empty($post_data['comment']) ? $post_data['comment'] : false;
+
 		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-facebook', array(
-			'comment_post_ID' => @$_POST['post_id'],
+			'comment_post_ID' => $post_id,
 			'comment_author' => $username,
 			'comment_author_email' => $email,
 			'comment_author_url' => $url,
-			'comment_content' => @$_POST['comment'],
+			'comment_content' => $comment,
 			'comment_type' => '',
-			'comment_parent' => (int)@$_POST['comment_parent'],
+			'comment_parent' => $comment_parent,
 			'_wdcp_provider' => 'facebook',
 		)));
 
@@ -193,8 +211,8 @@ class Wdcp_AdminPages {
 
 
 		// Post comment to Facebook ...
-		if ((int)$_POST['post_on_facebook']) {
-			$result = $this->model->post_to_facebook($_POST);
+		if ((int)$post_data['post_on_facebook']) {
+			$result = $this->model->post_to_facebook($post_data);
 			do_action('wdcp-remote_comment_posted-facebook', $comment_id, $result, $data);
 		}
 
@@ -213,30 +231,40 @@ class Wdcp_AdminPages {
 		$url = $this->model->current_user_url('twitter');
 		$avatar = $this->model->twitter_avatar();
 
+		$post_data = stripslashes_deep($_POST);
+		$post_id = !empty($post_data['post_id']) && is_numeric($post_data['post_id'])
+			? (int)$post_data['post_id']
+			: false
+		;
+		$parent_id = !empty($post_data['comment_parent']) && is_numeric($post_data['comment_parent'])
+			? (int)$post_data['comment_parent']
+			: false
+		;
+		$comment = !empty($post_data['comment']) ? $post_data['comment'] : false;
+
 		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-twitter', array(
-			'comment_post_ID' => @$_POST['post_id'],
+			'comment_post_ID' => $post_id,
 			'comment_author' => $username,
 			'comment_author_email' => $email,
 			'comment_author_url' => $url,
-			'comment_content' => @$_POST['comment'],
+			'comment_content' => $comment,
 			'comment_type' => '',
-			'comment_parent' => (int)@$_POST['comment_parent'],
+			'comment_parent' => $parent_id,
 			'_wdcp_provider' => 'twitter',
 		)));
 
 		$meta = array (
 			'wdcp_tw_avatar' => $avatar,
 		);
-		//$comment_id = wp_insert_comment($data);
 		$comment_id = wp_new_comment($data);
 		add_comment_meta($comment_id, 'wdcp_comment', $meta) ;
 		do_action('comment_post', $comment_id, (!empty($data['comment_approved']) ? $data['comment_approved'] : false));
 		$this->_postprocess_comment($comment_id);
 
 
-		// Post comment to Facebook ...
-		if ((int)$_POST['post_on_twitter']) {
-			$result = $this->model->post_to_twitter($_POST);
+		// Post comment to Twitter ...
+		if ((int)$post_data['post_on_twitter']) {
+			$result = $this->model->post_to_twitter($post_data);
 			do_action('wdcp-remote_comment_posted-twitter', $comment_id, $result, $data);
 		}
 
