@@ -94,8 +94,8 @@ class Wdcp_CommentsWorker {
 		if (!in_array('wordpress', $skips)) {
 			$default_name = defined('WDCP_DEFAULT_WP_PROVIDER_NAME') && WDCP_DEFAULT_WP_PROVIDER_NAME ? WDCP_DEFAULT_WP_PROVIDER_NAME : get_bloginfo('name');
 			$default_name = $default_name ? $default_name : 'WordPress';
-			$names['wordpress'] = $this->model->current_user_logged_in('wordpress') 
-				? $this->model->current_user_name('wordpress') 
+			$names['wordpress'] = $this->model->current_user_logged_in('wordpress')
+				? $this->model->current_user_name('wordpress')
 				: apply_filters('wdcp-providers-wordpress-name', $default_name)
 			;
 			$names['wordpress'] = apply_filters( 'wdcp_wp_comment_name', $names['wordpress'] );
@@ -237,7 +237,7 @@ class Wdcp_CommentsWorker {
 				oauth: true
 			});
 			</script>";
-		
+
 		$tw_part = sprintf(
 			'<script type="text/javascript">jQuery(function () { if ("undefined" != typeof twttr && twttr.anywhere && twttr.anywhere.config) twttr.anywhere.config({ callbackURL: "%s" }); });</script>',
 			get_permalink()

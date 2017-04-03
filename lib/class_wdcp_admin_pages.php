@@ -23,7 +23,7 @@ class Wdcp_AdminPages {
 		$me = new Wdcp_AdminPages;
 		$me->add_hooks();
 	}
-	
+
 	/**
 	 * Add an admin info message about plugin configuration.
 	 */
@@ -33,7 +33,7 @@ class Wdcp_AdminPages {
 		$skips = $skips ? $skips : array();
 		if (
 			(!$this->data->get_option('fb_app_id') && !in_array('facebook', $skips)) // Not skipping Facebook, no FB API key
-			|| 
+			||
 			(!$this->data->get_option('tw_api_key') && !in_array('twitter', $skips)) // Not skipping Twitter, no Twitter API creds
 		) {
 			echo '<div class="error">' .
@@ -44,7 +44,7 @@ class Wdcp_AdminPages {
 			'</div>';
 		}
 	}
-	
+
 	/**
 	 * Add Network Admin footer messages.
 	 */
@@ -52,9 +52,9 @@ class Wdcp_AdminPages {
 		//if (!is_network_admin()) return false;
 		$screen = get_current_screen();
 		if ('plugins' != $screen->id) return false;
-		
+
 		echo '<div class="wdcp-notice">' .
-			'<p>' . __('You will also find add-ons that you can enable on a blog basis in Settings &gt; Comments Plus in the site admin', 'wdcp') . '</p>' .		
+			'<p>' . __('You will also find add-ons that you can enable on a blog basis in Settings &gt; Comments Plus in the site admin', 'wdcp') . '</p>' .
 		'</div>';
 	}
 
@@ -255,25 +255,35 @@ class Wdcp_AdminPages {
 		$url = $this->model->current_user_url('google');
 		$avatar = $this->model->google_plus_avatar();
 
+		$post_data = stripslashes_deep($_POST);
+		$post_id = !empty($post_data['post_id']) && is_numeric($post_data['post_id'])
+			? (int)$post_data['post_id']
+			: false
+		;
+		$parent_id = !empty($post_data['comment_parent']) && is_numeric($post_data['comment_parent'])
+			? (int)$post_data['comment_parent']
+			: false
+		;
+		$comment = !empty($post_data['comment']) ? $post_data['comment'] : false;
+
 		$data = apply_filters('wdcp-comment_data', apply_filters('wdcp-comment_data-google', array(
-			'comment_post_ID' => @$_POST['post_id'],
+			'comment_post_ID' => $post_id,
 			'comment_author' => $username,
 			'comment_author_email' => $email,
-			'comment_content' => @$_POST['comment'],
+			'comment_content' => $comment,
 			'comment_type' => '',
-			'comment_parent' => (int)@$_POST['comment_parent'],
+			'comment_parent' => $parent_id,
 			'_wdcp_provider' => 'google',
 		)));
 
 		if (!empty($url)) {
 			$data['comment_author_url'] = $url;
 		}
-		
+
 		$meta = array (
 			'wdcp_gg_author_id' => $guid,
 		);
 		if (!empty($avatar)) $meta['wdcp_gg_avatar'] = $avatar;
-		//$comment_id = wp_insert_comment($data);
 		$comment_id = wp_new_comment($data);
 		add_comment_meta($comment_id, 'wdcp_comment', $meta) ;
 		do_action('comment_post', $comment_id, (!empty($data['comment_approved']) ? $data['comment_approved'] : false));
@@ -357,7 +367,7 @@ class Wdcp_AdminPages {
 		add_action('admin_init', array($this, 'register_settings'));
 		add_action('admin_menu', array($this, 'create_admin_menu_entry'));
 		add_action('network_admin_menu', array($this, 'create_admin_menu_entry'));
-		
+
 		add_action('admin_notices', array($this, 'show_nag_messages'));
 		add_action('in_admin_footer', array($this, 'show_nag_footer'));
 

@@ -152,7 +152,7 @@ class Wdcp_Model {
 		}
 		return false;
 	}
-	
+
 	function current_user_username ($provider) {
 		$provider = esc_html(trim(strtolower($provider)));
 		switch ($provider) {

@@ -42,11 +42,11 @@ class Wdcp_PublicPages {
 	function css_load_styles () {
 		do_action('wdcp-load_styles-public');
 	}
-	
+
 	function check_if_wordpress_provider_allowed ($comment) {
 		$skips = (array)$this->data->get_option('skip_services');
 		if (!in_array('wordpress', $skips)) return $comment;
-		
+
 		if (!isset($comment['_wdcp_provider'])) return array();
 		return $comment;
 	}

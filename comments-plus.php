@@ -72,7 +72,7 @@ function wdcp_initialize () {
 	define('WDCP_APP_ID', $data->get_option('fb_app_id'));
 	define('WDCP_APP_SECRET', $data->get_option('fb_app_secret'));
 	if (!defined('WDCP_SKIP_FACEBOOK')) define('WDCP_SKIP_FACEBOOK', $data->get_option('fb_skip_init'));
-	
+
 	if (is_admin()) {
 		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_form_renderer.php';
 		require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_admin_pages.php';
