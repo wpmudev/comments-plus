@@ -50,9 +50,10 @@ class Wdcp_Model {
 		if (!session_id()) session_start();
 		// Facebook
 		try {
-			if ($this->facebook->getUser()) {
+			$fb_user_id = $this->facebook->getUser();
+			if (!empty($fb_user_id)) {
 				$_SESSION['wdcp_facebook_user_cache'] = isset($_SESSION['wdcp_facebook_user_cache'])
-					? $_SESSION['wdcp_facebook_user_cache'] : $this->facebook->api('/me');
+					? $_SESSION['wdcp_facebook_user_cache'] : $this->facebook->api("/{$fb_user_id}");
 				$this->_facebook_user_cache = $_SESSION['wdcp_facebook_user_cache'];
 			}
 		} catch (Exception $e) {}
