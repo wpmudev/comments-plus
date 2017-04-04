@@ -6,9 +6,14 @@ Change Log:
 ----------------------------------------------------------------------
 
 
+1.6.8 - 2017-04-00
+----------------------------------------------------------------------
+- Fix: combine images into sprite
+- Fix: Facebook API connection issues
+
 1.6.7 - 2014-08-30
 ----------------------------------------------------------------------
-- Added more granunal Facebook permissions requesting strategy.
+- Added more granular Facebook permissions requesting strategy.
 - Added ability to mark social posting boxes as optional.
 
 1.6.6 - 2014-08-06
