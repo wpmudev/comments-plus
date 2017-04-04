@@ -10,6 +10,7 @@ Change Log:
 ----------------------------------------------------------------------
 - Fix: combine images into sprite
 - Fix: Facebook API connection issues
+- Fix: update Facebook profile URLs format
 
 1.6.7 - 2014-08-30
 ----------------------------------------------------------------------
