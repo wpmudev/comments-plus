@@ -7,8 +7,6 @@ class Wdcp_PublicPages {
 	var $worker;
 	var $data;
 
-	function Wdcp_PublicPages () { $this->__construct(); }
-
 	function __construct () {
 		if ($this->_load_dependencies()) {
 			$this->data = new Wdcp_Options;

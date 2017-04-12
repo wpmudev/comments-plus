@@ -8,8 +8,6 @@ class Wdcp_Model {
 	var $_twitter_user_cache = false;
 	var $_google_user_cache = false;
 
-	function Wdcp_Model () { $this->__construct(); }
-
 	function __construct () {
 		if ($this->_load_dependencies()) {
 			if (!(defined('WDCP_FACEBOOK_SSL_CERTIFICATE') && WDCP_FACEBOOK_SSL_CERTIFICATE)) {

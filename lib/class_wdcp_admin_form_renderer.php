@@ -5,8 +5,6 @@
 class Wdcp_AdminFormRenderer {
 	var $_opts;
 
-	function Wdcp_AdminFormRenderer () { $this->__construct(); }
-
 	function __construct () {
 		$this->_opts = is_network_admin() ? get_site_option('wdcp_options') : get_option('wdcp_options');
 	}

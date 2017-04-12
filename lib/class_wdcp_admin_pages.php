@@ -7,8 +7,6 @@ class Wdcp_AdminPages {
 	var $model;
 	var $data;
 
-	function Wdcp_AdminPages () { $this->__construct(); }
-
 	function __construct () {
 		$this->model = new Wdcp_Model;
 		$this->data = new Wdcp_Options;

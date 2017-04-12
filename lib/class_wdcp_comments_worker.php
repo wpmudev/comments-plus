@@ -4,8 +4,6 @@ class Wdcp_CommentsWorker {
 	var $model;
 	var $data;
 
-	function Wdcp_CommentsWorker () { $this->__construct(); }
-
 	function __construct () {
 		$this->model = new Wdcp_Model;
 		$this->data = new Wdcp_Options;
