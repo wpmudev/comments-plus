@@ -64,11 +64,11 @@ class Wdcp_CommentsWorker {
 
 		$icon = $this->data->get_option('wp_icon');
 		if ($icon) {
-			$selector = apply_filters('wdcp-wordpress_custom_icon_selector', 'ul#all-comment-providers li a#comment-provider-wordpress-link');
+			$selector = apply_filters('wdcp-wordpress_custom_icon_selector', 'ul#all-comment-providers li a#comment-provider-wordpress-link:before');
 			printf(
 				'<style type="text/css">
 					%s {
-						background-image: url(%s) !important;
+						background: url(%s) no-repeat !important;
 					}
 				</style>', $selector, $icon);
 		}
