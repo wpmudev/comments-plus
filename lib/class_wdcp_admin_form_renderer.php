@@ -80,13 +80,13 @@ class Wdcp_AdminFormRenderer {
 		if (!$has_creds) {
 			printf(__(
 				'<p><b>You must make a Twitter Application to start using Comments Plus.</b></p>' .
-				'<p>Before we begin, you need to <a target="_blank" href="https://dev.twitter.com/apps/new">create a Twitter Application</a>.</p>' .
+				'<p>Before we begin, you need to <a target="_blank" href="https://apps.twitter.com/app/new">create a Twitter Application</a>.</p>' .
 				'<p>To do so, follow these steps:</p>' .
 				'<ol>' .
-					'<li><a target="_blank" href="https://dev.twitter.com/apps/new">Create your application</a></li>' .
+					'<li><a target="_blank" href="https://apps.twitter.com/app/new">Create your application</a></li>' .
 					'<li>Look for <strong>Callback URL</strong> field and enter your site URL in this field: <code>%s</code></li>' .
 					'<li>Make sure you enable Read &amp; Write access level</li>' .
-					'<li>After this, go to the <a target="_blank" href="https://dev.twitter.com/apps">Twitter Application List page</a> and select your newly created application</li>' .
+					'<li>After this, go to the <a target="_blank" href="https://apps.twitter.com/">Twitter Application List page</a> and select your newly created application</li>' .
 					'<li>Copy the values from these fields: <strong>Consumer Key</strong> and <strong>Consumer Secret</strong>, and enter them here:</li>' .
 				'</ol>',
 			'wdcp'),
