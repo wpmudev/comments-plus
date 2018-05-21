@@ -21,6 +21,82 @@ class Wdcp_Gdpr {
 
 	private function _add_hooks() {
 		add_action('admin_init', array($this, 'add_privacy_policy'));
+
+		add_filter(
+			'wp_privacy_personal_data_exporters',
+			array( $this, 'register_data_exporter' )
+		);
+		add_filter(
+			'wp_privacy_personal_data_erasers',
+			array( $this, 'register_data_eraser' )
+		);
+	}
+
+	/**
+	 * Augments exporters with plugins data exporter callback
+	 *
+	 * @param array $exporters Exporters this far.
+	 *
+	 * @return array
+	 */
+	public function register_data_exporter( $exporters ) {
+		$exporters['wdcp'] = array(
+			'exporter_friendly_name' => __('Comments Plus metadata', 'wdcp'),
+			'callback' => array($this, 'export_user_metadata'),
+		);
+		return $exporters;
+	}
+
+	/**
+	 * Augments erasers with plugins data eraser callback
+	 *
+	 * @param array $erasers Exporters this far.
+	 *
+	 * @return array
+	 */
+	public function register_data_eraser( $erasers ) {
+		$erasers['wdcp'] = array(
+			'eraser_friendly_name' => __( 'Comments Plus metadata', 'wdcp' ),
+			'callback' => array( $this, 'erase_user_metadata' ),
+		);
+		return $erasers;
+	}
+
+	public function export_user_metadata( $email, $page = 1 ) {
+	}
+
+	public function erase_user_metadata( $email, $page = 1 ) {
+	}
+
+	/**
+	 * Affected comments getter method
+	 *
+	 * @param string $email User email to check.
+	 *
+	 * @return array List of comment IDs
+	 */
+	public function get_comments_list( $email ) {
+		$args = array(
+			'fields' => 'ids',
+			'meta_query' => array(
+				'key' => 'wdcp_comment',
+				'compare' => 'EXISTS',
+			),
+		);
+		$byid = $byemail = array();
+
+		$user = get_user_by('email', $email);
+		if (!empty($user->ID)) {
+			$byid = get_comments(
+				wp_parse_args("user_id={$user->ID}", $args)
+			);
+		}
+
+		$byemail = get_comments(
+			wp_parse_args("author_email={$email}", $args)
+		);
+
+		return array_merge($byid, $byemail);
 	}
 
 	/**
