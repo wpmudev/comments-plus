@@ -127,18 +127,18 @@ class Wdcp_Gdpr {
 			'items_removed' => 0,
 			'items_retained' => false,
 			'messages' => array(),
-			'done' => true
+			'done' => true,
 		);
-		$comment_ids = $this->get_comments_list($email);
-		if (empty($comment_ids)) {
+		$comment_ids = $this->get_comments_list( $email );
+		if ( empty( $comment_ids ) ) {
 			return $result;
 		}
 
-		foreach ($comment_ids as $cid) {
-			error_log("Deleting comment meta for {$cid}");
+		foreach ( $comment_ids as $cid ) {
+			error_log( "Deleting comment meta for {$cid}" );
 			$result['items_removed'] = true;
-			delete_comment_meta($cid, 'wdcp_comment');
-			error_log("Meta: " . wp_json_encode(get_comment_meta($cid, 'wdcp_comment', true)));
+			delete_comment_meta( $cid, 'wdcp_comment' );
+			error_log( 'Meta: ' . wp_json_encode( get_comment_meta( $cid, 'wdcp_comment', true ) ) );
 		}
 
 		return $result;
