@@ -62,9 +62,64 @@ class Wdcp_Gdpr {
 		return $erasers;
 	}
 
+	/**
+	 * Exports plugins metadata
+	 *
+	 * @param string $email User email.
+	 * @param int $page Data page.
+	 *
+	 * @return array
+	 */
 	public function export_user_metadata( $email, $page = 1 ) {
+		$result	= array(
+			'data' => array(),
+			'done' => true,
+		);
+		$comment_ids = $this->get_comments_list($email);
+		if (empty($comment_ids)) {
+			return $result;
+		}
+
+		$label = __('Comments Plus metadata', 'wcp');
+		$exports = array();
+		foreach ( $comment_ids as $cid ) {
+			$raw = get_comment_meta($cid, 'wdcp_comment', true);
+			if (empty($raw)) {
+				continue;
+			}
+
+			$data = array();
+			foreach ($raw as $key => $value) {
+				if (preg_match('/author_id/', $key)) {
+					$key = __('Author ID', 'wdcp');
+				} else if (preg_match('/avatar/', $key)) {
+					$key = __('Avatar', 'wcp');
+				}
+				$data[] = array(
+					'name' => $key,
+					'value' => $value,
+				);
+			}
+
+			$exports[] = array(
+				'group_id' => 'comments-wdcp_meta',
+				'group_label' => $label,
+				'item_id' => "comments-comment-wdcp_meta-{$cid}",
+				'data' => $data,
+			);
+		}
+
+		return $exports;
 	}
 
+	/**
+	 * Erases plugins metadata
+	 *
+	 * @param string $email User email.
+	 * @param int $page Data page.
+	 *
+	 * @return array
+	 */
 	public function erase_user_metadata( $email, $page = 1 ) {
 	}
 
