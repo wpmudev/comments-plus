@@ -28,7 +28,8 @@ class Wdcp_Gdpr {
 		);
 		add_filter(
 			'wp_privacy_personal_data_erasers',
-			array( $this, 'register_data_eraser' )
+			array( $this, 'register_data_eraser' ),
+			5 // Register *early*, before comments erasure kills the email.
 		);
 	}
 
@@ -122,6 +123,25 @@ class Wdcp_Gdpr {
 	 * @return array
 	 */
 	public function erase_user_metadata( $email, $page = 1 ) {
+		$result = array(
+			'items_removed' => 0,
+			'items_retained' => false,
+			'messages' => array(),
+			'done' => true
+		);
+		$comment_ids = $this->get_comments_list($email);
+		if (empty($comment_ids)) {
+			return $result;
+		}
+
+		foreach ($comment_ids as $cid) {
+			error_log("Deleting comment meta for {$cid}");
+			$result['items_removed'] = true;
+			delete_comment_meta($cid, 'wdcp_comment');
+			error_log("Meta: " . wp_json_encode(get_comment_meta($cid, 'wdcp_comment', true)));
+		}
+
+		return $result;
 	}
 
 	/**
