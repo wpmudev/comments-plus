@@ -60,6 +60,9 @@ require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_plugins_handler.php';
 
 Wdcp_PluginsHandler::init();
 
+require_once WDCP_PLUGIN_BASE_DIR . '/lib/class_wdcp_gdpr.php';
+Wdcp_Gdpr::serve();
+
 function wdcp_initialize () {
 	$data = new Wdcp_Options;
 	define('WDCP_TW_API_KEY', $data->get_option('tw_api_key'));
