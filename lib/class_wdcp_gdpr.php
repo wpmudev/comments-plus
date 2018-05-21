@@ -43,7 +43,12 @@ class Wdcp_Gdpr {
 	 */
 	public function get_policy_content() {
 		return '' .
-			'<p>' . __('', 'wdcp') . '</p>' .
+			'<h3>' . __('Third parties', 'wdcp') . '</h3>' .
+			'<p>' . __('This site might be using third parties to assert your identity (with your explicit content) before leaving a comment. These services include Facebook, Google and Twitter.', 'wdcp') . '</p>' .
+			'<h3>' . __('Additional data', 'wdcp') . '</h3>' .
+			'<p>' . __('Your comments on this site will be augmented with additional data coming from the selected identity provider. This data includes your name, username, email, avatar and profile URL. This data can be exported and removed.', 'wdcp') . '</p>' .
+			'<h3>' . __('Cookies', 'wdcp') . '</h3>' .
+			'<p>' . __('In addition to standard WordPress comments cookies, this site might be setting an additional cookie to remember your preferred commenting identity provider. This cookie will last for one year.', 'wdcp') . '</p>' .
 		'';
 	}
 }
