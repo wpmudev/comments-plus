@@ -195,7 +195,7 @@ class Wdcp_AdminPages {
 			'comment_author_url' => $url,
 			'comment_content' => $comment,
 			'comment_type' => '',
-			'comment_parent' => $comment_parent,
+			'comment_parent' => $parent_id,
 			'_wdcp_provider' => 'facebook',
 		)));
 
