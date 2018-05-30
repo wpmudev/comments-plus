@@ -1,0 +1,20 @@
+{
+  "name": "comments-plus",
+  "version": "1.6.9",
+  "description": "Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts.",
+  "main": "comments-plus",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/incsub/comments-plus.git"
+  },
+  "author": "WPMU DEV",
+  "license": "GPL-2.0",
+  "homepage": "https://bitbucket.org/incsub/comments-plus#readme",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-cli": "^1.2.0"
+  }
+}

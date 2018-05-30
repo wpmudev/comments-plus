@@ -2,3 +2,4 @@ TODO
 logs/
 bin/
 *.tags
+node_modules/

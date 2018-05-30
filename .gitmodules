@@ -1,0 +1,3 @@
+[submodule "shared-tasks"]
+	path = shared-tasks
+	url = git@bitbucket.org:incsub/shared-tasks.git
