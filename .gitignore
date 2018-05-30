@@ -3,3 +3,5 @@ logs/
 bin/
 *.tags
 node_modules/
+builds/
+dist/
