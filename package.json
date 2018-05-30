@@ -3,6 +3,7 @@
   "version": "1.6.9",
   "description": "Super-ifys comments on your site by adding ability to comment using facebook, twitter, and google accounts.",
   "main": "comments-plus",
+  "textdomain": "wdcp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
   "homepage": "https://bitbucket.org/incsub/comments-plus#readme",
   "devDependencies": {
     "grunt": "^1.0.2",
-    "grunt-cli": "^1.2.0"
+    "grunt-cli": "^1.2.0",
+    "load-grunt-tasks": "^4.0.0"
   }
 }

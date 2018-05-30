@@ -25,6 +25,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+define('WDCP_PLUGIN_VERSION', '1.6.9');
 
 define ('WDCP_PLUGIN_SELF_DIRNAME', basename(dirname(__FILE__)), true);
 define ('WDCP_PROTOCOL', (@$_SERVER["HTTPS"] == 'on' ? 'https://' : 'http://'), true);
