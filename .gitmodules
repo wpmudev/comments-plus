@@ -1,3 +1,6 @@
 [submodule "shared-tasks"]
 	path = shared-tasks
 	url = git@bitbucket.org:incsub/shared-tasks.git
+[submodule "lib/external/dash"]
+	path = lib/external/dash
+	url = git@bitbucket.org:incsub/wpmudev-dashboard-notification.git
