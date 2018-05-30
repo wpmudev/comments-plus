@@ -1,434 +1,379 @@
+# Copyright (C) 2018 WPMU DEV
+# This file is distributed under the same license as the Comments Plus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Comments Plus\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-30 15:46+0100\n"
-"PO-Revision-Date: 2014-08-30 15:46+0100\n"
-"Last-Translator: \n"
-"Language-Team: Incsub\n"
-"Language: en\n"
+"Project-Id-Version: Comments Plus 1.6.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/comments-plus\n"
+"POT-Creation-Date: 2018-05-30 03:00:44+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: d:/xampp/htdocs/wdorg/wp-content/plugins/comments-plus\n"
-"X-Generator: Poedit 1.6.7\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: lib\n"
-"X-Poedit-SearchPath-1: lib/forms\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 
-#: lib/class_wdcp_admin_form_renderer.php:34
-#, php-format
+#: comments-plus.php:52
 msgid ""
-"<p><b>You must make a Facebook Application to start using Comments Plus.</"
-"b></p><p>Before we begin, you need to <a target=\"_blank\" href=\"https://"
-"developers.facebook.com/apps\">create a Facebook Application</a>.</p><p>To "
-"do so, follow these steps:</p><ol><li><a target=\"_blank\" href=\"https://"
-"developers.facebook.com/apps\">Create your application</a></li><li>Look for "
-"<strong>Site URL</strong> field in the <em>Website</em> tab and enter your "
-"site URL in this field: <code>%s</code></li><li>After this, go to the <a "
-"target=\"_blank\" href=\"https://developers.facebook.com/apps\">Facebook "
-"Application List page</a> and select your newly created application</"
-"li><li>Copy the values from these fields: <strong>App ID</strong>/"
-"<strong>API key</strong>, and <strong>Application Secret</strong>, and enter "
-"them here:</li></ol>"
+"There was an issue determining where Comments Plus plugin is installed. "
+"Please reinstall."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:46
+#: lib/class_wdcp_admin_form_renderer.php:44
 msgid "App ID/API key"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:49
+#: lib/class_wdcp_admin_form_renderer.php:47
 msgid "App Secret"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:52 lib/class_wdcp_tutorial.php:72
+#: lib/class_wdcp_admin_form_renderer.php:50 lib/class_wdcp_tutorial.php:72
 #: lib/class_wdcp_tutorial.php:84
 msgid "More help"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:54
-#: lib/class_wdcp_admin_form_renderer.php:104
+#: lib/class_wdcp_admin_form_renderer.php:52
+#: lib/class_wdcp_admin_form_renderer.php:102
 msgid "<p><i>Your Network Admin already set this up for you</i></p>"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:59
-#: lib/class_wdcp_admin_form_renderer.php:109
-#: lib/class_wdcp_admin_form_renderer.php:185
+#: lib/class_wdcp_admin_form_renderer.php:57
+#: lib/class_wdcp_admin_form_renderer.php:107
+#: lib/class_wdcp_admin_form_renderer.php:183
 msgid "I want to use this app on all subsites too"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:60
-#: lib/class_wdcp_admin_form_renderer.php:110
-#: lib/class_wdcp_admin_form_renderer.php:186
+#: lib/class_wdcp_admin_form_renderer.php:58
+#: lib/class_wdcp_admin_form_renderer.php:108
+#: lib/class_wdcp_admin_form_renderer.php:184
 msgid ""
 "Please, do <b>NOT</b> check this option if any of your sites use domain "
 "mapping."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:68
+#: lib/class_wdcp_admin_form_renderer.php:66
 msgid "Pages on my website already use javascript from Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:69
+#: lib/class_wdcp_admin_form_renderer.php:67
 msgid ""
 "If you already use a plugin or custom script to interact with Facebook, "
 "check this option"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:74
+#: lib/class_wdcp_admin_form_renderer.php:72
 msgid "Do not allow users to post their comments on Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:75
+#: lib/class_wdcp_admin_form_renderer.php:73
 msgid ""
 "Enabling this option will hide the &quot;Post my comment on my wall&quot; "
 "box to your visitors when they authenticate with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:84
-#, php-format
-msgid ""
-"<p><b>You must make a Twitter Application to start using Comments Plus.</b></"
-"p><p>Before we begin, you need to <a target=\"_blank\" href=\"https://dev."
-"twitter.com/apps/new\">create a Twitter Application</a>.</p><p>To do so, "
-"follow these steps:</p><ol><li><a target=\"_blank\" href=\"https://dev."
-"twitter.com/apps/new\">Create your application</a></li><li>Look for "
-"<strong>Callback URL</strong> field and enter your site URL in this field: "
-"<code>%s</code></li><li>Make sure you enable Read &amp; Write access level</"
-"li><li>After this, go to the <a target=\"_blank\" href=\"https://dev.twitter."
-"com/apps\">Twitter Application List page</a> and select your newly created "
-"application</li><li>Copy the values from these fields: <strong>Consumer Key</"
-"strong> and <strong>Consumer Secret</strong>, and enter them here:</li></ol>"
-msgstr ""
-
-#: lib/class_wdcp_admin_form_renderer.php:97
+#: lib/class_wdcp_admin_form_renderer.php:95
 msgid "Consumer key"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:100
+#: lib/class_wdcp_admin_form_renderer.php:98
 msgid "Consumer secret"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:118
+#: lib/class_wdcp_admin_form_renderer.php:116
 msgid "Pages on my website already use javascript from Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:119
+#: lib/class_wdcp_admin_form_renderer.php:117
 msgid ""
-"If you already use a plugin or custom script to interact with Twitter, check "
-"this option"
+"If you already use a plugin or custom script to interact with Twitter, "
+"check this option"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:124
+#: lib/class_wdcp_admin_form_renderer.php:122
 msgid "Do not allow users to post their comments on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:125
+#: lib/class_wdcp_admin_form_renderer.php:123
 msgid ""
 "Enabling this option will hide the &quot;Post my comment on Twitter&quot; "
 "box to your visitors when they authenticate with Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:141
+#: lib/class_wdcp_admin_form_renderer.php:139
 msgid "Legacy Google auth"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:143
+#: lib/class_wdcp_admin_form_renderer.php:141
 msgid "Legacy authentication method requires no setup."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:155
+#: lib/class_wdcp_admin_form_renderer.php:153
 msgid "Google+ auth"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:158
-msgid ""
-"<p><b>You must make a Google Application to start using Comments Plus.</b></"
-"p><p>Before we begin, you need to <a target=\"_blank\" href=\"https://"
-"console.developers.google.com/\">create a Google Application</a>.</p><p>To "
-"do so, follow these steps:</p><ol><li><a target=\"_blank\" href=\"https://"
-"console.developers.google.com/\">Create your application</a></li><li>Click "
-"<em>Create Project</em> button</li><li>In the left sidebar, select <em>APIs "
-"& auth</em>.</li><li>Find the <em>Google+ API</em> service and set its "
-"status to <em>ON</em>.</li><li>In the sidebar, select <em>Credentials</em>, "
-"then in the <em>OAuth</em> section of the page, select <em>Create New Client "
-"ID</em>.</li><li>In the <em>Application type</em> section of the dialog, "
-"select <em>Web application</em>.</li><li>In the <em>Authorized JavaScript "
-"origins</em> field, enter the origin for your app. You can enter multiple "
-"origins to allow for your app to run on different protocols, domains, or "
-"subdomains.</li><li>In the <em>Authorized redirect URI</em> field, delete "
-"the default value.</li><li>Select <em>Create Client ID</em>.</li><li>Copy "
-"the value of the field labeled <strong>Client ID</strong>, and enter it here:"
-"</li></ol>"
-msgstr ""
-
-#: lib/class_wdcp_admin_form_renderer.php:174
+#: lib/class_wdcp_admin_form_renderer.php:172
 msgid "Client ID"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:177
+#: lib/class_wdcp_admin_form_renderer.php:175
 msgid ""
 "To revert back to legacy Google auth, remove the client ID and save your "
 "settings."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:194
+#: lib/class_wdcp_admin_form_renderer.php:191
 msgid ""
 "<p>If you do not see Comments Plus on your pages, it is likely that your "
-"theme doesn't use the hooks we need to display our interface.</p><p>It's not "
-"a problem, though - here you can specify the hooks your theme does use.</p>"
+"theme doesn't use the hooks we need to display our interface.</p><p>It's "
+"not a problem, though - here you can specify the hooks your theme does "
+"use.</p>"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:202
+#: lib/class_wdcp_admin_form_renderer.php:200
 msgid ""
-"This is the hook that starts your comments form interface. By default, we're "
-"using <code>comment_form_before</code>. To reset to default, delete all "
-"contents of this field and save changes."
+"This is the hook that starts your comments form interface. By default, "
+"we're using <code>comment_form_before</code>. To reset to default, delete "
+"all contents of this field and save changes."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:209
+#: lib/class_wdcp_admin_form_renderer.php:207
 msgid ""
 "This is the hook that ends your comments form interface. By default, we're "
 "using <code>comment_form_after</code>. To reset to default, delete all "
 "contents of this field and save changes."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:213
+#: lib/class_wdcp_admin_form_renderer.php:211
 msgid "Icon URL:"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:216
+#: lib/class_wdcp_admin_form_renderer.php:214
 msgid ""
 "Full URL of the icon you wish to use for your WP comments instead of the "
 "default one"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:217
+#: lib/class_wdcp_admin_form_renderer.php:215
 msgid "For best results, use a 16x16px image."
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:220
+#: lib/class_wdcp_admin_form_renderer.php:218
 msgid "Attempt to show or hide allowed tags text for WordPress comments"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:226
-#: lib/class_wdcp_admin_form_renderer.php:257
+#: lib/class_wdcp_admin_form_renderer.php:224
+#: lib/class_wdcp_admin_form_renderer.php:255
 msgid "WordPress"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:227
-#: lib/class_wdcp_admin_form_renderer.php:258 lib/plugins/wdcp-debugger.php:43
+#: lib/class_wdcp_admin_form_renderer.php:225
+#: lib/class_wdcp_admin_form_renderer.php:256 lib/plugins/wdcp-debugger.php:43
 #: lib/plugins/wdcp-social_discussion.php:88
 #: lib/plugins/wdcp-social_discussion.php:107
 msgid "Twitter"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:228
-#: lib/class_wdcp_admin_form_renderer.php:259
+#: lib/class_wdcp_admin_form_renderer.php:226
+#: lib/class_wdcp_admin_form_renderer.php:257
 #: lib/plugins/wdcp-social_discussion.php:87
 #: lib/plugins/wdcp-social_discussion.php:106
 msgid "Facebook"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:229
-#: lib/class_wdcp_admin_form_renderer.php:260 lib/plugins/wdcp-debugger.php:42
+#: lib/class_wdcp_admin_form_renderer.php:227
+#: lib/class_wdcp_admin_form_renderer.php:258 lib/plugins/wdcp-debugger.php:42
 msgid "Google"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:246
+#: lib/class_wdcp_admin_form_renderer.php:244
 msgid "Shrink or stretch provider selector tabs?"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:251
+#: lib/class_wdcp_admin_form_renderer.php:249
 msgid "Don't pre-select social comments sharing"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:281
+#: lib/class_wdcp_admin_form_renderer.php:279
 msgid "Let my theme determine colors"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:282
+#: lib/class_wdcp_admin_form_renderer.php:280
 msgid ""
 "Use this option if your theme already has color definitions needed for "
 "Comments Plus in its' stylesheets"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:295
+#: lib/class_wdcp_admin_form_renderer.php:293
 msgid "Add-on name"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:296
+#: lib/class_wdcp_admin_form_renderer.php:294
 msgid "Add-on description"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:311
+#: lib/class_wdcp_admin_form_renderer.php:309
 msgid "Deactivate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:313
+#: lib/class_wdcp_admin_form_renderer.php:311
 msgid "Activate"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:319
-#, php-format
+#: lib/class_wdcp_admin_form_renderer.php:317
 msgid "Version %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_form_renderer.php:321
-#, php-format
+#: lib/class_wdcp_admin_form_renderer.php:319
 msgid "by %s"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:41
-#, php-format
+#: lib/class_wdcp_admin_pages.php:39
 msgid ""
-"You need to configure the Comments Plus plugin, you can do so <a href=\"%s"
-"\">here</a>"
+"You need to configure the Comments Plus plugin, you can do so <a "
+"href=\"%s\">here</a>"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:57
+#: lib/class_wdcp_admin_pages.php:55
 msgid ""
 "You will also find add-ons that you can enable on a blog basis in Settings "
 "&gt; Comments Plus in the site admin"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:68
+#: lib/class_wdcp_admin_pages.php:66
 msgid "App settings"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:69
+#: lib/class_wdcp_admin_pages.php:67
 msgid "Facebook App info"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:70
+#: lib/class_wdcp_admin_pages.php:68
 msgid "Facebook Options"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:71
+#: lib/class_wdcp_admin_pages.php:69
 msgid "Twitter App info"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:72
+#: lib/class_wdcp_admin_pages.php:70
 msgid "Twitter Options"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:73
+#: lib/class_wdcp_admin_pages.php:71
 msgid "Google App info"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:75
+#: lib/class_wdcp_admin_pages.php:73
 msgid "General Settings"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:76
+#: lib/class_wdcp_admin_pages.php:74
 msgid "WordPress branding &amp; options"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:77
+#: lib/class_wdcp_admin_pages.php:75
 msgid "Do not show &quot;Comment with&hellip;&quot;"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:78
+#: lib/class_wdcp_admin_pages.php:76
 msgid "Preferred provider"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:79
+#: lib/class_wdcp_admin_pages.php:77
 msgid "Comments Plus Styling"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:81
+#: lib/class_wdcp_admin_pages.php:79
 msgid "Hooks"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:82
+#: lib/class_wdcp_admin_pages.php:80
 msgid "Start injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:83
+#: lib/class_wdcp_admin_pages.php:81
 msgid "Finish injection hook"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:86
+#: lib/class_wdcp_admin_pages.php:84
 msgid "Comments Plus add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:87
+#: lib/class_wdcp_admin_pages.php:85
 msgid "All add-ons"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:106 lib/class_wdcp_contextual_help.php:28
+#. Plugin Name of the plugin/theme
 msgid "Comments Plus"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:303
+#: lib/class_wdcp_admin_pages.php:339
 msgid "Error"
 msgstr ""
 
-#: lib/class_wdcp_admin_pages.php:335
+#: lib/class_wdcp_admin_pages.php:371
 msgid "All good"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:51
+#: lib/class_wdcp_comments_worker.php:49
 msgid "Reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:52
+#: lib/class_wdcp_comments_worker.php:50
 msgid "Cancel reply"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:53
+#: lib/class_wdcp_comments_worker.php:51
 msgid "Please, wait..."
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:106
+#: lib/class_wdcp_comments_worker.php:105
 msgid "Click on a tab to select how you'd like to leave your comment"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:160
-#: lib/class_wdcp_comments_worker.php:179
-#: lib/class_wdcp_comments_worker.php:209
+#: lib/class_wdcp_comments_worker.php:159
+#: lib/class_wdcp_comments_worker.php:183
+#: lib/class_wdcp_comments_worker.php:218
 msgid "Disconnect"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:163
+#: lib/class_wdcp_comments_worker.php:162
 msgid "Post my comment on my wall"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:166
-#: lib/class_wdcp_comments_worker.php:181
-#: lib/class_wdcp_comments_worker.php:215
+#: lib/class_wdcp_comments_worker.php:165
+#: lib/class_wdcp_comments_worker.php:185
+#: lib/class_wdcp_comments_worker.php:224
 msgid "Connected as"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:169
-#: lib/class_wdcp_comments_worker.php:183
-#: lib/class_wdcp_comments_worker.php:218
-#, php-format
+#: lib/class_wdcp_comments_worker.php:168
+#: lib/class_wdcp_comments_worker.php:187
+#: lib/class_wdcp_comments_worker.php:227
 msgid "Comment via %s"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:174
+#: lib/class_wdcp_comments_worker.php:176
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:191
+#: lib/class_wdcp_comments_worker.php:198
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:212
+#: lib/class_wdcp_comments_worker.php:221
 msgid "Post my comment on Twitter"
 msgstr ""
 
-#: lib/class_wdcp_comments_worker.php:224
+#: lib/class_wdcp_comments_worker.php:236
 msgid "Login with Twitter"
 msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:30
 msgid ""
 "The Comments Plus Plugin effectively allows you to combine comments from "
-"Facebook, Twitter and Google services with your standard WordPress comments, "
-"rather than picking just one."
+"Facebook, Twitter and Google services with your standard WordPress "
+"comments, rather than picking just one."
 msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:33
@@ -458,8 +403,8 @@ msgstr ""
 #: lib/class_wdcp_contextual_help.php:60
 msgid ""
 "The Comments Plus Plugin effectively allows you to combine comments from "
-"Facebook, Twitter and Google services with your standard WordPress comments, "
-"rather than picking just one"
+"Facebook, Twitter and Google services with your standard WordPress "
+"comments, rather than picking just one"
 msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:65
@@ -468,8 +413,8 @@ msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:67
 msgid ""
-"Follow these steps to set up <em>App ID/API key</em> and <em>App Secret</em> "
-"fields"
+"Follow these steps to set up <em>App ID/API key</em> and <em>App "
+"Secret</em> fields"
 msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:69
@@ -479,13 +424,10 @@ msgid ""
 msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:70
-#, php-format
-msgid ""
-"Your Facebook App setup should look similar to this:<br /><img src=\"%s\" />"
+msgid "Your Facebook App setup should look similar to this:<br /><img src=\"%s\" />"
 msgstr ""
 
-#: lib/class_wdcp_contextual_help.php:76
-#: lib/external/pointers_tutorial.php:134
+#: lib/class_wdcp_contextual_help.php:76 lib/external/pointers_tutorial.php:134
 msgid "Tutorial"
 msgstr ""
 
@@ -495,6 +437,53 @@ msgstr ""
 
 #: lib/class_wdcp_contextual_help.php:81
 msgid "Restart the tutorial"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:45 lib/class_wdcp_gdpr.php:60
+#: lib/class_wdcp_gdpr.php:84
+msgid "Comments Plus metadata"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:95
+msgid "Author ID"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:97
+msgid "Avatar"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:198
+msgid "Third parties"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:199
+msgid ""
+"This site might be using third parties to assert your identity (with your "
+"explicit consent) before leaving a comment. These services include "
+"Facebook, Google and Twitter."
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:200
+msgid "Additional data"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:201
+msgid ""
+"Your comments on this site will be augmented with additional data coming "
+"from the selected identity provider. This data includes your name, "
+"username, email, avatar and profile URL. This data can be exported and "
+"removed."
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:202
+msgid "Cookies"
+msgstr ""
+
+#: lib/class_wdcp_gdpr.php:203
+msgid ""
+"In addition to standard WordPress comments cookies, this site might be "
+"setting an additional cookie to remember your preferred commenting identity "
+"provider. This cookie will last for one year."
 msgstr ""
 
 #: lib/class_wdcp_tutorial.php:16
@@ -515,7 +504,8 @@ msgstr ""
 
 #: lib/class_wdcp_tutorial.php:83
 msgid ""
-"Follow the steps to create your Facebook App, then paste its Secret key here."
+"Follow the steps to create your Facebook App, then paste its Secret key "
+"here."
 msgstr ""
 
 #: lib/class_wdcp_tutorial.php:92
@@ -523,8 +513,7 @@ msgid "Facebook javascript loading"
 msgstr ""
 
 #: lib/class_wdcp_tutorial.php:96
-msgid ""
-"Check this option if your page already includes javascript from Facebook."
+msgid "Check this option if your page already includes javascript from Facebook."
 msgstr ""
 
 #: lib/class_wdcp_tutorial.php:99
@@ -560,8 +549,8 @@ msgstr ""
 
 #: lib/class_wdcp_tutorial.php:150
 msgid ""
-"Activating this add-on may help solving conflicts with other Facebook-"
-"related plugins."
+"Activating this add-on may help solving conflicts with other "
+"Facebook-related plugins."
 msgstr ""
 
 #: lib/class_wdcp_tutorial.php:159
@@ -594,7 +583,6 @@ msgstr ""
 
 #: lib/external/pointers_tutorial.php:437
 #: lib/external/pointers_tutorial.php:459
-#, php-format
 msgid "Dismiss %s"
 msgstr ""
 
@@ -603,7 +591,6 @@ msgid "&laquo; Previous"
 msgstr ""
 
 #: lib/external/pointers_tutorial.php:498
-#, php-format
 msgid "%s: Step %d of %d"
 msgstr ""
 
@@ -611,18 +598,20 @@ msgstr ""
 msgid "Comments Plus settings"
 msgstr ""
 
+#: lib/forms/plugin_settings.php:13
+msgid "Save Changes"
+msgstr ""
+
 #: lib/forms/wdcp-custom_comments_template.php:22
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: lib/forms/wdcp-custom_comments_template.php:38
-#, php-format
 msgid "%s "
 msgstr ""
 
 #: lib/forms/wdcp-custom_comments_template.php:41
 #: lib/forms/wdcp-social_discussion_root_comment.php:12
-#, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
@@ -635,9 +624,14 @@ msgid "(Edit)"
 msgstr ""
 
 #: lib/forms/wdcp-custom_comments_template.php:63
-msgid ""
-"This post is password protected. Enter the password to view any comments."
+msgid "This post is password protected. Enter the password to view any comments."
 msgstr ""
+
+#: lib/forms/wdcp-custom_comments_template.php:74
+msgid "One Response to %2$s"
+msgid_plural "%1$s Responses to %2$s"
+msgstr[0] ""
+msgstr[1] ""
 
 #: lib/forms/wdcp-custom_comments_template.php:84
 msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
@@ -652,7 +646,6 @@ msgid "Comments are closed."
 msgstr ""
 
 #: lib/forms/wdcp-social_discussion_comment.php:12
-#, php-format
 msgid "<span class=\"date\">%1$s at %2$s</span>"
 msgstr ""
 
@@ -685,7 +678,6 @@ msgid ""
 msgstr ""
 
 #: lib/plugins/wdcp-custom_comments_template.php:57
-#, php-format
 msgid ""
 "To change the actual markup of the custom template, copy this file to your "
 "theme directory: <code>%s</code>, then make your changes there"
@@ -764,47 +756,38 @@ msgid "Message"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:212
-#, php-format
 msgid "Local: %s, server %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:256
-#, php-format
 msgid "Fetching the post page: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:257
-#, php-format
 msgid "Parsing the post page: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:258
-#, php-format
 msgid "Checking header prerequisites: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:259
-#, php-format
 msgid "Checking footer prerequisites: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:260
-#, php-format
 msgid "Checking Facebook initialization: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:261
-#, php-format
 msgid "Checking form overall prerequisites: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:262
-#, php-format
 msgid "Checking form opening prerequisites: %s"
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:263
-#, php-format
 msgid "Checking form closing prerequisites: %s"
 msgstr ""
 
@@ -816,14 +799,14 @@ msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:266
 msgid ""
-"Consider activating the &quot;Alternative Facebook Initialization&quot; add-"
-"on."
+"Consider activating the &quot;Alternative Facebook Initialization&quot; "
+"add-on."
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:267
 msgid ""
-"Consider activating the &quot;Custom Comments Template&quot; add-on, <b>or</"
-"b> changing injection hooks to something your theme supports."
+"Consider activating the &quot;Custom Comments Template&quot; add-on, "
+"<b>or</b> changing injection hooks to something your theme supports."
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:269
@@ -843,10 +826,9 @@ msgid "All seems to be okay."
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:364
-#, php-format
 msgid ""
-"There seems to be some differences in Twitter and your notion of time, by %d "
-"sec. This should now be fixed."
+"There seems to be some differences in Twitter and your notion of time, by "
+"%d sec. This should now be fixed."
 msgstr ""
 
 #: lib/plugins/wdcp-debugger.php:370
@@ -877,8 +859,8 @@ msgstr ""
 
 #: lib/plugins/wdcp-fb_locale.php:33
 msgid ""
-"By default, the plugin will try to auto-detect your locale settings and load "
-"the appropriate API scripts. However, not all locales are supported by "
+"By default, the plugin will try to auto-detect your locale settings and "
+"load the appropriate API scripts. However, not all locales are supported by "
 "Facebook, so your milleage may vary. With this option, you can explicitly "
 "tell which language you want to use for communicating with Facebook."
 msgstr ""
@@ -907,8 +889,8 @@ msgstr ""
 
 #: lib/plugins/wdcp-fb_post_image.php:62
 msgid ""
-"If that fails, this is the image that will be used instead. Please, use full "
-"URL to image (e.g. <code>http://example.com/images/example.jpg</code>)."
+"If that fails, this is the image that will be used instead. Please, use "
+"full URL to image (e.g. <code>http://example.com/images/example.jpg</code>)."
 msgstr ""
 
 #: lib/plugins/wdcp-fb_post_image.php:65
@@ -921,8 +903,9 @@ msgstr ""
 
 #: lib/plugins/wdcp-fb_post_image.php:70
 msgid ""
-"Please, use full URL to image (e.g. <code>http://example.com/images/example."
-"jpg</code>). If set, this image will <b>always</b> be used."
+"Please, use full URL to image (e.g. "
+"<code>http://example.com/images/example.jpg</code>). If set, this image "
+"will <b>always</b> be used."
 msgstr ""
 
 #: lib/plugins/wdcp-mailchimp_list_subscription.php:83
@@ -998,8 +981,7 @@ msgid "WordPress Comments"
 msgstr ""
 
 #: lib/plugins/wdcp-social_discussion.php:121
-msgid ""
-"The discussion panel you select here will be open by default on page load."
+msgid "The discussion panel you select here will be open by default on page load."
 msgstr ""
 
 #: lib/plugins/wdcp-social_discussion.php:126
@@ -1059,8 +1041,7 @@ msgid "Twitter username"
 msgstr ""
 
 #: lib/plugins/wdcp-tw_mention_me.php:48
-msgid ""
-"This is the Twitter username that will be prepended to all outgoing Tweets."
+msgid "This is the Twitter username that will be prepended to all outgoing Tweets."
 msgstr ""
 
 #: lib/plugins/wdcp-url_shorteners.php:53
@@ -1088,6 +1069,24 @@ msgid "Your bit.ly API Key"
 msgstr ""
 
 #: lib/plugins/wdcp-url_shorteners.php:97
-#, php-format
 msgid "Get your bit.ly API info <a href=\"%s\">here</a>"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/comments-plus"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Super-ifys comments on your site by adding ability to comment using "
+"facebook, twitter, and google accounts. Once activated, go to Settings &gt; "
+"Comments Plus to configure."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPMU DEV"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://premium.wpmudev.org"
 msgstr ""
