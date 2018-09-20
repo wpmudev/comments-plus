@@ -156,7 +156,7 @@ class Wdcp_AdminPages {
 	function json_twitter_auth_url () {
 		header('Content-type: application/json');
 		echo json_encode(array(
-			'url' => $this->model->get_twitter_auth_url($_POST['url']),
+			'url' => $this->model->get_twitter_auth_url( get_bloginfo('url') ),
 		));
 		exit();
 	}
